@@ -1,0 +1,341 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Sector gateway events
+
+namespace = irm_sector
+
+# This = System
+# Opens sector management screen
+system_event = {
+	id = irm_sector.1
+	title = "irm.ui.sector.title"
+	desc = "irm.ui.0"
+	location = root
+
+	force_open = yes
+	auto_select = yes
+	auto_opens = yes
+	is_triggered_only = yes
+	
+	diplomatic = yes
+	custom_gui = "irm_ui_sector"
+	show_sound = event_conversation
+	picture_event_data = {
+		portrait = root.sector.sector_capital.leader
+		room = "crisis_room"
+	}
+
+	immediate = {
+
+		sector = {
+			# sector dummy (for ui purposes)
+			save_global_event_target_as = irm_ui_sector
+
+			# get settings
+			irm_sector_get_settings = yes
+
+			# collect statistics
+			irm_get_stats = yes
+
+		}
+
+	}
+
+	# OPTIONS
+
+	# close button
+	option = {
+		name = "irm.ui.0"
+		custom_gui = "irm_ui_opt_close"
+		hidden_effect = {
+			sector = {
+				remove_sector_flag = irm_ui_sector_reload
+				remove_sector_flag = irm_ui_sector_sidebar_policies
+				remove_sector_flag = irm_ui_sector_sidebar_fleet
+			}
+		}
+	}
+
+	# policies
+	option = {
+		name = "irm.ui.sector.gov.policies"
+		custom_gui = "irm_ui_opt_sector_policies"
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.tt"
+			sector = {
+				set_timed_sector_flag = { flag = irm_ui_sector_reload days = 1 }
+				set_sector_flag = irm_ui_sector_sidebar_policies
+				remove_sector_flag = irm_ui_sector_sidebar_fleet
+			}
+		}
+
+	}
+
+	# fleet
+	option = {
+		name = "irm.ui.sector.gov.fleet"
+		custom_gui = "irm_ui_opt_sector_fleet"
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.tt"
+			sector = {
+				set_timed_sector_flag = { flag = irm_ui_sector_reload days = 1 }
+				set_sector_flag = irm_ui_sector_sidebar_fleet
+				remove_sector_flag = irm_ui_sector_sidebar_policies
+			}
+		}
+
+	}
+
+	# close sidebar
+	option = {
+		name = "irm.ui.0"
+		custom_gui = "irm_ui_opt_close_sidebar"
+		trigger = { sector = { irm_ui_has_sidebar = yes } }
+		hidden_effect = {
+			sector = {
+				set_timed_sector_flag = { flag = irm_ui_sector_reload days = 1 }
+				remove_sector_flag = irm_ui_sector_sidebar_policies
+				remove_sector_flag = irm_ui_sector_sidebar_fleet
+			}
+		}
+	}
+
+	# policy - sector size
+	option = {
+		name = "irm.i.1"
+		custom_gui = "irm_ui_opt_sector_size_1"
+		trigger = { sector = { has_sector_flag = irm_ui_sector_sidebar_policies } }
+		allow = {
+			always = yes
+		}
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.size_1.off"
+			sector = {
+				set_timed_sector_flag = { flag = irm_ui_sector_reform days = 2 }
+				remove_sector_flag = irm_ui_sector_sidebar_policies
+				irm_sector_prepare_size = { size = 1 }
+			}
+		}
+
+	}
+	option = {
+		name = "irm.i.5"
+		custom_gui = "irm_ui_opt_sector_size_5"
+		trigger = { sector = { has_sector_flag = irm_ui_sector_sidebar_policies } }
+		allow = {
+			always = yes
+		}
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.size_5.off"
+			sector = {
+				set_timed_sector_flag = { flag = irm_ui_sector_reform days = 2 }
+				remove_sector_flag = irm_ui_sector_sidebar_policies
+				sector_capital = { planet_event = { id = irm_sector.21 } }
+			}
+		}
+
+	}
+	option = {
+		name = "irm.i.10"
+		custom_gui = "irm_ui_opt_sector_size_10"
+		trigger = { sector = { has_sector_flag = irm_ui_sector_sidebar_policies } }
+		allow = {
+			hidden_trigger = {
+				sector = {
+					check_variable = { which = irm_sector_tier value >= 2 }
+				}
+			}
+		}
+		hidden_effect = {
+			sector = {
+				custom_tooltip = "irm.ui.sector.gov.policies.size_10.off"
+				if = {
+					limit = { check_variable = { which = irm_sector_tier value < 2 } }
+						custom_tooltip = "irm.ui.sector.gov.policies.size_0.req.t2"
+				}
+				set_timed_sector_flag = { flag = irm_ui_sector_reform days = 2 }
+				remove_sector_flag = irm_ui_sector_sidebar_policies
+				irm_sector_prepare_size = { size = 10 }
+			}
+		}
+
+	}
+	option = {
+		name = "irm.i.15"
+		custom_gui = "irm_ui_opt_sector_size_15"
+		trigger = { sector = { has_sector_flag = irm_ui_sector_sidebar_policies } }
+		allow = {
+			hidden_trigger = {
+				sector = {
+					check_variable = { which = irm_sector_tier value >= 3 }
+				}
+			}
+		}
+		hidden_effect = {
+			sector = {
+				custom_tooltip = "irm.ui.sector.gov.policies.size_15.off"
+				if = {
+					limit = { check_variable = { which = irm_sector_tier value < 3 } }
+						custom_tooltip = "irm.ui.sector.gov.policies.size_0.req.t3"
+				}
+				set_timed_sector_flag = { flag = irm_ui_sector_reform days = 2 }
+				remove_sector_flag = irm_ui_sector_sidebar_policies
+				irm_sector_prepare_size = { size = 15 }
+			}
+		}
+
+	}
+
+	# to prevent disappearing of all options
+	option = {
+		name = "irm.ui.0"
+		custom_gui = "irm_ui_opt_dummy"
+	}
+
+
+	## FORCE ABORTION
+	#
+	#abort_trigger = {
+	#	sector = { has_sector_flag = irm_ui_sector_reform }
+	#}
+
+	# CLEAN UP
+
+	after = {
+		hidden_effect = {
+			
+			# scopes
+			irm_clear_target = { target = irm_ui_sector }
+
+			# flags
+			sector = {
+			}
+
+			# variables
+			sector = {
+				irm_del_stats = yes
+			}
+
+			# relaunch if required
+			sector = {
+				if = {
+					limit = { has_sector_flag = irm_ui_sector_reload }
+						remove_sector_flag = irm_ui_sector_reload
+						prev = { system_event  = { id = irm_sector.1 } }
+				}
+			}
+
+		}
+	}
+
+}
+
+# Disband Sector
+planet_event = {
+	id = irm_sector.21
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		owner = {
+			# store sector settings
+			create_leader = {
+				species = owner_species
+				event_leader = yes
+				immortal = yes
+				hide_leader = yes
+				effect = {
+					# save sector parameters
+					set_name = root.sector
+					save_event_target_as = irm_copy_scope
+					copy_flags_and_variables_from = root.sector
+				}
+			}
+			# save actual capital to reassign it back
+			capital_scope = {
+				save_event_target_as = irm_tmp_capital
+			}
+			# to remove existing sector by the code effect, we have to simulate the loss of sector capital,
+			# so to fake it we need to transfer sector capital to the dummy planet body and destroy later
+			random_planet_within_border = {
+				limit = {
+					exists = sector
+					sector = { is_same_value = root.sector }
+					not = { is_same_value = root }
+					is_colony = no
+					is_colonizable = no
+				}
+				solar_system = {
+					# use the dummy, not the real ones
+					spawn_planet = {
+						class = "pc_asteroid"
+						location = prev
+						orbit_location = yes
+						orbit_angle_offset = 45
+						#orbit_distance_offset = 5
+						size = 1
+						init_effect = {
+							change_pc = { class = pc_gaia inherit_entity = yes } # to enable colony
+							set_owner = space_owner
+							set_sector_capital = yes
+							destroy_colony = yes
+							change_pc = { class = pc_asteroid inherit_entity = yes }
+							remove_planet = yes
+						}
+
+					}
+				}
+			}
+		}
+	}
+	after = {
+		# by default there is always a lag of a day for sector to disappear
+		planet_event = { id = irm_sector.22 days = 2 }
+	}
+}
+
+# Create Sector
+planet_event = {
+	id = irm_sector.22
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		owner = {
+			# to prevent creation of vanilla's sectors
+			if = {
+				limit = { prev = { irm_init_custom_sector = yes } }
+				set_country_flag = irm_custom_sector
+			}
+		}
+		# moving capital to the planet should immediately create a new sector
+		set_capital = yes
+		if = {
+			# transfer stored parameters
+			limit = { exists = sector }
+			sector = {
+				set_name = event_target:irm_copy_scope
+				copy_flags_and_variables_from = event_target:irm_copy_scope
+			}
+		}
+	}
+	after = {
+		# put back the capital
+		event_target:irm_tmp_capital = {
+			set_capital = yes
+		# clear dummy scope
+		event_target:irm_copy_scope = {
+			kill_leader = { show_notification = no }
+		}
+		# clear the flags
+		owner = { remove_country_flag = irm_custom_sector }
+		remove_planet_flag = irm_core_sector_1
+		remove_planet_flag = irm_core_sector_5
+		remove_planet_flag = irm_core_sector_10
+		remove_planet_flag = irm_core_sector_15
+		remove_planet_flag = irm_normal_sector_1
+		remove_planet_flag = irm_normal_sector_5
+		remove_planet_flag = irm_normal_sector_10
+		remove_planet_flag = irm_normal_sector_15
+	}
+}

@@ -1,0 +1,661 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Mod custom scripted effects & routines
+
+# This = System / Sector
+# Get key stats for the chosen scope
+irm_get_stats = {
+	set_variable = { which = irm_owned_colonies value = value:irm_planets_|owned|y| }
+	set_variable = { which = irm_habitable value = value:irm_planets_|habitable|y| }
+	root.owner = {
+		# main loop
+		every_system_within_border = {
+			limit = {
+				exists = sector
+				sector = { is_same_value = prevprevprev }
+			}
+			prevprev = {
+				change_variable = { which = irm_owned_systems value = 1 }
+				change_variable = { which = irm_trade_value value = prev.trigger:has_system_trade_value }
+				change_variable = { which = irm_trade_value value = prev.trigger:trade_intercepted_value }
+				change_variable = { which = irm_trade_value value = prev.trigger:trade_intercepted_value }
+			}
+			# planet loop
+			every_system_planet = {
+				irm_get_stats_demography = yes
+				irm_get_stats_resources = yes
+				irm_get_stats_development = yes
+				irm_get_stats_society = yes
+				irm_get_stats_military = yes
+			}
+			# starbases
+			starbase.fleet = {
+				# energy upkeep
+				switch = {
+					trigger = is_ship_size
+						starbase_outpost = { prevprevprev = { change_variable = { which = irm_energy_starbase_exp value = 1 } } }
+						starbase_starport = { prevprevprev = { change_variable = { which = irm_energy_starbase_exp value = 2 } } }
+						starbase_starhold = { prevprevprev = { change_variable = { which = irm_energy_starbase_exp value = 3 } } }
+						starbase_starfortress = { prevprevprev = { change_variable = { which = irm_energy_starbase_exp value = 4 } } }
+						starbase_citadel = { prevprevprev = { change_variable = { which = irm_energy_starbase_exp value = 5 } } }
+				}
+			}
+			# claims
+			every_country = {
+				limit = { has_claim = prev }
+					prevprevprev = { change_variable = { which = irm_claims value = 1 } }
+			}
+
+
+		}
+		# factions
+		export_trigger_value_to_variable = {
+			trigger = count_pop_faction
+			parameters = {
+				limit = {
+					any_owned_pop = {
+						member_of_faction = prev
+						exists = planet
+						if = {
+							limit = { prevprevprev = { is_scope_type = galactic_object } }
+								planet.solar_system = { is_same_value = root }
+						}
+						else_if = {
+							limit = { prevprevprev = { is_scope_type = sector } }
+								if = {
+									limit = {
+										exists = planet
+										exists = planet.sector
+									}
+									planet.sector = { is_same_value = root.sector }
+								}
+						}
+					}
+				}
+			}
+			variable = irm_factions
+		}
+		prev = { set_variable = { which = irm_factions value = prev.irm_factions } }
+		irm_unset = { which = irm_factions }
+	}
+	# final calculations
+	if = {
+		# averages
+		limit = { check_variable = { which = irm_owned_colonies value > 0 } }
+			divide_variable = { which = irm_stability value = irm_owned_colonies }
+			divide_variable = { which = irm_crime value = irm_owned_colonies }
+			divide_variable = { which = irm_happiness value = irm_owned_colonies }
+			multiply_variable = { which = irm_happiness value = 100 }
+	}
+	# research
+	change_variable = { which = irm_research value = irm_physics_research }
+	change_variable = { which = irm_research value = irm_society_research }
+	change_variable = { which = irm_research value = irm_engineering_research }
+	# strategic
+	change_variable = { which = irm_strategic value = irm_volatile_motes }
+	change_variable = { which = irm_strategic value = irm_exotic_gases }
+	change_variable = { which = irm_strategic value = irm_rare_crystals }
+	change_variable = { which = irm_strategic value = irm_sr_living_metal }
+	change_variable = { which = irm_strategic value = irm_sr_zro }
+	change_variable = { which = irm_strategic value = irm_sr_dark_matter }
+	change_variable = { which = irm_strategic value = irm_nanites }
+	change_variable = { which = irm_strategic value = irm_minor_artifacts }
+	if = {
+		# starbases upkeep
+		limit = { check_variable = { which = irm_energy_starbase_exp value > 0 } }
+			subtract_variable = { which = irm_energy value = irm_energy_starbase_exp }
+	}
+	# development
+	change_variable = { which = irm_districts_total value = irm_districts }
+	change_variable = { which = irm_districts_total value = irm_districts_free }
+	change_variable = { which = irm_districts_total value = irm_districts_blocked }
+	change_variable = { which = irm_buildings_total value = irm_buildings }
+	change_variable = { which = irm_buildings_total value = irm_buildings_free }
+
+	# sprawl
+	set_variable = { which = irm_sprawl value = 0 }
+
+		# from systems
+		change_variable = { which = irm_sprawl_systems value = irm_owned_systems }
+		set_variable = { which = irm_sprawl_systems_mod value = 1 }
+		change_variable = { which = irm_sprawl_systems_mod value = owner.modifier:empire_size_systems_mult }
+		multiply_variable = { which = irm_sprawl_systems value = irm_sprawl_systems_mod }
+		change_variable = { which = irm_sprawl_systems_mod value = -1 } # tooltip reason
+		multiply_variable = { which = irm_sprawl_systems_mod value = 100 } # tooltip reason
+
+		# from colonies 
+		set_variable = { which = irm_sprawl_colonies value = 10 }
+		set_variable = { which = irm_sprawl_colonies_mod value = 1 }
+		change_variable = { which = irm_sprawl_colonies_mod value = owner.modifier:empire_size_colonies_mult }
+		multiply_variable = { which = irm_sprawl_colonies value = irm_owned_colonies }
+		multiply_variable = { which = irm_sprawl_colonies value = irm_sprawl_colonies_mod }
+		change_variable = { which = irm_sprawl_colonies_mod value = -1 } # tooltip reason
+		multiply_variable = { which = irm_sprawl_colonies_mod value = 100 } # tooltip reason
+
+		# from districts
+		set_variable = { which = irm_sprawl_districts value = 0.5 }
+		set_variable = { which = irm_sprawl_districts_mod value = 1 }
+		change_variable = { which = irm_sprawl_districts_mod value = owner.modifier:empire_size_districts_mult }
+		multiply_variable = { which = irm_sprawl_districts value = irm_districts }
+		multiply_variable = { which = irm_sprawl_districts value = irm_sprawl_districts_mod }
+		change_variable = { which = irm_sprawl_districts_mod value = -1 } # tooltip reason
+		multiply_variable = { which = irm_sprawl_districts_mod value = 100 } # tooltip reason
+
+		# from pops
+		sector_capital = {
+			random_owned_pop = { root.sector = { change_variable = { which = irm_sprawl_species_mod value = prev.modifier:species_empire_size_mult } } }
+		}
+		set_variable = { which = irm_sprawl_pops value = irm_pops }
+		set_variable = { which = irm_sprawl_pops_mod value = 1 }
+		change_variable = { which = irm_sprawl_pops_mod value = owner.modifier:empire_size_pops_mult }
+		change_variable = { which = irm_sprawl_pops_mod value = irm_sprawl_species_mod }
+		multiply_variable = { which = irm_sprawl_pops value = irm_sprawl_pops_mod }
+		change_variable = { which = irm_sprawl_pops_mod value = -1 } # tooltip reason
+		multiply_variable = { which = irm_sprawl_pops_mod value = 100 } # tooltip reason
+
+		# other (empire-wide)
+		change_variable = { which = irm_sprawl_mod value = owner.modifier:empire_size_mult }
+		multiply_variable = { which = irm_sprawl_mod value = 100 } # tooltip reason
+
+		change_variable = { which = irm_sprawl_upd value = owner.modifier:empire_size_add }
+
+	change_variable = { which = irm_sprawl value = irm_sprawl_systems }
+	change_variable = { which = irm_sprawl value = irm_sprawl_colonies }
+	change_variable = { which = irm_sprawl value = irm_sprawl_districts }
+	change_variable = { which = irm_sprawl value = irm_sprawl_pops }
+
+	change_variable = { which = irm_armies value = irm_armies_assault }
+	change_variable = { which = irm_armies value = irm_armies_defense }
+
+	change_variable = { which = irm_claims value = 0 }
+
+
+
+#- empire_size_districts_mult, Category: Countries, Planets
+#- empire_size_systems_mult, Category: Countries
+#- empire_size_colonies_mult, Category: Countries
+#- empire_size_pops_mult, Category: Countries
+#- empire_size_mult, Category: Countries
+#- empire_size_add, Category: Countries
+#- species_empire_size_mult, Category: Pops (for leaders)
+
+	# roundings
+	round_variable = irm_stability
+	round_variable = irm_crime
+	round_variable = irm_happiness
+
+	round_variable = irm_trade_value
+	round_variable = irm_energy
+	round_variable = irm_minerals
+	round_variable = irm_food
+	round_variable = irm_consumer_goods
+	round_variable = irm_alloys
+	round_variable = irm_unity
+	round_variable = irm_research
+	round_variable = irm_strategic
+	round_variable = irm_influence
+
+	round_variable = irm_immigration
+	round_variable = irm_emigration
+
+	round_variable = irm_sprawl
+}
+
+# This = Planet
+irm_get_stats_demography = {
+	if = {
+		limit = {
+			exists = owner
+			owner = { is_same_value = root.owner }
+			is_under_colonization = no
+		}
+		prevprevprev = {
+			change_variable = { which = irm_pops value = prev.trigger:num_pops }
+			change_variable = { which = irm_stability value = prev.trigger:planet_stability }
+			change_variable = { which = irm_crime value = prev.trigger:planet_crime }
+			change_variable = { which = irm_housing value = prev.trigger:free_housing }
+			change_variable = { which = irm_amenities value = prev.trigger:free_amenities }
+			change_variable = { which = irm_jobs value = prev.trigger:free_jobs }
+			change_variable = { which = irm_unemployed value = prev.trigger:num_unemployed }
+			change_variable = { which = irm_happiness value = prev.trigger:happiness_planet }
+		}
+	}
+}
+
+irm_get_stats_resources = {
+	if = {
+		limit = {
+			exists = owner
+			owner = { is_same_value = root.owner }
+			is_under_colonization = no
+		}
+		prevprevprev = {
+			irm_get_resource_breakdown = { resource = energy planet = yes }
+			irm_get_resource_breakdown = { resource = minerals planet = yes }
+			irm_get_resource_breakdown = { resource = food planet = yes }
+			irm_get_resource_breakdown = { resource = consumer_goods planet = yes }
+			irm_get_resource_breakdown = { resource = alloys planet = yes }
+			irm_get_resource_breakdown = { resource = unity planet = yes }
+			irm_get_resource_breakdown = { resource = physics_research planet = yes }
+			irm_get_resource_breakdown = { resource = society_research planet = yes }
+			irm_get_resource_breakdown = { resource = engineering_research planet = yes }
+			irm_get_resource_breakdown = { resource = influence planet = yes }
+			# strategic
+			irm_get_resource_breakdown = { resource = volatile_motes planet = yes }
+			irm_get_resource_breakdown = { resource = exotic_gases planet = yes }
+			irm_get_resource_breakdown = { resource = rare_crystals planet = yes }
+			irm_get_resource_breakdown = { resource = sr_living_metal planet = yes }
+			irm_get_resource_breakdown = { resource = sr_zro planet = yes }
+			irm_get_resource_breakdown = { resource = sr_dark_matter planet = yes }
+			irm_get_resource_breakdown = { resource = nanites planet = yes }
+			irm_get_resource_breakdown = { resource = minor_artifacts planet = yes }
+		}
+		# capital case
+		if = {
+			limit = { is_same_value = root.owner.capital_scope }
+			prevprevprev = {
+				change_variable = { which = irm_energy value = 20 }
+				change_variable = { which = irm_energy_base_inc value = 20 }
+				change_variable = { which = irm_minerals value = 20 }
+				change_variable = { which = irm_minerals_base_inc value = 20 }
+				change_variable = { which = irm_food value = 10 }
+				change_variable = { which = irm_food_base_inc value = 10 }
+				change_variable = { which = irm_consumer_goods value = 10 }
+				change_variable = { which = irm_consumer_goods_base_inc value = 10 }
+				change_variable = { which = irm_alloys value = 5 }
+				change_variable = { which = irm_alloys_base_inc value = 5 }
+				change_variable = { which = irm_unity value = 5 }
+				change_variable = { which = irm_unity_base_inc value = 5 }
+				change_variable = { which = irm_physics_research value = 10 }
+				change_variable = { which = irm_physics_research_base_inc value = 10 }
+				change_variable = { which = irm_society_research value = 10 }
+				change_variable = { which = irm_society_research_base_inc value = 10 }
+				change_variable = { which = irm_engineering_research value = 10 }
+				change_variable = { which = irm_engineering_research_base_inc value = 10 }
+				change_variable = { which = irm_influence value = 3 }
+				change_variable = { which = irm_influence_base_inc value = 3 }
+			}
+		}
+	}
+	if = {
+		# for just resourceful
+		limit = {
+			is_colony = no
+			has_owner = no
+			has_resource = yes
+			or = {
+				has_mining_station = yes
+				has_research_station = yes
+				has_observation_outpost = yes
+			}
+		}
+		prevprevprev = {
+			irm_get_resource_breakdown = { resource = energy station = yes }
+			irm_get_resource_breakdown = { resource = minerals station = yes }
+			irm_get_resource_breakdown = { resource = alloys station = yes }
+			irm_get_resource_breakdown = { resource = unity station = yes }
+			irm_get_resource_breakdown = { resource = physics_research station = yes }
+			irm_get_resource_breakdown = { resource = society_research station = yes }
+			irm_get_resource_breakdown = { resource = engineering_research station = yes }
+			# strategic
+			irm_get_resource_breakdown = { resource = volatile_motes station = yes }
+			irm_get_resource_breakdown = { resource = exotic_gases station = yes }
+			irm_get_resource_breakdown = { resource = rare_crystals station = yes }
+			irm_get_resource_breakdown = { resource = sr_living_metal station = yes }
+			irm_get_resource_breakdown = { resource = sr_zro station = yes }
+			irm_get_resource_breakdown = { resource = sr_dark_matter station = yes }
+			irm_get_resource_breakdown = { resource = nanites station = yes }
+			irm_get_resource_breakdown = { resource = minor_artifacts station = yes }
+		}
+		# non-energy stations upkeep
+		if = {
+			limit = { has_resource = { type = energy amount = 0 } }
+			prevprevprev = {
+				change_variable = { which = irm_energy value = -1 }
+				change_variable = { which = irm_energy_station_exp value = 1 }
+			}
+		}
+	}
+	# natural deposits
+	prevprevprev = {
+		change_variable = { which = irm_deposit_volatile_motes value = prev.modifier:building_mote_harvesters_max }
+		change_variable = { which = irm_deposit_exotic_gases value = prev.modifier:building_gas_extractors_max }
+		change_variable = { which = irm_deposit_rare_crystals value = prev.modifier:building_crystal_mines_max }
+		change_variable = { which = irm_deposit_betharian value = prev.modifier:building_betharian_power_plant_max }
+	}
+	if = {
+		limit = { has_deposit = d_alien_pets_deposit }
+		prevprevprev = { change_variable = { which = irm_deposit_xeno value = 1 } }
+	}
+}
+
+irm_get_stats_development = {
+	if = {
+		limit = {
+			exists = owner
+			owner = { not = { is_same_value = root.owner } }
+		}
+		# just skip for non-owned planets within borders (pre-ftl, etc)
+	}
+	else_if = {
+		limit = {
+			or = {
+				and = {
+					exists = owner
+					owner = { is_same_value = root.owner }
+				}
+	   			is_colonizable = yes
+	   			has_modifier = terraforming_candidate
+			}
+		}
+		export_trigger_value_to_variable = {
+			trigger = num_districts
+			parameters = { type = any }
+			variable = irm_districts
+		}
+		export_trigger_value_to_variable = {
+			trigger = num_free_districts
+			parameters = { type = any }
+			variable = irm_districts_free
+		}
+		export_trigger_value_to_variable = {
+			trigger = num_uncleared_blockers
+			variable = irm_districts_blocked
+		}
+		export_trigger_value_to_variable = {
+			trigger = num_buildings
+			parameters = { type = any }
+			variable = irm_buildings
+		}
+		export_trigger_value_to_variable = {
+			trigger = free_building_slots
+			variable = irm_buildings_free
+		}
+		prevprevprev = {
+			change_variable = { which = irm_districts value = prev.irm_districts }
+			change_variable = { which = irm_districts_free value = prev.irm_districts_free }
+			change_variable = { which = irm_districts_blocked value = prev.irm_districts_blocked }
+			change_variable = { which = irm_buildings value = prev.irm_buildings }
+			change_variable = { which = irm_buildings_free value = prev.irm_buildings_free }
+		}
+		irm_unset = { which = irm_districts }
+		irm_unset = { which = irm_districts_free }
+		irm_unset = { which = irm_districts_blocked }
+		irm_unset = { which = irm_buildings }
+		irm_unset = { which = irm_buildings_free }
+	}
+}
+
+# This = Planet
+irm_get_stats_society = {
+	if = {
+		limit = {
+			exists = owner
+			owner = { is_same_value = root.owner }
+			is_under_colonization = no
+		}
+		prevprevprev = {
+			set_variable = { which = irm_immigration_mod value = 1 }
+			change_variable = { which = irm_immigration_mod value = prev.modifier:planet_immigration_pull_mult }
+			multiply_variable = { which = irm_immigration_mod value = prev.modifier:planet_immigration_pull_add }
+			change_variable = { which = irm_immigration value = irm_immigration_mod }
+
+			set_variable = { which = irm_emigration_mod value = 1 }
+			change_variable = { which = irm_emigration_mod value = prev.modifier:planet_emigration_push_mult }
+			multiply_variable = { which = irm_emigration_mod value = prev.modifier:planet_emigration_push_add }
+			change_variable = { which = irm_emigration value = irm_emigration_mod }
+		}
+	}
+
+}
+
+# This = Planet
+irm_get_stats_military = {
+	if = {
+		limit = {
+			exists = owner
+			owner = { is_same_value = root.owner }
+			is_under_colonization = no
+		}
+		prevprevprev = {
+			change_variable = { which = irm_armies_assault value = prev.value:irm_armies_|owned|y|assault|y| }
+			change_variable = { which = irm_armies_defense value = prev.value:irm_armies_|owned|y|defense|y| }
+		}
+		root = { change_variable = { which = irm_armies_assault value = prev.value:irm_armies_|owned|y|assault|y| } }
+		root = { change_variable = { which = irm_armies_defense value = prev.value:irm_armies_|owned|y|defense|y| } }
+	}	
+}
+
+# This = System / Sector
+# Clears all variables
+irm_del_stats = {
+	irm_unset = { which = irm_owned_systems }
+	irm_unset = { which = irm_owned_colonies }
+	irm_unset = { which = irm_habitable }
+	irm_unset = { which = irm_sprawl }
+	irm_unset = { which = irm_sprawl_mod }
+	irm_unset = { which = irm_sprawl_upd }
+	irm_unset = { which = irm_sprawl_systems }
+	irm_unset = { which = irm_sprawl_systems_mod }
+	irm_unset = { which = irm_sprawl_colonies }
+	irm_unset = { which = irm_sprawl_colonies_mod }
+	irm_unset = { which = irm_sprawl_districts }
+	irm_unset = { which = irm_sprawl_districts_mod }
+	irm_unset = { which = irm_sprawl_pops }
+	irm_unset = { which = irm_sprawl_pops_mod }
+	irm_unset = { which = irm_sprawl_species_mod }
+	# demography
+	irm_unset = { which = irm_pops }
+	irm_unset = { which = irm_stability }
+	irm_unset = { which = irm_crime }
+	irm_unset = { which = irm_housing }
+	irm_unset = { which = irm_amenities }
+	irm_unset = { which = irm_jobs }
+	irm_unset = { which = irm_unemployed }
+	irm_unset = { which = irm_happiness }
+	# resources
+	irm_unset = { which = irm_trade_value }
+	irm_unset = { which = irm_energy }
+	irm_unset = { which = irm_energy_base_inc }
+	irm_unset = { which = irm_energy_planet_exp }
+	irm_unset = { which = irm_energy_planet_inc }
+	irm_unset = { which = irm_energy_station_exp }
+	irm_unset = { which = irm_energy_station_inc }
+	irm_unset = { which = irm_energy_starbase_exp }
+	irm_unset = { which = irm_minerals }
+	irm_unset = { which = irm_minerals_base_inc }
+	irm_unset = { which = irm_minerals_planet_exp }
+	irm_unset = { which = irm_minerals_planet_inc }
+	irm_unset = { which = irm_food }
+	irm_unset = { which = irm_food_base_inc }
+	irm_unset = { which = irm_food_planet_exp }
+	irm_unset = { which = irm_food_planet_inc }
+	irm_unset = { which = irm_food_starbase_inc }
+	irm_unset = { which = irm_food_starbase_mod }
+	irm_unset = { which = irm_consumer_goods }
+	irm_unset = { which = irm_consumer_goods_base_inc }
+	irm_unset = { which = irm_consumer_goods_planet_exp }
+	irm_unset = { which = irm_consumer_goods_planet_inc }
+	irm_unset = { which = irm_alloys }
+	irm_unset = { which = irm_alloys_base_inc }
+	irm_unset = { which = irm_alloys_station_inc }
+	irm_unset = { which = irm_alloys_planet_exp }
+	irm_unset = { which = irm_alloys_planet_inc }
+	irm_unset = { which = irm_unity }
+	irm_unset = { which = irm_unity_base_inc }
+	irm_unset = { which = irm_unity_station_inc }
+	irm_unset = { which = irm_unity_planet_exp }
+	irm_unset = { which = irm_unity_planet_inc }
+	irm_unset = { which = irm_physics_research }
+	irm_unset = { which = irm_physics_research_base_inc }
+	irm_unset = { which = irm_physics_research_station_inc }
+	irm_unset = { which = irm_physics_research_planet_inc }
+	irm_unset = { which = irm_society_research }
+	irm_unset = { which = irm_society_research_base_inc }
+	irm_unset = { which = irm_society_research_station_inc }
+	irm_unset = { which = irm_society_research_planet_inc }
+	irm_unset = { which = irm_engineering_research }
+	irm_unset = { which = irm_engineering_research_base_inc }
+	irm_unset = { which = irm_engineering_research_station_inc }
+	irm_unset = { which = irm_engineering_research_planet_inc }
+	irm_unset = { which = irm_research }
+	irm_unset = { which = irm_influence }
+	irm_unset = { which = irm_influence_base_inc }
+	irm_unset = { which = irm_influence_planet_inc }
+	irm_unset = { which = irm_strategic }
+	irm_unset = { which = irm_volatile_motes }
+	irm_unset = { which = irm_volatile_motes_station_inc }
+	irm_unset = { which = irm_volatile_motes_planet_exp }
+	irm_unset = { which = irm_volatile_motes_planet_inc }
+	irm_unset = { which = irm_exotic_gases }
+	irm_unset = { which = irm_exotic_gases_station_inc }
+	irm_unset = { which = irm_exotic_gases_planet_exp }
+	irm_unset = { which = irm_exotic_gases_planet_inc }
+	irm_unset = { which = irm_rare_crystals }
+	irm_unset = { which = irm_rare_crystals_station_inc }
+	irm_unset = { which = irm_rare_crystals_planet_exp }
+	irm_unset = { which = irm_rare_crystals_planet_inc }
+	irm_unset = { which = irm_sr_living_metal }
+	irm_unset = { which = irm_sr_living_metal_station_inc }
+	irm_unset = { which = irm_sr_living_metal_planet_exp }
+	irm_unset = { which = irm_sr_living_metal_planet_inc }
+	irm_unset = { which = irm_sr_zro }
+	irm_unset = { which = irm_sr_zro_station_inc }
+	irm_unset = { which = irm_sr_zro_planet_exp }
+	irm_unset = { which = irm_sr_zro_planet_inc }
+	irm_unset = { which = irm_sr_dark_matter }
+	irm_unset = { which = irm_sr_dark_matter_station_inc }
+	irm_unset = { which = irm_sr_dark_matter_planet_exp }
+	irm_unset = { which = irm_sr_dark_matter_planet_inc }
+	irm_unset = { which = irm_nanites }
+	irm_unset = { which = irm_nanites_station_inc }
+	irm_unset = { which = irm_nanites_planet_exp }
+	irm_unset = { which = irm_nanites_planet_inc }
+	irm_unset = { which = irm_minor_artifacts }
+	irm_unset = { which = irm_minor_artifacts_station_inc }
+	irm_unset = { which = irm_minor_artifacts_planet_exp }
+	irm_unset = { which = irm_minor_artifacts_planet_inc }
+	irm_unset = { which = irm_deposit_volatile_motes }
+	irm_unset = { which = irm_deposit_exotic_gases }
+	irm_unset = { which = irm_deposit_rare_crystals }
+	irm_unset = { which = irm_deposit_betharian }
+	irm_unset = { which = irm_deposit_xeno }
+	# development
+	irm_unset = { which = irm_districts }
+	irm_unset = { which = irm_districts_free }
+	irm_unset = { which = irm_districts_blocked }
+	irm_unset = { which = irm_districts_total }
+	irm_unset = { which = irm_buildings }
+	irm_unset = { which = irm_buildings_free }
+	irm_unset = { which = irm_buildings_total }
+	# society
+	irm_unset = { which = irm_immigration }
+	irm_unset = { which = irm_immigration_mod }
+	irm_unset = { which = irm_emigration }
+	irm_unset = { which = irm_emigration_mod }
+	irm_unset = { which = irm_factions }
+	# military
+	irm_unset = { which = irm_claims }
+	irm_unset = { which = irm_armies }
+	irm_unset = { which = irm_armies_assault }
+	irm_unset = { which = irm_armies_defense }
+	irm_unset = { which = irm_armies_hostile }
+	irm_unset = { which = irm_piracy }
+	irm_unset = { which = irm_piracy_lost }
+	irm_unset = { which = irm_piracy_protection }
+}
+
+# This = Sector
+irm_sector_get_settings = {
+	# tier level
+	if = {
+		limit = {
+			not = { is_variable_set = irm_sector_tier }
+		}
+		set_variable = { which = irm_sector_tier value = 1 }
+	}
+	# size range
+	if = {
+		limit = { irm_sector_has_size_1 = yes }
+		set_variable = { which = irm_sector_size value = 1 }
+	}
+	else_if = {
+		limit = { irm_sector_has_size_5 = yes }
+		set_variable = { which = irm_sector_size value = 5 }
+	}
+	else_if = {
+		limit = { irm_sector_has_size_10 = yes }
+		set_variable = { which = irm_sector_size value = 10 }
+	}
+	else_if = {
+		limit = { irm_sector_has_size_15 = yes }
+		set_variable = { which = irm_sector_size value = 15 }
+	}
+	# migration settings
+	if = {
+		limit = {
+			nor = {
+				has_sector_flag = irm_sector_migration_prohibited
+				has_sector_flag = irm_sector_migration_immigration
+				has_sector_flag = irm_sector_migration_emigration
+			}
+		}
+		# TODO: based on empire & civ
+		set_sector_flag = irm_sector_migration_immigration
+		set_sector_flag = irm_sector_migration_emigration
+	}
+	# border expansion
+	if = {
+		limit = {
+			nor = {
+				has_sector_flag = irm_sector_expansion_prohibited
+				has_sector_flag = irm_sector_expansion_allowed
+			}
+		}
+		set_sector_flag = irm_sector_expansion_prohibited
+	}
+	# colonization
+	if = {
+		limit = {
+			nor = {
+				has_sector_flag = irm_sector_colonization_prohibited
+				has_sector_flag = irm_sector_colonization_allowed
+			}
+		}
+		set_sector_flag = irm_sector_colonization_prohibited
+	}
+	# fleet right
+	if = {
+		limit = {
+			nor = {
+				has_sector_flag = irm_sector_fleet_prohibited
+				has_sector_flag = irm_sector_fleet_allowed
+			}
+		}
+		set_sector_flag = irm_sector_fleet_prohibited
+	}
+	# fleet stance
+	if = {
+		limit = {
+			nor = {
+				has_sector_flag = irm_sector_fleet_stance_passive
+				has_sector_flag = irm_sector_fleet_stance_aggressive
+			}
+		}
+		set_sector_flag = irm_sector_fleet_stance_passive
+	}
+}
+
+# This = Sector
+irm_sector_prepare_size = {
+	sector_capital = {
+		if = {
+			limit = { prev = { irm_is_sector_core = yes } }
+			set_planet_flag = irm_core_sector_$size$ 
+		}
+		else = {
+			set_planet_flag = irm_normal_sector_$size$
+		}
+		planet_event = { id = irm_sector.21 }
+	}
+}

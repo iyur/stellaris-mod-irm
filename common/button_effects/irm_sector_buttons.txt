@@ -1,0 +1,1559 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Custom sector ui effect buttons
+
+# Sector type
+irm_bt_sector_type = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				switch = {
+					trigger = has_sector_type
+					irm_core_sector_1 = { custom_tooltip = "irm.ui.sector.type.capital.tt" }
+					core_sector = { custom_tooltip = "irm.ui.sector.type.core.tt" }
+					irm_core_sector_10 = { custom_tooltip = "irm.ui.sector.type.core.tt" }
+					irm_core_sector_15 = { custom_tooltip = "irm.ui.sector.type.core.tt" }
+					irm_normal_sector_1 = { custom_tooltip = "irm.ui.sector.type.star.tt" }
+					normal_sector = { custom_tooltip = "irm.ui.sector.type.normal.tt" }
+					irm_normal_sector_10 = { custom_tooltip = "irm.ui.sector.type.normal.tt" }
+					irm_normal_sector_15 = { custom_tooltip = "irm.ui.sector.type.normal.tt" }
+					default = { custom_tooltip = "irm.ui.sector.type.none" }
+				}
+			}
+		}
+	}
+}
+
+# Stats demographic values
+irm_bt_sector_pops = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.demo.pops.tt" } }	
+}
+irm_bt_sector_stability = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.demo.stability.tt" } }	
+}
+irm_bt_sector_crime = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.demo.crime.tt" } }	
+}
+irm_bt_sector_housing = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.demo.housing.tt" } }	
+}
+irm_bt_sector_amenities = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.demo.amenities.tt" } }	
+}
+irm_bt_sector_jobs = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.demo.jobs.tt" } }	
+}
+irm_bt_sector_unemployed = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.demo.unemployed.tt" } }	
+}
+irm_bt_sector_happiness = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.demo.happiness.tt" } }	
+}
+
+# Stats resources
+irm_bt_sector_trade = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.res.trade.tt" } }	
+}
+irm_bt_sector_energy = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.res.energy.tt"
+				if = {
+					limit = {
+						or = {
+							check_variable = { which = irm_energy_base_inc value > 0 }
+							check_variable = { which = irm_energy_station_inc value > 0 }
+							check_variable = { which = irm_energy_station_inc value > 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.res.tt.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_energy_base_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.energy.tt.base.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_energy_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.energy.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_energy_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.energy.tt.planet.inc"
+				}
+				if = {
+					limit = {
+						or = {
+							check_variable = { which = irm_energy_station_exp value > 0 }
+							check_variable = { which = irm_energy_starbase_exp value > 0 }
+							check_variable = { which = irm_energy_planet_exp value > 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.res.tt.exp"
+				}
+				if = {
+					limit = { check_variable = { which = irm_energy_station_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.energy.tt.station.exp"
+				}
+				if = {
+					limit = { check_variable = { which = irm_energy_starbase_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.energy.tt.starbase.exp"
+				}
+				if = {
+					limit = { check_variable = { which = irm_energy_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.energy.tt.planet.exp"
+				}
+				custom_tooltip = "irm.ui.sector.res.energy.tte"
+			}
+		}
+	}	
+}
+irm_bt_sector_minerals = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.res.minerals.tt"
+				if = {
+					limit = {
+						or = {
+							check_variable = { which = irm_minerals_base_inc value > 0 }
+							check_variable = { which = irm_minerals_station_inc value > 0 }
+							check_variable = { which = irm_minerals_planet_inc value > 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.res.tt.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_minerals_base_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.minerals.tt.base.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_minerals_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.minerals.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_minerals_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.minerals.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_minerals_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.tt.exp"
+					custom_tooltip = "irm.ui.sector.res.minerals.tt.planet.exp"
+				}
+				custom_tooltip = "irm.ui.sector.res.minerals.tte"
+			}
+		}
+	}	
+}
+irm_bt_sector_food = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.res.food.tt"
+				if = {
+					limit = {
+						or = {
+							check_variable = { which = irm_food_base_inc value > 0 }
+							check_variable = { which = irm_food_starbase_inc value > 0 }
+							check_variable = { which = irm_food_planet_inc value > 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.res.tt.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_food_base_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.food.tt.base.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_food_starbase_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.food.tt.starbase.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_food_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.food.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_food_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.tt.exp"
+					custom_tooltip = "irm.ui.sector.res.food.tt.planet.exp"
+				}
+				custom_tooltip = "irm.ui.sector.res.food.tte"
+			}
+		}
+	}	
+}
+irm_bt_sector_goods = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.res.consumer_goods.tt"
+				if = {
+					limit = {
+						or = {
+							check_variable = { which = irm_consumer_goods_base_inc value > 0 }
+							check_variable = { which = irm_consumer_goods_planet_inc value > 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.res.tt.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_consumer_goods_base_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.consumer_goods.tt.base.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_consumer_goods_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.consumer_goods.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_consumer_goods_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.tt.exp"
+					custom_tooltip = "irm.ui.sector.res.consumer_goods.tt.planet.exp"
+				}
+				custom_tooltip = "irm.ui.sector.res.consumer_goods.tte"
+			}
+		}
+	}	
+}
+irm_bt_sector_alloys = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.res.alloys.tt"
+				if = {
+					limit = {
+						or = {
+							check_variable = { which = irm_alloys_base_inc value > 0 }
+							check_variable = { which = irm_alloys_station_inc value > 0 }
+							check_variable = { which = irm_alloys_planet_inc value > 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.res.tt.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_alloys_base_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.alloys.tt.base.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_alloys_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.alloys.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_alloys_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.alloys.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_alloys_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.tt.exp"
+					custom_tooltip = "irm.ui.sector.res.alloys.tt.planet.exp"
+				}
+				custom_tooltip = "irm.ui.sector.res.alloys.tte"
+			}
+		}
+	}	
+}
+irm_bt_sector_unity = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.res.unity.tt"
+				if = {
+					limit = {
+						or = {
+							check_variable = { which = irm_unity_base_inc value > 0 }
+							check_variable = { which = irm_unity_station_inc value > 0 }
+							check_variable = { which = irm_unity_planet_inc value > 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.res.tt.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_unity_base_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.unity.tt.base.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_unity_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.unity.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_unity_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.unity.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_unity_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.tt.exp"
+					custom_tooltip = "irm.ui.sector.res.unity.tt.planet.exp"
+				}
+				custom_tooltip = "irm.ui.sector.res.unity.tte"
+			}
+		}
+	}	
+}
+irm_bt_sector_research = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.res.research.tt"
+				custom_tooltip = "irm.ui.sector.res.physics_research.tt"
+				if = {
+					limit = { check_variable = { which = irm_physics_research_base_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.physics_research.tt.base.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_physics_research_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.physics_research.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_physics_research_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.physics_research.tt.planet.inc"
+				}
+				custom_tooltip = "irm.ui.sector.res.society_research.tt"
+				if = {
+					limit = { check_variable = { which = irm_society_research_base_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.society_research.tt.base.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_society_research_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.society_research.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_society_research_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.society_research.tt.planet.inc"
+				}
+				custom_tooltip = "irm.ui.sector.res.engineering_research.tt"
+				if = {
+					limit = { check_variable = { which = irm_engineering_research_base_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.engineering_research.tt.base.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_engineering_research_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.engineering_research.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_engineering_research_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.engineering_research.tt.planet.inc"
+				}
+				custom_tooltip = "irm.ui.sector.res.research.tte"
+			}
+		}
+	}	
+}
+irm_bt_sector_strategic = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.res.strategic.tt"
+				if = {
+					limit = {
+						or = {
+							not = { check_variable = { which = irm_volatile_motes value = 0 } }
+							check_variable = { which = irm_deposit_volatile_motes value > 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.res.volatile_motes.tt"
+				}
+				if = {
+					limit = { check_variable = { which = irm_volatile_motes_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.volatile_motes.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_volatile_motes_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.volatile_motes.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_volatile_motes_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.volatile_motes.tt.planet.exp"
+				}
+				if = {
+					limit = { check_variable = { which = irm_deposit_volatile_motes value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.volatile_motes.tt.deposit"
+				}
+				if = {
+					limit = {
+						or = {
+							not = { check_variable = { which = irm_exotic_gases value = 0 } }
+							check_variable = { which = irm_deposit_exotic_gases value > 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.res.exotic_gases.tt"
+				}
+				if = {
+					limit = { check_variable = { which = irm_exotic_gases_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.exotic_gases.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_exotic_gases_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.exotic_gases.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_exotic_gases_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.exotic_gases.tt.planet.exp"
+				}
+				if = {
+					limit = { check_variable = { which = irm_deposit_exotic_gases value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.exotic_gases.tt.deposit"
+				}
+				if = {
+					limit = {
+						or = {
+							not = { check_variable = { which = irm_rare_crystals value = 0 } }
+							check_variable = { which = irm_deposit_rare_crystals value > 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.res.rare_crystals.tt"
+				}
+				if = {
+					limit = { check_variable = { which = irm_rare_crystals_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.rare_crystals.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_rare_crystals_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.rare_crystals.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_rare_crystals_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.rare_crystals.tt.planet.exp"
+				}
+				if = {
+					limit = { check_variable = { which = irm_deposit_rare_crystals value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.rare_crystals.tt.deposit"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_living_metal value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_living_metal.tt"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_living_metal_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_living_metal.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_living_metal_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_living_metal.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_living_metal_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_living_metal.tt.planet.exp"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_zro value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_zro.tt"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_zro_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_zro.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_zro_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_zro.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_zro_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_zro.tt.planet.exp"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_dark_matter value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_dark_matter.tt"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_dark_matter_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_dark_matter.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_dark_matter_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_dark_matter.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_sr_dark_matter_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.sr_dark_matter.tt.planet.exp"
+				}
+				if = {
+					limit = { check_variable = { which = irm_nanites value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.nanites.tt"
+				}
+				if = {
+					limit = { check_variable = { which = irm_nanites_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.nanites.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_nanites_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.nanites.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_nanites_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.nanites.tt.planet.exp"
+				}
+				if = {
+					limit = { check_variable = { which = irm_minor_artifacts value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.minor_artifacts.tt"
+				}
+				if = {
+					limit = { check_variable = { which = irm_minor_artifacts_station_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.minor_artifacts.tt.station.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_minor_artifacts_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.minor_artifacts.tt.planet.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_minor_artifacts_planet_exp value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.minor_artifacts.tt.planet.exp"
+				}
+				# other
+				if = {
+					limit = {
+						or = {
+							check_variable = { which = irm_deposit_betharian value > 0 }
+							check_variable = { which = irm_deposit_xeno value > 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.res.other.tt"
+				}
+				if = {
+					limit = { check_variable = { which = irm_deposit_betharian value > 0 } }
+						custom_tooltip = "irm.ui.sector.res.betharian.tt"
+						custom_tooltip = "irm.ui.sector.res.betharian.tt.deposit"
+				}
+				if = {
+					limit = { check_variable = { which = irm_deposit_xeno value > 0 } }
+						custom_tooltip = "irm.ui.sector.res.xeno.tt"
+						custom_tooltip = "irm.ui.sector.res.xeno.tt.deposit"
+				}
+				custom_tooltip = "irm.ui.sector.res.strategic.tte"
+			}
+		}
+	}	
+}
+irm_bt_sector_influence = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.res.influence.tt"
+				if = {
+					limit = { check_variable = { which = irm_influence_base_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.tt.inc"
+					custom_tooltip = "irm.ui.sector.res.influence.tt.base.inc"
+				}
+				if = {
+					limit = { check_variable = { which = irm_influence_planet_inc value > 0 } }
+					custom_tooltip = "irm.ui.sector.res.influence.tt.planet.inc"
+				}
+				custom_tooltip = "irm.ui.sector.res.influence.tte"
+			}
+		}
+	}	
+}
+
+# Stats development
+irm_bt_sector_districts = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.dev.districts.tt"
+				if = {
+					limit = { check_variable = { which = irm_districts value > 0 } }
+					custom_tooltip = "irm.ui.sector.dev.districts.tt.built"
+				}
+				if = {
+					limit = { check_variable = { which = irm_districts_free value > 0 } }
+					custom_tooltip = "irm.ui.sector.dev.districts.tt.free"
+				}
+				if = {
+					limit = { check_variable = { which = irm_districts_blocked value > 0 } }
+					custom_tooltip = "irm.ui.sector.dev.districts.tt.blocked"
+				}
+				custom_tooltip = "irm.ui.sector.dev.districts.tt.end"
+			}
+		}
+	}
+}
+irm_bt_sector_buildings = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.dev.buildings.tt"
+				if = {
+					limit = { check_variable = { which = irm_buildings value > 0 } }
+					custom_tooltip = "irm.ui.sector.dev.buildings.tt.built"
+				}
+				if = {
+					limit = { check_variable = { which = irm_buildings_free value > 0 } }
+					custom_tooltip = "irm.ui.sector.dev.buildings.tt.free"
+				}
+				custom_tooltip = "irm.ui.sector.dev.buildings.tt.end"
+			}
+		}
+	}
+}
+# sector focuses
+#irm_bt_sector_focus_none = {
+#	potential = {
+#		exists = event_target:irm_ui_sector
+#		event_target:irm_ui_sector = {
+#			not = { has_any_sector_focus = yes }
+#		}
+#	}
+#	effect = {
+#		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.none.tt" } }
+#	}	
+#}
+irm_bt_sector_focus_balanced = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			always = yes
+		}
+	}
+	effect = {
+		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.balanced.tt" } }
+	}	
+}
+#irm_bt_sector_focus_production = {
+#	potential = {
+#		exists = event_target:irm_ui_sector
+#		event_target:irm_ui_sector = {
+#			has_sector_focus = production
+#		}
+#	}
+#	effect = {
+#		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.production.tt" } }
+#	}	
+#}
+#irm_bt_sector_focus_manufacturing = {
+#	potential = {
+#		exists = event_target:irm_ui_sector
+#		event_target:irm_ui_sector = {
+#			has_sector_focus = manufacturing
+#		}
+#	}
+#	effect = {
+#		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.manufacturing.tt" } }
+#	}	
+#}
+#irm_bt_sector_focus_research = {
+#	potential = {
+#		exists = event_target:irm_ui_sector
+#		event_target:irm_ui_sector = {
+#			has_sector_focus = research
+#		}
+#	}
+#	effect = {
+#		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.research.tt" } }
+#	}	
+#}
+#irm_bt_sector_focus_unity = {
+#	potential = {
+#		exists = event_target:irm_ui_sector
+#		event_target:irm_ui_sector = {
+#			has_sector_focus = unity
+#		}
+#	}
+#	effect = {
+#		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.unity.tt" } }
+#	}	
+#}
+
+# society
+irm_bt_sector_migration = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.society.migration.tt" } }	
+}
+irm_bt_sector_factions = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = { custom_tooltip = "irm.ui.sector.society.factions.tt" }
+		from = {
+			owned_pop_faction_list_tooltip = {
+				limit = {
+					any_owned_pop = {
+						member_of_faction = prev
+						exists = planet
+						exists = planet.sector
+						planet.sector = { is_same_value = event_target:irm_ui_sector }
+					}
+				}
+			}
+		}
+		hidden_effect = { custom_tooltip = "irm.ui.sector.society.factions.tt.desc" }
+	}	
+}
+irm_bt_sector_regionalism = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.society.regionalism.tt" } }	
+}
+
+# Military stats
+irm_bt_sector_claims = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		custom_tooltip = "irm.ui.sector.military.claims.tt"
+		event_target:irm_ui_sector = {
+			if = {
+				limit = { check_variable = { which = irm_claims value > 0 } }
+					custom_tooltip = "irm.ui.sector.military.claims.tt.list"
+					country_list_tooltip = {
+						limit = {
+							event_target:irm_ui_sector = {
+								any_system_within_border = {
+									prevprev = { has_claim = prev }
+								}
+							}
+						}
+
+					}
+			}
+		}
+		custom_tooltip = "irm.ui.sector.military.claims.tt.desc"
+	}
+}
+irm_bt_sector_fleets = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.military.fleets.tt" } }	
+}
+irm_bt_sector_armies_a = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.military.armies.assault.tt"
+				if = {
+					limit = { check_variable = { which = irm_armies_hostile value > 0 } }
+					custom_tooltip = "irm.ui.sector.military.armies.hostile.tt"
+				}
+				custom_tooltip = "irm.ui.sector.military.armies.tt"
+			}
+		}
+	}
+}
+irm_bt_sector_armies_d = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.military.armies.defense.tt"
+				custom_tooltip = "irm.ui.sector.military.armies.tt"
+			}
+		}
+	}
+}
+
+# Stats space values
+irm_bt_sector_systems = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.space.systems.tt" } }	
+}
+irm_bt_sector_colonies = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.space.colonies.tt" } }	
+}
+irm_bt_sector_sprawl = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.space.sprawl.tt"
+				custom_tooltip = "irm.ui.sector.space.sprawl.tt.systems"
+				if = {
+					limit = { not = { check_variable = { which = irm_sprawl_systems_mod value = 0 } } }
+						custom_tooltip = "irm.ui.sector.space.sprawl.tt.systems.m"
+				}
+				custom_tooltip = "irm.ui.sector.space.sprawl.tt.colonies"
+				if = {
+					limit = { not = { check_variable = { which = irm_sprawl_colonies_mod value = 0 } } }
+						custom_tooltip = "irm.ui.sector.space.sprawl.tt.colonies.m"
+				}				
+				custom_tooltip = "irm.ui.sector.space.sprawl.tt.districts"
+				if = {
+					limit = { not = { check_variable = { which = irm_sprawl_districts_mod value = 0 } } }
+						custom_tooltip = "irm.ui.sector.space.sprawl.tt.districts.m"
+				}
+				custom_tooltip = "irm.ui.sector.space.sprawl.tt.pops"
+				if = {
+					limit = { not = { check_variable = { which = irm_sprawl_pops_mod value = 0 } } }
+						custom_tooltip = "irm.ui.sector.space.sprawl.tt.pops.m"
+				}
+				if = {
+					limit = {
+						nor = {
+							check_variable = { which = irm_sprawl_mod value = 0 }
+							check_variable = { which = irm_sprawl_upd value = 0 }
+						}
+					}
+					custom_tooltip = "irm.ui.sector.space.sprawl.tt.empire"
+					if = {
+						limit = { not = { check_variable = { which = irm_sprawl_mod value = 0 } } }
+							custom_tooltip = "irm.ui.sector.space.sprawl.tt.empire.m"
+					}
+					if = {
+						limit = { not = { check_variable = { which = irm_sprawl_upd value = 0 } } }
+							custom_tooltip = "irm.ui.sector.space.sprawl.tt.empire.u"
+					}
+					custom_tooltip = "irm.ui.sector.space.sprawl.tt.desc"
+				}
+			}
+		}
+	}	
+}
+irm_bt_sector_size = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.space.size.tt" } }	
+}
+
+irm_bt_sector_tier = {
+	potential = { exists = event_target:irm_ui_sector }
+	allow = {
+		custom_tooltip = {
+			fail_text = "irm.soon"
+			always = no
+		}
+	}
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.space.tier.tt" } }	
+}
+
+# management
+irm_bt_sector_policies_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+		}
+	}
+}
+irm_bt_sector_policies_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			not = { has_sector_flag = irm_ui_sector_sidebar_policies }
+		}
+	}
+}
+
+irm_bt_sector_fleet_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+		}
+	}
+}
+irm_bt_sector_fleet_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			not = { has_sector_flag = irm_ui_sector_sidebar_fleet }
+		}
+	}
+}
+
+# sidebar
+irm_bg_sector_sidebar = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = { irm_ui_has_sidebar = yes }
+	}
+}
+irm_bg_sector_sidebar_policies = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+		}
+	}
+}
+irm_bg_sector_sidebar_fleet = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+		}
+	}
+}
+
+# sector ranges
+irm_bt_sector_size_1_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			irm_sector_has_size_1 = yes
+		}
+	}
+	effect = { custom_tooltip = "irm.ui.sector.gov.policies.size_1.on" }
+}
+irm_bt_sector_size_5_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			irm_sector_has_size_5 = yes
+		}
+	}
+	effect = { custom_tooltip = "irm.ui.sector.gov.policies.size_5.on" }
+}
+irm_bt_sector_size_10_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			irm_sector_has_size_10 = yes
+		}
+	}
+	effect = { custom_tooltip = "irm.ui.sector.gov.policies.size_10.on" }
+}
+irm_bt_sector_size_10_lock = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			check_variable = { which = irm_sector_tier value < 2 }
+		}
+	}
+	effect = { custom_tooltip = "irm.ui.sector.gov.policies.size_0.req.t2" }
+}
+irm_bt_sector_size_15_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			irm_sector_has_size_15 = yes
+		}
+	}
+	effect = { custom_tooltip = "irm.ui.sector.gov.policies.size_15.on" }
+}
+irm_bt_sector_size_15_lock = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			check_variable = { which = irm_sector_tier value < 3 }
+		}
+	}
+	effect = { custom_tooltip = "irm.ui.sector.gov.policies.size_0.req.t3" }
+}
+
+#migration
+irm_bt_sector_migration_prohibited_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			not = { has_sector_flag = irm_sector_migration_prohibited }
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.migration.prohibited.tt"
+			event_target:irm_ui_sector = {
+				irm_switch_flag = { scope = sector flag = irm_sector_migration_prohibited }
+				remove_sector_flag = irm_sector_migration_immigration
+				remove_sector_flag = irm_sector_migration_emigration
+			}
+		}
+	}
+}
+irm_bt_sector_migration_prohibited_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			has_sector_flag = irm_sector_migration_prohibited
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.migration.prohibited.tt"
+		}
+	}
+}
+irm_bt_sector_migration_immigration_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			not = { has_sector_flag = irm_sector_migration_immigration }
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.migration.immigration.tt"
+			event_target:irm_ui_sector = {
+				irm_switch_flag = { scope = sector flag = irm_sector_migration_immigration }
+				if = {
+					limit = {
+						or = {
+							has_sector_flag = irm_sector_migration_immigration
+							has_sector_flag = irm_sector_migration_emigration
+						}
+					}
+					remove_sector_flag = irm_sector_migration_prohibited
+				}
+			}
+		}
+	}
+}
+irm_bt_sector_migration_immigration_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			has_sector_flag = irm_sector_migration_immigration
+		}
+	}
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.gov.policies.migration.immigration.tt"
+				irm_switch_flag = { scope = sector flag = irm_sector_migration_immigration }
+				if = {
+					limit = {
+						not = {
+							has_sector_flag = irm_sector_migration_immigration
+							has_sector_flag = irm_sector_migration_emigration
+						}
+					}
+					set_sector_flag = irm_sector_migration_prohibited
+				}
+			}
+		}
+	}
+}
+irm_bt_sector_migration_emigration_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			not = { has_sector_flag = irm_sector_migration_emigration }
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.migration.emigration.tt"
+			event_target:irm_ui_sector = {
+				irm_switch_flag = { scope = sector flag = irm_sector_migration_emigration }
+				if = {
+					limit = {
+						or = {
+							has_sector_flag = irm_sector_migration_immigration
+							has_sector_flag = irm_sector_migration_emigration
+						}
+					}
+					remove_sector_flag = irm_sector_migration_prohibited
+				}
+			}
+		}
+	}
+}
+irm_bt_sector_migration_emigration_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			has_sector_flag = irm_sector_migration_emigration
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.migration.emigration.tt"
+			event_target:irm_ui_sector = {
+				irm_switch_flag = { scope = sector flag = irm_sector_migration_emigration }
+				if = {
+					limit = {
+						not = {
+							has_sector_flag = irm_sector_migration_immigration
+							has_sector_flag = irm_sector_migration_emigration
+						}
+					}
+					set_sector_flag = irm_sector_migration_prohibited
+				}
+			}
+		}
+	}
+}
+
+irm_bt_sector_expansion_prohibited_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			not = { has_sector_flag = irm_sector_expansion_prohibited }
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.expansion.prohibited.tt"
+			event_target:irm_ui_sector = {
+				irm_switch_flag = { scope = sector flag = irm_sector_expansion_prohibited }
+				irm_switch_flag = { scope = sector flag = irm_sector_expansion_allowed }
+			}
+		}
+	}
+}
+irm_bt_sector_expansion_prohibited_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			has_sector_flag = irm_sector_expansion_prohibited
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.expansion.prohibited.tt"
+		}
+	}
+}
+irm_bt_sector_expansion_allowed_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			not = { has_sector_flag = irm_sector_expansion_allowed }
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = "irm.soon"
+			always = no
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.expansion.allowed.tt"
+			event_target:irm_ui_sector = {
+				irm_switch_flag = { scope = sector flag = irm_sector_expansion_allowed }
+				irm_switch_flag = { scope = sector flag = irm_sector_expansion_prohibited }
+			}
+		}
+	}
+}
+irm_bt_sector_expansion_allowed_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			has_sector_flag = irm_sector_expansion_allowed
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.expansion.allowed.tt"
+		}
+	}
+}
+
+irm_bt_sector_colonization_prohibited_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			not = { has_sector_flag = irm_sector_colonization_prohibited }
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.colonization.prohibited.tt"
+			event_target:irm_ui_sector = {
+				irm_switch_flag = { scope = sector flag = irm_sector_colonization_prohibited }
+				irm_switch_flag = { scope = sector flag = irm_sector_colonization_allowed }
+			}
+		}
+	}
+}
+irm_bt_sector_colonization_prohibited_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			has_sector_flag = irm_sector_colonization_prohibited
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.colonization.prohibited.tt"
+		}
+	}
+}
+irm_bt_sector_colonization_allowed_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			not = { has_sector_flag = irm_sector_colonization_allowed }
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = "irm.soon"
+			always = no
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.colonization.allowed.tt"
+			event_target:irm_ui_sector = {
+				irm_switch_flag = { scope = sector flag = irm_sector_colonization_allowed }
+				irm_switch_flag = { scope = sector flag = irm_sector_colonization_prohibited }
+			}
+		}
+	}
+}
+irm_bt_sector_colonization_allowed_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_policies
+			has_sector_flag = irm_sector_colonization_allowed
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.policies.colonization.allowed.tt"
+		}
+	}
+}
+
+# fleet com
+irm_bt_sector_fleet_prohibited_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			not = { has_sector_flag = irm_sector_fleet_prohibited }
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.sector.prohibited.tt"
+			event_target:irm_ui_sector = {
+				irm_switch_flag = { scope = sector flag = irm_sector_fleet_prohibited }
+				irm_switch_flag = { scope = sector flag = irm_sector_fleet_allowed }
+			}
+		}
+	}
+}
+irm_bt_sector_fleet_prohibited_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			has_sector_flag = irm_sector_fleet_prohibited
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.sector.prohibited.tt"
+		}
+	}
+}
+irm_bt_sector_fleet_allowed_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			not = { has_sector_flag = irm_sector_fleet_allowed }
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = "irm.soon"
+			always = no
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.sector.allowed.tt"
+			event_target:irm_ui_sector = {
+				irm_switch_flag = { scope = sector flag = irm_sector_fleet_allowed }
+				irm_switch_flag = { scope = sector flag = irm_sector_fleet_prohibited }
+			}
+		}
+	}
+}
+irm_bt_sector_fleet_allowed_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			has_sector_flag = irm_sector_fleet_allowed
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.sector.allowed.tt"
+		}
+	}
+}
+irm_bt_sector_fleet_cap_low_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			not = { has_sector_flag = irm_sector_fleet_cap_low }
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = "irm.ui.sector.gov.fleet.cap.req.no"
+			event_target:irm_ui_sector = {
+				has_sector_flag = irm_sector_fleet_allowed
+			}
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.cap.low.tt"
+			event_target:irm_ui_sector = {
+				set_sector_flag = irm_sector_fleet_cap_low
+				remove_sector_flag = irm_sector_fleet_cap_medium
+				remove_sector_flag = irm_sector_fleet_cap_high
+			}
+		}
+	}
+}
+irm_bt_sector_fleet_cap_low_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			has_sector_flag = irm_sector_fleet_cap_low
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.cap.low.tt"
+		}
+	}
+}
+#irm_bt_sector_fleet_cap_low_lock = {
+#	potential = {
+#		exists = event_target:irm_ui_sector
+#		event_target:irm_ui_sector = {
+#			has_sector_flag = irm_ui_sector_sidebar_fleet
+#			or = {
+#				not = { is_variable_set = irm_sector_tier }
+#				check_variable = { which = irm_sector_tier value < 1 }
+#			}
+#		}
+#	}	
+#}
+irm_bt_sector_fleet_cap_medium_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			not = { has_sector_flag = irm_sector_fleet_cap_medium }
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = "irm.ui.sector.gov.fleet.cap.req.no"
+			event_target:irm_ui_sector = {
+				has_sector_flag = irm_sector_fleet_allowed
+			}
+		}
+		custom_tooltip = {
+			fail_text = "irm.ui.sector.gov.fleet.cap.req.t2"
+			event_target:irm_ui_sector = {
+				check_variable = { which = irm_sector_tier value >= 2 }
+			}
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.cap.medium.tt"
+			event_target:irm_ui_sector = {
+				set_sector_flag = irm_sector_fleet_cap_medium
+				remove_sector_flag = irm_sector_fleet_cap_low
+				remove_sector_flag = irm_sector_fleet_cap_high
+			}
+		}
+	}
+}
+irm_bt_sector_fleet_cap_medium_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			has_sector_flag = irm_sector_fleet_cap_medium
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.cap.medium.tt"
+		}
+	}
+}
+irm_bt_sector_fleet_cap_medium_lock = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			or = {
+				not = { is_variable_set = irm_sector_tier }
+				check_variable = { which = irm_sector_tier value < 2 }
+			}
+		}
+	}
+	effect = { custom_tooltip = "irm.ui.sector.gov.policies.size_0.req.t2" }
+}
+irm_bt_sector_fleet_cap_high_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			not = { has_sector_flag = irm_sector_fleet_cap_high }
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = "irm.ui.sector.gov.fleet.cap.req.no"
+			event_target:irm_ui_sector = {
+				has_sector_flag = irm_sector_fleet_allowed
+			}
+		}
+		custom_tooltip = {
+			fail_text = "irm.ui.sector.gov.fleet.cap.req.t3"
+			event_target:irm_ui_sector = {
+				check_variable = { which = irm_sector_tier value >= 3 }
+			}
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.cap.high.tt"
+			event_target:irm_ui_sector = {
+				set_sector_flag = irm_sector_fleet_cap_high
+				remove_sector_flag = irm_sector_fleet_cap_medium
+				remove_sector_flag = irm_sector_fleet_cap_low
+			}
+		}
+	}
+}
+irm_bt_sector_fleet_cap_high_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			has_sector_flag = irm_sector_fleet_cap_high
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.cap.high.tt"
+		}
+	}
+}
+irm_bt_sector_fleet_cap_high_lock = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			or = {
+				not = { is_variable_set = irm_sector_tier }
+				check_variable = { which = irm_sector_tier value < 3 }
+			}
+		}
+	}
+	effect = { custom_tooltip = "irm.ui.sector.gov.policies.size_0.req.t3" }
+}
+
+irm_bt_sector_fleet_stance_passive_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			not = { has_sector_flag = irm_sector_fleet_stance_passive }
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.stance.passive.tt"
+			event_target:irm_ui_sector = {
+				remove_sector_flag = irm_sector_fleet_stance_aggressive
+			}
+		}
+	}
+}
+irm_bt_sector_fleet_stance_passive_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			has_sector_flag = irm_sector_fleet_stance_passive
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = "irm.soon"
+			always = no
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.stance.passive.tt"
+		}
+	}
+}
+irm_bt_sector_fleet_stance_aggressive_off = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			not = { has_sector_flag = irm_sector_fleet_stance_aggressive }
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = "irm.soon"
+			always = no
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.stance.aggressive.tt"
+			event_target:irm_ui_sector = {
+				set_sector_flag = irm_sector_fleet_stance_aggressive
+			}
+		}
+	}
+}
+irm_bt_sector_fleet_stance_aggressive_on = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_fleet
+			has_sector_flag = irm_sector_fleet_stance_aggressive
+		}
+	}
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.fleet.stance.aggressive.tt"
+		}
+	}
+}
+
+###
+
+irm_bt_disabled = {
+	potential = { exists = event_target:irm_ui_sector }
+	allow = { always = no }
+}

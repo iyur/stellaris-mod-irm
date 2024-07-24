@@ -1,0 +1,57 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Custom scripted triggers
+
+# This = event_target:irm_ui_sector (sector)
+irm_ui_has_sidebar = {
+	or = {
+		has_sector_flag = irm_ui_sector_sidebar_policies
+		has_sector_flag = irm_ui_sector_sidebar_fleet
+	}
+}
+
+# This = Sector
+irm_sector_has_size_1 = {
+	or = {
+		has_sector_type = irm_core_sector_1
+		has_sector_type = irm_normal_sector_1
+	}
+}
+irm_sector_has_size_5 = {
+	or = {
+		has_sector_type = core_sector
+		has_sector_type = normal_sector
+		#has_sector_type = irm_normal_sector_5
+	}
+}
+irm_sector_has_size_10 = {
+	has_sector_type = irm_normal_sector_10
+}
+irm_sector_has_size_15 = {
+	has_sector_type = irm_normal_sector_15
+}
+
+# This = Sector
+irm_is_sector_core = {
+	or = {
+		has_sector_type = irm_core_sector_1
+		has_sector_type = core_sector
+		#has_sector_type = irm_core_sector_5
+		has_sector_type = irm_core_sector_10
+		has_sector_type = irm_core_sector_15
+	}	
+}
+
+# This = Planet
+irm_init_custom_sector = {
+	or = {
+		has_planet_flag = irm_core_sector_1
+		#has_planet_flag = irm_core_sector_5
+		has_planet_flag = irm_core_sector_10
+		has_planet_flag = irm_core_sector_15
+		has_planet_flag = irm_normal_sector_1
+		#has_planet_flag = irm_normal_sector_5
+		has_planet_flag = irm_normal_sector_10
+		has_planet_flag = irm_normal_sector_15
+	}
+}

@@ -1,0 +1,48 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Mod helper & aux effects
+
+
+# This = Any
+# Clears existed target scope
+irm_clear_target = {
+	if = {
+		limit = { exists = event_target:$target$ }
+			clear_global_event_target = $target$
+	}
+}
+
+# This = Any
+# Clears existing variable
+irm_unset = {
+	[[which]
+		if = {
+			limit = { is_variable_set = $which$ }
+				clear_variable = $which$
+		}
+	]
+}
+
+irm_get_resource_breakdown = {
+	[[planet]
+		change_variable = { which = irm_$resource$ value = prev.value:irm_resource_amount_|RES|$resource$| }
+		change_variable = { which = irm_$resource$_planet_exp value = prev.value:irm_resource_amount_|RES|$resource$|CALC|upkeep| }
+		change_variable = { which = irm_$resource$_planet_inc value = prev.value:irm_resource_amount_|RES|$resource$|CALC|produces| }
+	]
+	[[station]
+		change_variable = { which = irm_$resource$ value = prev.value:irm_resource_amount_|RES|$resource$| }
+		change_variable = { which = irm_$resource$_station_inc value = prev.value:irm_resource_amount_|RES|$resource$| }
+	]
+}
+
+# This = Any
+# SWitches scope flags
+irm_switch_flag = {
+	if = {
+		limit = { has_$scope$_flag = $flag$ }
+		remove_$scope$_flag = $flag$
+	}
+	else = {
+		set_$scope$_flag = $flag$
+	}
+}

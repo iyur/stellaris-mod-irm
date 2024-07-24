@@ -1,0 +1,137 @@
+irm_normal_sector_1 = {
+
+	system_scores = {
+		base = 1
+
+		modifier = {
+			add = -10000
+			not = {
+				any_system_planet = {
+					or = {
+						is_capital = yes
+						is_sector_capital = yes
+						has_planet_flag = irm_normal_sector_1
+					}
+				}
+			}
+		}
+
+	}
+
+	local_capital_scores = {
+		base = -10000
+
+		modifier = {
+			add = 20000
+			has_planet_flag = irm_normal_sector_1 
+		}
+
+	}
+
+	resource_conversion_table = {
+		energy = 1
+		minerals = 1
+	}
+
+	max_jumps = 1
+}
+
+
+#irm_normal_sector_5 = {
+#
+#	system_scores = {
+#		base = 1
+#	}
+#
+#	local_capital_scores = {
+#		base = -10000
+#
+#		modifier = {
+#			add = -10000
+#			owner = { is_ai = yes }
+#		}
+#
+#		modifier = {
+#			add = 20000
+#			has_planet_flag = irm_normal_sector_5 
+#		}
+#
+#	}
+#
+#	resource_conversion_table = {
+#		energy = 1
+#		minerals = 1
+#	}
+#
+#	resources = {
+#		category = sector
+#	}
+#
+#	max_jumps = 4
+#}
+
+irm_normal_sector_10 = {
+
+	system_scores = {
+		base = 1
+	}
+
+	local_capital_scores = {
+		base = -10000
+
+		modifier = {
+			add = -10000
+			owner = { is_ai = yes }
+		}
+
+		modifier = {
+			add = 20000
+			has_planet_flag = irm_normal_sector_10
+		}
+
+	}
+
+	resource_conversion_table = {
+		energy = 1
+		minerals = 1
+	}
+
+	resources = {
+		category = sector
+	}
+
+	max_jumps = 9
+}
+
+irm_normal_sector_15 = {
+
+	system_scores = {
+		base = 1
+	}
+
+	local_capital_scores = {
+		base = -10000
+
+		modifier = {
+			add = -10000
+			owner = { is_ai = yes }
+		}
+
+		modifier = {
+			add = 20000
+			has_planet_flag = irm_normal_sector_15
+		}
+
+	}
+
+	resource_conversion_table = {
+		energy = 1
+		minerals = 1
+	}
+
+	resources = {
+		category = sector
+	}
+
+	max_jumps = 14
+}

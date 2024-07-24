@@ -1,0 +1,348 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Scripted custom localization
+
+# Sector type texts & isons
+defined_text = {
+	name = irm_GetSectorType
+ 	random = no
+ 	default = "irm.ui.sector.type.none"
+ 	text = {
+ 		localization_key = "irm.ui.sector.type.capital"
+ 		trigger = {
+ 			this = {
+ 				is_scope_type = sector
+ 				has_sector_type = irm_core_sector_1
+ 			}
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.type.core"
+ 		trigger = {
+ 			this = {
+ 				is_scope_type = sector
+ 				or = {
+ 					has_sector_type = core_sector
+ 					has_sector_type = irm_core_sector_10
+ 					has_sector_type = irm_core_sector_15
+ 				}
+ 			}
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.type.star"
+ 		trigger = {
+ 			this = {
+ 				is_scope_type = sector
+ 				has_sector_type = irm_normal_sector_1
+ 			}
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.type.normal"
+ 		trigger = {
+ 			this = {
+ 				is_scope_type = sector
+ 				or = {
+ 					has_sector_type = normal_sector
+ 					has_sector_type = irm_normal_sector_10
+ 					has_sector_type = irm_normal_sector_15
+ 				}
+ 			}
+ 		}
+ 	}
+}
+defined_text = {
+	name = irm_GetSectorTypeIcon
+ 	random = no
+ 	default = "irm.ui.sector.type.none.icon"
+ 	text = {
+  		localization_key = "irm.ui.sector.type.core.icon"
+ 		trigger = {
+			exists = event_target:irm_ui_sector
+			event_target:irm_ui_sector = {
+					has_sector_type = irm_core_sector_1
+			}
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.type.core.icon"
+ 		trigger = {
+			exists = event_target:irm_ui_sector
+			event_target:irm_ui_sector = {
+				or = {
+					has_sector_type = core_sector
+					has_sector_type = irm_core_sector_10
+					has_sector_type = irm_core_sector_15
+				}
+			}
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.type.normal.icon"
+ 		trigger = {
+			exists = event_target:irm_ui_sector
+			event_target:irm_ui_sector = {
+				or = {
+					has_sector_type = irm_normal_sector_1
+				}
+			}
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.type.normal.icon"
+ 		trigger = {
+			exists = event_target:irm_ui_sector
+			event_target:irm_ui_sector = {
+				or = {
+					has_sector_type = normal_sector
+					has_sector_type = irm_normal_sector_10
+					has_sector_type = irm_normal_sector_15
+				}
+			}
+ 		}
+ 	}
+}
+
+# This = System / Sector
+# Indicates the state of system stats & parameters
+defined_text = {
+	name = irm_GetStabilityState
+ 	random = no
+ 	default = "irm.ui.y"
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = {
+ 			check_variable = { which = irm_stability value < 30 }
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.g"
+ 		trigger = {
+ 			check_variable = { which = irm_stability value >= 50 }
+ 		}
+ 	}
+}
+defined_text = {
+	name = irm_GetCrimeState
+ 	random = no
+ 	default = "irm.ui.y"
+ 	text = {
+ 		localization_key = "irm.ui.g"
+ 		trigger = {
+ 			check_variable = { which = irm_crime value < 1 }
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = {
+ 			check_variable = { which = irm_crime value >= 25 }
+ 		}
+ 	}
+}
+defined_text = {
+	name = irm_GetHousingState
+ 	random = no
+ 	default = "irm.ui.y"
+ 	text = {
+ 		localization_key = "irm.ui.g"
+ 		trigger = {
+ 			check_variable = { which = irm_housing value > 0 }
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = {
+ 			check_variable = { which = irm_housing value < 0 }
+ 		}
+ 	}
+}
+defined_text = {
+	name = irm_GetAmenitiesState
+ 	random = no
+ 	default = "irm.ui.y"
+ 	text = {
+ 		localization_key = "irm.ui.g"
+ 		trigger = {
+ 			check_variable = { which = irm_amenities value > 0 }
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = {
+ 			check_variable = { which = irm_amenities value < 0 }
+ 		}
+ 	}
+}
+defined_text = {
+	name = irm_GetJobsState
+ 	random = no
+ 	default = "irm.ui.y"
+ 	text = {
+ 		localization_key = "irm.ui.g"
+ 		trigger = {
+ 			check_variable = { which = irm_jobs value > 0 }
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = {
+ 			check_variable = { which = irm_jobs value < 0 }
+ 		}
+ 	}
+}
+defined_text = {
+	name = irm_GetUnemployedState
+ 	random = no
+ 	default = "irm.ui.y"
+ 	text = {
+ 		localization_key = "irm.ui.g"
+ 		trigger = {
+ 			check_variable = { which = irm_unemployed value <= 0 }
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = {
+ 			check_variable = { which = irm_unemployed value > 0 }
+ 		}
+ 	}
+}
+defined_text = {
+	name = irm_GetHappinessState
+ 	random = no
+ 	default = "irm.ui.y"
+ 	text = {
+ 		localization_key = "irm.ui.g"
+ 		trigger = {
+ 			check_variable = { which = irm_happiness value >= 50 }
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = {
+ 			check_variable = { which = irm_happiness value < 30 }
+ 		}
+ 	}
+}
+# resources
+defined_text = {
+	name = irm_GetEnergyState
+ 	random = no
+ 	default = "irm.ui.0"
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = { check_variable = { which = irm_energy value < 0 } }
+ 	}
+}
+defined_text = {
+	name = irm_GetMineralsState
+ 	random = no
+ 	default = "irm.ui.0"
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = { check_variable = { which = irm_minerals value < 0 } }
+ 	}
+}
+defined_text = {
+	name = irm_GetFoodState
+ 	random = no
+ 	default = "irm.ui.0"
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = { check_variable = { which = irm_food value < 0 } }
+ 	}
+}
+defined_text = {
+	name = irm_GetGoodsState
+ 	random = no
+ 	default = "irm.ui.0"
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = { check_variable = { which = irm_consumer_goods value < 0 } }
+ 	}
+}
+defined_text = {
+	name = irm_GetAlloysState
+ 	random = no
+ 	default = "irm.ui.0"
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = { check_variable = { which = irm_alloys value < 0 } }
+ 	}
+}
+defined_text = {
+	name = irm_GetUnityState
+ 	random = no
+ 	default = "irm.ui.0"
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = { check_variable = { which = irm_unity value < 0 } }
+ 	}
+}
+defined_text = {
+	name = irm_GetInfluenceState
+ 	random = no
+ 	default = "irm.ui.0"
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = { check_variable = { which = irm_influence value < 0 } }
+ 	}
+}
+defined_text = {
+	name = irm_GetStrategicState
+ 	random = no
+ 	default = "irm.ui.0"
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = { check_variable = { which = irm_strategic value < 0 } }
+ 	}
+}
+# Sector designation focuses
+defined_text = {
+	name = irm_CheckFocus
+ 	random = no
+ 	default = "irm.ui.sector.dev.focus.none"
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.focus.active"
+ 		trigger = {
+ 			always = yes
+ 		}
+ 	}
+}
+
+# Sidebar title & desc
+defined_text = {
+	name = irm_SidebarTitle
+ 	random = no
+ 	default = ""
+ 	text = {
+ 		localization_key = "irm.ui.sector.gov.policies.h"
+ 		trigger = {
+ 			has_sector_flag = irm_ui_sector_sidebar_policies
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.gov.fleet.h"
+ 		trigger = {
+ 			has_sector_flag = irm_ui_sector_sidebar_fleet
+ 		}
+ 	}
+}
+defined_text = {
+	name = irm_SidebarDesc
+ 	random = no
+ 	default = ""
+ 	text = {
+ 		localization_key = "irm.ui.sector.gov.policies.desc"
+ 		trigger = {
+ 			has_sector_flag = irm_ui_sector_sidebar_policies
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.gov.fleet.desc"
+ 		trigger = {
+ 			has_sector_flag = irm_ui_sector_sidebar_fleet
+ 		}
+ 	}
+}

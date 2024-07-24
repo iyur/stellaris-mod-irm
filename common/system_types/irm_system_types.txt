@@ -1,0 +1,33 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Special system types
+
+# Sector Capital System
+irm_sys_sector = {
+	potential = {
+		exists = owner
+		any_system_colony = {
+			is_owned_by = root.owner
+			is_sector_capital = yes
+		}
+	}
+
+	weight_modifier = {
+		base = 750
+	}
+}
+
+# Galactic Market
+irm_sys_market = {
+	potential = {
+		exists = owner
+		exists = event_target:galactic_market_station
+		event_target:galactic_market_station = {
+			exists = solar_system
+			solar_system = { is_same_value = root }
+		}
+	}
+	weight_modifier = {
+		base = 900
+	}
+}

@@ -1,0 +1,35 @@
+core_sector = {
+
+	system_scores = {
+		base = -10000
+	}
+
+	local_capital_scores = {
+		base = -10000
+
+		modifier = {
+			add = 15001
+			owner = {
+				not = {
+					has_country_flag = irm_custom_sector
+					any_owned_sector = {
+						has_sector_type = core_sector
+					}
+				}
+			}
+		}
+
+	}
+
+	resource_conversion_table = {
+		energy = 1
+		minerals = 1
+	}
+
+	resources = {
+		category = sector
+	}
+
+	max_jumps = 4
+}
+
