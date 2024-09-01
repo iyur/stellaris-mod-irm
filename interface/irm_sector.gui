@@ -1630,25 +1630,25 @@ guiTypes = {
 			alwaysTransparent = yes
 		}
 		# 2 - sector migration
-		effectButtonType = {
-			name = "irm_ui_sidebar_sector_migration"
-			quadTextureSprite = @dark
-			position = { x = @sb_section_Xo y = 200 }
-			size = { x = @sb_section_W y = @sb_section_H }
-			orientation = upper_right
-			format = left
-			vertical_alignment = top
-			borderSize = { x = @sb_section_Xo y = @sb_section_Xo }
-			font = "cg_16b"
-			text = "irm.ui.sector.gov.policies.migration"
-			effect = irm_bg_sector_sidebar_policies
-			alwaysTransparent = yes
-		}
+		# effectButtonType = {
+		# 	name = "irm_ui_sidebar_sector_migration"
+		# 	quadTextureSprite = @dark
+		# 	position = { x = @sb_section_Xo y = 200 }
+		# 	size = { x = @sb_section_W y = @sb_section_H }
+		# 	orientation = upper_right
+		# 	format = left
+		# 	vertical_alignment = top
+		# 	borderSize = { x = @sb_section_Xo y = @sb_section_Xo }
+		# 	font = "cg_16b"
+		# 	text = "irm.ui.sector.gov.policies.migration"
+		# 	effect = irm_bg_sector_sidebar_policies
+		# 	alwaysTransparent = yes
+		# }
 		# 3 - sector expansion
 		effectButtonType = {
 			name = "irm_ui_sidebar_sector_expansion"
 			quadTextureSprite = @dark
-			position = { x = @sb_section_Xo y = 285 }
+			position = { x = @sb_section_Xo y = 200 }
 			size = { x = @sb_section_W y = @sb_section_H }
 			orientation = upper_right
 			format = left
@@ -1663,7 +1663,7 @@ guiTypes = {
 		effectButtonType = {
 			name = "irm_ui_sidebar_sector_colonization"
 			quadTextureSprite = @dark
-			position = { x = @sb_section_Xo y = 370 }
+			position = { x = @sb_section_Xo y = 285 }
 			size = { x = @sb_section_W y = @sb_section_H }
 			orientation = upper_right
 			format = left
@@ -1674,80 +1674,78 @@ guiTypes = {
 			effect = irm_bg_sector_sidebar_policies
 			alwaysTransparent = yes
 		}
+		# containerWindowType = {
+		# 	name = "irm_sidebar_policies_migration"
+		# 	position = { x = 860 y = 150 }
+		# 	size = { width = 300 height = 500 }
 
-		# sidebar options
-		containerWindowType = {
-			name = "irm_sidebar_policies_migration"
-			position = { x = 860 y = 150 }
-			size = { width = 300 height = 500 }
-
-			effectButtonType = {
-				name = "sector_migration_prohibited_off"
-				position = { x = 10 y = 86 }
-				size = { x = 90 y = 30 }
-				quadTextureSprite = "GFX_subjugation_btn_selection_off"
-				vertical_alignment = center
-				format = center
-				font = "cg_16b"
-				text = "irm.ui.sector.gov.policies.migration.prohibited"
-				effect = irm_bt_sector_migration_prohibited_off
-			}
-			effectButtonType = {
-				name = "sector_migration_prohibited_on"
-				position = { x = 10 y = 86 }
-				size = { x = 90 y = 30 }
-				quadTextureSprite = "GFX_subjugation_btn_selection_on"
-				vertical_alignment = center
-				format = center
-				font = "cg_16b"
-				text = "irm.ui.sector.gov.policies.migration.prohibited"
-				effect = irm_bt_sector_migration_prohibited_on
-			}
-			effectButtonType = {
-				name = "sector_migration_immigration.off"
-				quadTextureSprite = "GFX_subjugation_btn_selection_off"
-				position = { x = 105 y = 86 }
-				size = { x = 90 y = 30 }
-				vertical_alignment = center
-				format = center
-				font = "cg_16b"
-				text = "irm.ui.sector.gov.policies.migration.immigration"
-				effect = irm_bt_sector_migration_immigration_off
-			}
-			effectButtonType = {
-				name = "sector_migration_immigration.on"
-				quadTextureSprite = "GFX_subjugation_btn_selection_on"
-				position = { x = 105 y = 86 }
-				size = { x = 90 y = 30 }
-				vertical_alignment = center
-				format = center
-				font = "cg_16b"
-				text = "irm.ui.sector.gov.policies.migration.immigration"
-				effect = irm_bt_sector_migration_immigration_on
-			}
-			effectButtonType = {
-				name = "sector_migration_emigration_off"
-				position = { x = 200 y = 86 }
-				size = { x = 90 y = 30 }
-				quadTextureSprite = "GFX_subjugation_btn_selection_off"
-				vertical_alignment = center
-				format = center
-				font = "cg_16b"
-				text = "irm.ui.sector.gov.policies.migration.emigration"
-				effect = irm_bt_sector_migration_emigration_off
-			}
-			effectButtonType = {
-				name = "sector_migration_emigration_on"
-				position = { x = 200 y = 86 }
-				size = { x = 90 y = 30 }
-				quadTextureSprite = "GFX_subjugation_btn_selection_on"
-				vertical_alignment = center
-				format = center
-				font = "cg_16b"
-				text = "irm.ui.sector.gov.policies.migration.emigration"
-				effect = irm_bt_sector_migration_emigration_on
-			}
-		}
+		# 	effectButtonType = {
+		# 		name = "sector_migration_prohibited_off"
+		# 		position = { x = 10 y = 86 }
+		# 		size = { x = 90 y = 30 }
+		# 		quadTextureSprite = "GFX_subjugation_btn_selection_off"
+		# 		vertical_alignment = center
+		# 		format = center
+		# 		font = "cg_16b"
+		# 		text = "irm.ui.sector.gov.policies.migration.prohibited"
+		# 		effect = irm_bt_sector_migration_prohibited_off
+		# 	}
+		# 	effectButtonType = {
+		# 		name = "sector_migration_prohibited_on"
+		# 		position = { x = 10 y = 86 }
+		# 		size = { x = 90 y = 30 }
+		# 		quadTextureSprite = "GFX_subjugation_btn_selection_on"
+		# 		vertical_alignment = center
+		# 		format = center
+		# 		font = "cg_16b"
+		# 		text = "irm.ui.sector.gov.policies.migration.prohibited"
+		# 		effect = irm_bt_sector_migration_prohibited_on
+		# 	}
+		# 	effectButtonType = {
+		# 		name = "sector_migration_immigration.off"
+		# 		quadTextureSprite = "GFX_subjugation_btn_selection_off"
+		# 		position = { x = 105 y = 86 }
+		# 		size = { x = 90 y = 30 }
+		# 		vertical_alignment = center
+		# 		format = center
+		# 		font = "cg_16b"
+		# 		text = "irm.ui.sector.gov.policies.migration.immigration"
+		# 		effect = irm_bt_sector_migration_immigration_off
+		# 	}
+		# 	effectButtonType = {
+		# 		name = "sector_migration_immigration.on"
+		# 		quadTextureSprite = "GFX_subjugation_btn_selection_on"
+		# 		position = { x = 105 y = 86 }
+		# 		size = { x = 90 y = 30 }
+		# 		vertical_alignment = center
+		# 		format = center
+		# 		font = "cg_16b"
+		# 		text = "irm.ui.sector.gov.policies.migration.immigration"
+		# 		effect = irm_bt_sector_migration_immigration_on
+		# 	}
+		# 	effectButtonType = {
+		# 		name = "sector_migration_emigration_off"
+		# 		position = { x = 200 y = 86 }
+		# 		size = { x = 90 y = 30 }
+		# 		quadTextureSprite = "GFX_subjugation_btn_selection_off"
+		# 		vertical_alignment = center
+		# 		format = center
+		# 		font = "cg_16b"
+		# 		text = "irm.ui.sector.gov.policies.migration.emigration"
+		# 		effect = irm_bt_sector_migration_emigration_off
+		# 	}
+		# 	effectButtonType = {
+		# 		name = "sector_migration_emigration_on"
+		# 		position = { x = 200 y = 86 }
+		# 		size = { x = 90 y = 30 }
+		# 		quadTextureSprite = "GFX_subjugation_btn_selection_on"
+		# 		vertical_alignment = center
+		# 		format = center
+		# 		font = "cg_16b"
+		# 		text = "irm.ui.sector.gov.policies.migration.emigration"
+		# 		effect = irm_bt_sector_migration_emigration_on
+		# 	}
+		# }
 		containerWindowType = {
 			name = "irm_sidebar_policies_expansion"
 			position = { x = 860 y = 150 }
@@ -1755,7 +1753,7 @@ guiTypes = {
 
 			effectButtonType = {
 				name = "sector_expansion_prohibited_off"
-				position = { x = 10 y = 170 }
+				position = { x = 10 y = 86 }
 				size = { x = 90 y = 30 }
 				quadTextureSprite = "GFX_subjugation_btn_selection_off"
 				vertical_alignment = center
@@ -1766,7 +1764,7 @@ guiTypes = {
 			}
 			effectButtonType = {
 				name = "sector_expansion_prohibited_on"
-				position = { x = 10 y = 170 }
+				position = { x = 10 y = 86 }
 				size = { x = 90 y = 30 }
 				quadTextureSprite = "GFX_subjugation_btn_selection_on"
 				vertical_alignment = center
@@ -1777,7 +1775,7 @@ guiTypes = {
 			}
 			effectButtonType = {
 				name = "sector_expansion_allowed_off"
-				position = { x = 105 y = 170 }
+				position = { x = 105 y = 86 }
 				size = { x = 90 y = 30 }
 				quadTextureSprite = "GFX_subjugation_btn_selection_off"
 				vertical_alignment = center
@@ -1788,7 +1786,7 @@ guiTypes = {
 			}
 			effectButtonType = {
 				name = "sector_expansion_allowed_on"
-				position = { x = 105 y = 170 }
+				position = { x = 105 y = 86 }
 				size = { x = 90 y = 30 }
 				quadTextureSprite = "GFX_subjugation_btn_selection_on"
 				vertical_alignment = center
@@ -1806,7 +1804,7 @@ guiTypes = {
 
 			effectButtonType = {
 				name = "sector_colonization_prohibited_off"
-				position = { x = 10 y = 254 }
+				position = { x = 10 y = 170 }
 				size = { x = 90 y = 30 }
 				quadTextureSprite = "GFX_subjugation_btn_selection_off"
 				vertical_alignment = center
@@ -1817,7 +1815,7 @@ guiTypes = {
 			}
 			effectButtonType = {
 				name = "sector_colonization_prohibited_on"
-				position = { x = 10 y = 254 }
+				position = { x = 10 y = 170 }
 				size = { x = 90 y = 30 }
 				quadTextureSprite = "GFX_subjugation_btn_selection_on"
 				vertical_alignment = center
@@ -1828,7 +1826,7 @@ guiTypes = {
 			}
 			effectButtonType = {
 				name = "sector_colonization_allowed_off"
-				position = { x = 105 y = 254 }
+				position = { x = 105 y = 170 }
 				size = { x = 90 y = 30 }
 				quadTextureSprite = "GFX_subjugation_btn_selection_off"
 				vertical_alignment = center
@@ -1839,7 +1837,7 @@ guiTypes = {
 			}
 			effectButtonType = {
 				name = "sector_colonization_allowed_on"
-				position = { x = 105 y = 254 }
+				position = { x = 105 y = 170 }
 				size = { x = 90 y = 30 }
 				quadTextureSprite = "GFX_subjugation_btn_selection_on"
 				vertical_alignment = center

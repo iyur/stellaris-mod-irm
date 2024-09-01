@@ -950,144 +950,144 @@ irm_bt_sector_size_15_lock = {
 	effect = { custom_tooltip = "irm.ui.sector.gov.policies.size_0.req.t3" }
 }
 
-#migration
-irm_bt_sector_migration_prohibited_off = {
-	potential = {
-		exists = event_target:irm_ui_sector
-		event_target:irm_ui_sector = {
-			has_sector_flag = irm_ui_sector_sidebar_policies
-			not = { has_sector_flag = irm_sector_migration_prohibited }
-		}
-	}
-	effect = {
-		hidden_effect = {
-			custom_tooltip = "irm.ui.sector.gov.policies.migration.prohibited.tt"
-			event_target:irm_ui_sector = {
-				irm_switch_flag = { scope = sector flag = irm_sector_migration_prohibited }
-				remove_sector_flag = irm_sector_migration_immigration
-				remove_sector_flag = irm_sector_migration_emigration
-			}
-		}
-	}
-}
-irm_bt_sector_migration_prohibited_on = {
-	potential = {
-		exists = event_target:irm_ui_sector
-		event_target:irm_ui_sector = {
-			has_sector_flag = irm_ui_sector_sidebar_policies
-			has_sector_flag = irm_sector_migration_prohibited
-		}
-	}
-	effect = {
-		hidden_effect = {
-			custom_tooltip = "irm.ui.sector.gov.policies.migration.prohibited.tt"
-		}
-	}
-}
-irm_bt_sector_migration_immigration_off = {
-	potential = {
-		exists = event_target:irm_ui_sector
-		event_target:irm_ui_sector = {
-			has_sector_flag = irm_ui_sector_sidebar_policies
-			not = { has_sector_flag = irm_sector_migration_immigration }
-		}
-	}
-	effect = {
-		hidden_effect = {
-			custom_tooltip = "irm.ui.sector.gov.policies.migration.immigration.tt"
-			event_target:irm_ui_sector = {
-				irm_switch_flag = { scope = sector flag = irm_sector_migration_immigration }
-				if = {
-					limit = {
-						or = {
-							has_sector_flag = irm_sector_migration_immigration
-							has_sector_flag = irm_sector_migration_emigration
-						}
-					}
-					remove_sector_flag = irm_sector_migration_prohibited
-				}
-			}
-		}
-	}
-}
-irm_bt_sector_migration_immigration_on = {
-	potential = {
-		exists = event_target:irm_ui_sector
-		event_target:irm_ui_sector = {
-			has_sector_flag = irm_ui_sector_sidebar_policies
-			has_sector_flag = irm_sector_migration_immigration
-		}
-	}
-	effect = {
-		hidden_effect = {
-			event_target:irm_ui_sector = {
-				custom_tooltip = "irm.ui.sector.gov.policies.migration.immigration.tt"
-				irm_switch_flag = { scope = sector flag = irm_sector_migration_immigration }
-				if = {
-					limit = {
-						not = {
-							has_sector_flag = irm_sector_migration_immigration
-							has_sector_flag = irm_sector_migration_emigration
-						}
-					}
-					set_sector_flag = irm_sector_migration_prohibited
-				}
-			}
-		}
-	}
-}
-irm_bt_sector_migration_emigration_off = {
-	potential = {
-		exists = event_target:irm_ui_sector
-		event_target:irm_ui_sector = {
-			has_sector_flag = irm_ui_sector_sidebar_policies
-			not = { has_sector_flag = irm_sector_migration_emigration }
-		}
-	}
-	effect = {
-		hidden_effect = {
-			custom_tooltip = "irm.ui.sector.gov.policies.migration.emigration.tt"
-			event_target:irm_ui_sector = {
-				irm_switch_flag = { scope = sector flag = irm_sector_migration_emigration }
-				if = {
-					limit = {
-						or = {
-							has_sector_flag = irm_sector_migration_immigration
-							has_sector_flag = irm_sector_migration_emigration
-						}
-					}
-					remove_sector_flag = irm_sector_migration_prohibited
-				}
-			}
-		}
-	}
-}
-irm_bt_sector_migration_emigration_on = {
-	potential = {
-		exists = event_target:irm_ui_sector
-		event_target:irm_ui_sector = {
-			has_sector_flag = irm_ui_sector_sidebar_policies
-			has_sector_flag = irm_sector_migration_emigration
-		}
-	}
-	effect = {
-		hidden_effect = {
-			custom_tooltip = "irm.ui.sector.gov.policies.migration.emigration.tt"
-			event_target:irm_ui_sector = {
-				irm_switch_flag = { scope = sector flag = irm_sector_migration_emigration }
-				if = {
-					limit = {
-						not = {
-							has_sector_flag = irm_sector_migration_immigration
-							has_sector_flag = irm_sector_migration_emigration
-						}
-					}
-					set_sector_flag = irm_sector_migration_prohibited
-				}
-			}
-		}
-	}
-}
+# migration
+# irm_bt_sector_migration_prohibited_off = {
+# 	potential = {
+# 		exists = event_target:irm_ui_sector
+# 		event_target:irm_ui_sector = {
+# 			has_sector_flag = irm_ui_sector_sidebar_policies
+# 			not = { has_sector_flag = irm_sector_migration_prohibited }
+# 		}
+# 	}
+# 	effect = {
+# 		hidden_effect = {
+# 			custom_tooltip = "irm.ui.sector.gov.policies.migration.prohibited.tt"
+# 			event_target:irm_ui_sector = {
+# 				irm_switch_flag = { scope = sector flag = irm_sector_migration_prohibited }
+# 				remove_sector_flag = irm_sector_migration_immigration
+# 				remove_sector_flag = irm_sector_migration_emigration
+# 			}
+# 		}
+# 	}
+# }
+# irm_bt_sector_migration_prohibited_on = {
+# 	potential = {
+# 		exists = event_target:irm_ui_sector
+# 		event_target:irm_ui_sector = {
+# 			has_sector_flag = irm_ui_sector_sidebar_policies
+# 			has_sector_flag = irm_sector_migration_prohibited
+# 		}
+# 	}
+# 	effect = {
+# 		hidden_effect = {
+# 			custom_tooltip = "irm.ui.sector.gov.policies.migration.prohibited.tt"
+# 		}
+# 	}
+# }
+# irm_bt_sector_migration_immigration_off = {
+# 	potential = {
+# 		exists = event_target:irm_ui_sector
+# 		event_target:irm_ui_sector = {
+# 			has_sector_flag = irm_ui_sector_sidebar_policies
+# 			not = { has_sector_flag = irm_sector_migration_immigration }
+# 		}
+# 	}
+# 	effect = {
+# 		hidden_effect = {
+# 			custom_tooltip = "irm.ui.sector.gov.policies.migration.immigration.tt"
+# 			event_target:irm_ui_sector = {
+# 				irm_switch_flag = { scope = sector flag = irm_sector_migration_immigration }
+# 				if = {
+# 					limit = {
+# 						or = {
+# 							has_sector_flag = irm_sector_migration_immigration
+# 							has_sector_flag = irm_sector_migration_emigration
+# 						}
+# 					}
+# 					remove_sector_flag = irm_sector_migration_prohibited
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+# irm_bt_sector_migration_immigration_on = {
+# 	potential = {
+# 		exists = event_target:irm_ui_sector
+# 		event_target:irm_ui_sector = {
+# 			has_sector_flag = irm_ui_sector_sidebar_policies
+# 			has_sector_flag = irm_sector_migration_immigration
+# 		}
+# 	}
+# 	effect = {
+# 		hidden_effect = {
+# 			event_target:irm_ui_sector = {
+# 				custom_tooltip = "irm.ui.sector.gov.policies.migration.immigration.tt"
+# 				irm_switch_flag = { scope = sector flag = irm_sector_migration_immigration }
+# 				if = {
+# 					limit = {
+# 						not = {
+# 							has_sector_flag = irm_sector_migration_immigration
+# 							has_sector_flag = irm_sector_migration_emigration
+# 						}
+# 					}
+# 					set_sector_flag = irm_sector_migration_prohibited
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+# irm_bt_sector_migration_emigration_off = {
+# 	potential = {
+# 		exists = event_target:irm_ui_sector
+# 		event_target:irm_ui_sector = {
+# 			has_sector_flag = irm_ui_sector_sidebar_policies
+# 			not = { has_sector_flag = irm_sector_migration_emigration }
+# 		}
+# 	}
+# 	effect = {
+# 		hidden_effect = {
+# 			custom_tooltip = "irm.ui.sector.gov.policies.migration.emigration.tt"
+# 			event_target:irm_ui_sector = {
+# 				irm_switch_flag = { scope = sector flag = irm_sector_migration_emigration }
+# 				if = {
+# 					limit = {
+# 						or = {
+# 							has_sector_flag = irm_sector_migration_immigration
+# 							has_sector_flag = irm_sector_migration_emigration
+# 						}
+# 					}
+# 					remove_sector_flag = irm_sector_migration_prohibited
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+# irm_bt_sector_migration_emigration_on = {
+# 	potential = {
+# 		exists = event_target:irm_ui_sector
+# 		event_target:irm_ui_sector = {
+# 			has_sector_flag = irm_ui_sector_sidebar_policies
+# 			has_sector_flag = irm_sector_migration_emigration
+# 		}
+# 	}
+# 	effect = {
+# 		hidden_effect = {
+# 			custom_tooltip = "irm.ui.sector.gov.policies.migration.emigration.tt"
+# 			event_target:irm_ui_sector = {
+# 				irm_switch_flag = { scope = sector flag = irm_sector_migration_emigration }
+# 				if = {
+# 					limit = {
+# 						not = {
+# 							has_sector_flag = irm_sector_migration_immigration
+# 							has_sector_flag = irm_sector_migration_emigration
+# 						}
+# 					}
+# 					set_sector_flag = irm_sector_migration_prohibited
+# 				}
+# 			}
+# 		}
+# 	}
+# }
 
 irm_bt_sector_expansion_prohibited_off = {
 	potential = {

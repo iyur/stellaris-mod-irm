@@ -323,6 +323,7 @@ planet_event = {
 		# put back the capital
 		event_target:irm_tmp_capital = {
 			set_capital = yes
+		}
 		# clear dummy scope
 		event_target:irm_copy_scope = {
 			kill_leader = { show_notification = no }
@@ -337,5 +338,16 @@ planet_event = {
 		remove_planet_flag = irm_normal_sector_5
 		remove_planet_flag = irm_normal_sector_10
 		remove_planet_flag = irm_normal_sector_15
+	}
+}
+
+# pop
+pop_event = {
+	id = irm_sector.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		log = "Pop has moved from [This.From.GetName] to [This.Planet.GetName] planet."
 	}
 }
