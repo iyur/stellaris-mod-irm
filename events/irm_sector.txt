@@ -341,13 +341,18 @@ planet_event = {
 	}
 }
 
-# pop
-pop_event = {
-	id = irm_sector.3
+# Border expansion
+# Bi-yearly (~) event
+system_event = {
+	id = irm_sector.31
 	hide_window = yes
 	is_triggered_only = yes
 
 	immediate = {
-		log = "Pop has moved from [This.From.GetName] to [This.Planet.GetName] planet."
+		print_scope_effect = yes
+		create_starbase = {
+			size = starbase_outpost
+			owner = from.owner
+		}
 	}
 }

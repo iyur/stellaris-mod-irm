@@ -1,0 +1,46 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Regular events
+
+namespace = irm_2y
+
+# Global
+event = {
+	id = irm_2y.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# players only
+		every_playable_country = {
+			limit = { is_ai = no }
+			# sector expansion
+			every_owned_sector = {
+				limit = {
+					nor = {
+						has_sector_type = irm_core_sector_1
+						has_sector_type = irm_normal_sector_1
+						has_sector_flag = irm_ui_sector_reform
+					}
+				}
+				random_system_within_border = {
+					random_neighbor_system = {
+						limit = {
+							has_owner = no
+							has_hyperlane_to = prev
+							distance = {
+								source = prev
+								type = hyperlane
+								max_jumps = 1
+							}
+							# todo: check against sector size
+						}
+						prev = { save_event_target_as = irm_system_expanding }
+						system_event = { id = irm_sector.31 days = 1 random = 5 scopes = { from = prev } }
+					}
+				}
+			}
+		}
+	}
+
+}

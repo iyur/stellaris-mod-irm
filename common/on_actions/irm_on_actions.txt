@@ -1,0 +1,6 @@
+# No scope, like on_game_start
+on_bi_yearly_pulse = {
+	events = {
+		irm_2y.1
+	}
+}
