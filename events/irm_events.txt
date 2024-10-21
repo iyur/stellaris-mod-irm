@@ -34,6 +34,9 @@ event = {
 								max_jumps = 1
 							}
 							# todo: check against sector size
+							# todo: check hostiles
+							# todo: check constructors on the orbit
+							# todo: check marks
 						}
 						prev = { save_event_target_as = irm_system_expanding }
 						system_event = { id = irm_sector.31 days = 1 random = 5 scopes = { from = prev } }
