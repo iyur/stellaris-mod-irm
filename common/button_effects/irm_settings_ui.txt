@@ -1,0 +1,25 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Settings ui buttons
+
+irm_mod_on = {
+	potential = { no_scope = { has_global_flag = irm_mod_disabled } }
+	# allow = { always = no }
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.settings.mod.basic.tt"
+			custom_tooltip = "irm.ui.settings.mod.basic.tt.off"
+		}
+	}
+}
+irm_mod_off = {
+	potential = { no_scope = { has_global_flag = irm_mod_enabled } }
+	# allow = { always = no }
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.settings.mod.basic.tt"
+			custom_tooltip = "irm.ui.settings.mod.basic.tt.on"
+		}
+	}
+}
+

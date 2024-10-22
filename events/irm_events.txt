@@ -1,6 +1,79 @@
 # IRM: Imperial Routine Mod
 # Author: Iyur
-# Regular events
+# Custom events
+
+# SETTINGS
+
+namespace = irm_settings
+
+event = {
+	id = irm_settings.1
+	title = "irm.ui.settings"
+	desc = "irm.ui.settings.desc"
+	location = no_scope
+
+	force_open = yes
+	auto_select = yes
+	auto_opens = yes
+	is_triggered_only = yes
+
+	diplomatic = yes
+	custom_gui = "irm_ui_settings"
+	show_sound = event_conversation
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	# OPTIONS
+
+	# close button
+	option = {
+		name = "irm.ui.0"
+		custom_gui = "irm_ui_opt_close_orange"
+	}
+
+	# to prevent disappearing of all options
+	option = {
+		name = "irm.ui.0"
+		custom_gui = "irm_ui_opt_dummy"
+	}
+
+}
+
+# PULSE
+
+namespace = irm
+
+# Initialize modules
+event = {
+	id = irm.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				nor = {
+					has_global_flag = irm_mod_enabled
+					has_global_flag = irm_mod_disabled
+				}
+			}
+			set_global_flag = irm_mod_enabled
+			log = "irm mod initialized"
+			random_playable_country = {
+				limit = { is_ai = no }
+				save_event_target_as = irm_mod
+				set_saved_date = {
+					key = irm_mod_init
+					days_from_present = 0
+				}
+			}
+		}
+	}
+
+}
 
 namespace = irm_2y
 
