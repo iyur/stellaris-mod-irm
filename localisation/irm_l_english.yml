@@ -71,6 +71,18 @@ l_english:
   irm.i.10: "10"
   irm.i.15: "15"
 
+# Settings
+
+  irm.ui.settings: "Mod Settings"  
+  irm.ui.settings.desc: "§LImperial Routine\nMod's first initialization record: §H[This.irm_mod_ini]§!"
+  irm.ui.settings.mod.basic: "Basic Framework"
+  irm.ui.settings.mod.basic.tt: "§H$irm.ui.settings.mod.basic$§!\nThis is core module laying down the foundation for entire mod. Provides interfaces for system & sector control, leader assignments. Required for almost all other modules or extensions."
+  irm.ui.settings.mod.basic.tt.mod: "\nStatus modified: §H[This.irm_mod_upd]§!"
+  irm.ui.settings.mod.ext.tt: "$irm.ui.settings.mod.na$\nThere are no extensions for this moment."
+  irm.ui.settings.mod.na: "§gNot available§!"
+  irm.ui.settings.mod.tt.on: "\n§RClick to disable§!"
+  irm.ui.settings.mod.tt.off: "\n§GClick to enable§!"
+
 # Sector
 
   irm.ui.sector: "Sector"

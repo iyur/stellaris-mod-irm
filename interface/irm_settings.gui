@@ -1,0 +1,250 @@
+guiTypes = {
+
+###	OPTIONS ### -------------------------------------------------------------------------------------
+
+  	# replaced close button
+	containerWindowType = {
+		name = "irm_ui_opt_close_orange"
+		position = { x = 0 y = 0 }
+		moveable = no
+		
+		buttonType = {
+			name = "option_button"
+			quadTextureSprite = "GFX_main_close_button_mercenary"
+			position = { x = 700 y = -6 }
+			shortcut = "ESCAPE"
+			clicksound = "back_click"
+			actionShortcut = "cancel"
+		}
+	
+	}
+
+### WINDOW ### --------------------------------------------------------------------------------------
+
+	@out = -9999
+	@nobg = "GFX_tiled_window_transparent"
+	@dark = "GFX_tiles_dark_area_cut_8"
+
+  	@scr_W 	= 740
+  	@scr_Wd = 900
+  	@scr_H 	= 500
+  	@scr_O 	= 75
+
+	@xListPadding = 10
+
+	@xOffset = 50
+	@yOffset = 10
+
+	containerWindowType = {
+		name = "irm_ui_settings"
+		orientation = upper_left
+		size = { width = @scr_W height = @scr_H }
+		position = { x = @scr_O y = @scr_O }
+		moveable = yes
+		clipping = no
+		click_to_front = yes
+
+		if_resolution = {
+			max_height = 680		
+			size = { width = 850 height = 680 }
+		
+			show_position = { x = 35 y = 40 }
+			hide_position = { x = -800 y = 40 }
+			animation_time = 200
+			animation_type = decelerated
+			show_sound = "select_click"
+			moveable = no
+		}
+
+		background = { name = "background" quadTextureSprite ="GFX_tradition_category_tile_orange" }
+		iconType = { name = "hex_bg" spriteType = "GFX_tradition_hex_bg_orange" position = { x = -30 y = -20 } alwaysTransparent = yes }
+		iconType = { name = "empire_header_line" quadTextureSprite = "GFX_line" position = { x = -1110 y = -1122 } alwaysTransparent = yes }
+		instantTextBoxType = { name = "alien_message" font = "cg_16b" scrollbartype = "standardtext_slider" maxWidth = 500 position = { x = @xOffset y = 50 } }
+
+		# SETTINGS
+
+		containerWindowType = {
+			name = "irm_main"
+			position = { x = @xOffset y = @yOffset }
+
+			# list
+			@yListPos = 100
+			@wItem = 300
+			@hItem = 32
+			@xItemBorder = 35
+			@xItemOffset = -3
+			@yItemOffset = -3
+
+			containerWindowType = {
+				name = "irm_mod_core_list"
+				position = { x = -8 y = @yListPos }
+				size = { width = @wItem height = 300 }
+
+				instantTextBoxType = {
+					name = "irm_mod_core"
+					font = "cg_16b"
+					position = { x = 8 y = 0 }
+					maxWidth = 300
+					text_color_code = "W"
+					text = "CORE MODULES"
+				}
+
+				containerWindowType = {
+					name = "irm_mod_core_1"
+					position = { x = 0 y = 30 }
+					size = { width = @wItem height = @hItem }
+
+					effectButtonType = {
+						name = "name"
+						quadTextureSprite = "GFX_plain_orange_frame_tile"
+						position = { x = 0 y = 0 }
+						size = { x = @wItem y = @hItem }
+						font = "cg_16b"
+						format = left
+						borderSize = { x = @xItemBorder y = 0 }
+						text = "irm.ui.settings.mod.basic"
+						effect = irm_mod
+					}
+					effectButtonType = {
+						name = "off"
+						quadTextureSprite = "GFX_irm_orange_check"
+						position = { x = @xItemOffset y = @yItemOffset }
+						frame = 3
+						scale = 0.83
+						effect = irm_mod_off
+					}
+					effectButtonType = {
+						name = "on"
+						quadTextureSprite = "GFX_button_20_20_reject"
+						position = { x = 2 y = 1 }
+						frame = 3
+						effect = irm_mod_on
+					}
+
+				}
+
+
+			} # right
+
+			containerWindowType = {
+				name = "irm_mod_ext_list"
+				position = { x = 345 y = @yListPos }
+				size = { width = @wItem height = 300 }
+
+				instantTextBoxType = {
+					name = "irm_mod_extensions"
+					font = "cg_16b"
+					position = { x = 8 y = 0 }
+					maxWidth = 300
+					text_color_code = "W"
+					text = "EXTENSIONS"
+				}
+
+				containerWindowType = {
+					name = "irm_mod_ext_1"
+					position = { x = 0 y = 30 }
+					size = { width = @wItem height = @hItem }
+
+					effectButtonType = {
+						name = "name"
+						quadTextureSprite = "GFX_plain_orange_frame_tile"
+						position = { x = 0 y = 0 }
+						size = { x = @wItem y = @hItem }
+						font = "cg_16b"
+						format = left
+						borderSize = { x = @xItemBorder y = 0 }
+						text = "irm.ui.settings.mod.na"
+						effect = irm_mod_ext
+					}
+					# effectButtonType = {
+					# 	name = "on"
+					# 	name = "off"
+					# 	quadTextureSprite = "GFX_button_20_20_reject"
+					# 	position = { x = 2 y = 1 }
+					# 	frame = 1
+					# 	effect = ""
+					# }
+					effectButtonType = {
+						name = "off"
+						quadTextureSprite = "GFX_button_20_20_reject"
+						position = { x = 2 y = 1 }
+						frame = 3
+						effect = irm_mod_ext_off
+					}
+
+				}
+
+			}
+
+
+		} # settings
+
+
+		### HIDE ###
+		buttonType = { name = "tts_button" position = { x = -1466 y = 639 } spriteType = "GFX_button_tts_start" }
+		buttonType = { name = "focus_button" position = { x = -1180 y = -1112 } spriteType = "GFX_fleetview_focus" }
+		containerWindowType = {
+			name = "portrait"
+			size = { width = 1 height = 1 }
+			background = { name = "background" position = { x = -1110 y = -1110 } quadTextureSprite ="GFX_evt_gas_giant" }
+			iconType = { name = "portrait" spriteType = "GFX_portrait_character" position = { x = -1180 y = -1154 } }
+			iconType = { name = "black_frame" position = { x = -1110 y = 3 } spriteType = "GFX_planetview_black_frame" }
+			iconType = { name = "stripes_1" position = { x = -1116 y = 2 } spriteType = "GFX_planetview_stripes_1" }
+			iconType = { name = "city_frame" position = { x = -1111 y = -1111 } spriteType = "GFX_city_frame" }
+		}
+		containerWindowType = {
+			name = "portrait_background"
+			position = { x = -1000 y = -1000 }
+			clipping = yes
+			iconType = { name = "event_picture" spriteType = "GFX_diplomacy_portrait_frame" position = { x = -1000 y = -1000 } }
+			iconType = { name = "portrait" position = { x = -1000 y = -1000 } spriteType = "GFX_portrait_character" }
+		}
+		instantTextBoxType = { name = "heading" font = "cg_16b" position = { x = -1000 y = -1000 } }
+		buttonType = { name = "alien_message_background" spriteType = @nobg }
+		buttonType = { name = "confirm_button" quadTextureSprite = @nobg font = "cg_16b" }		
+		iconType = { name = "empire_info_bg" spriteType =@nobg }
+		instantTextBoxType = { name = "empire_name" font = "malgun_goth_24" }
+		instantTextBoxType={ name = "empire_government_type" font = "cg_16b" }
+		instantTextBoxType = { name = "empire_personality_type" font = "cg_16b" }
+		OverlappingElementsBoxType = { name = "empire_ethics_icons" }
+		buttonType = { name = "empire_flag" quadTextureSprite = @nobg }
+		containerWindowType = {
+			name = "leader_details"
+			containerWindowType = { name = "empire_traits_box" background = { name = "ethics_bg" spriteType = @nobg } }
+			instantTextBoxType = { name = "empire_traits_label" font = "cg_16b" }
+			overlappingElementsBoxType = { name = "leader_traits" }
+			instantTextBoxType = { name = "leader_name" font = "cg_16b" }
+			instantTextBoxType = { name = "leader_species" font = "cg_16b" }
+		}
+		containerWindowType = {
+			name = "opinion_window"
+			background = { name = "opinion_bg" spriteType = @nobg }
+			iconType = { name = "their_opinion_icon" spriteType = @nobg }
+			instantTextBoxType = { name = "their_opinion" font = "cg_16b" }
+		}
+
+		### EVENT DIPLO ###
+		
+		containerWindowType = {
+			name = "EVENT_DIPLO"
+			orientation = upper_left
+			position = { x = 0 y = 0 }
+			moveable = no
+			
+			# title
+			instantTextBoxType = { name = "action_title" font = "large_title_font_28" position = { x = @xOffset y = 20 } alwaysTransparent = yes maxWidth = 500}
+			instantTextBoxType = { name = "action_desc"  font = "malgun_goth_24" position = { x = -9999 y = 35 } }
+			
+			# action elements
+			listboxType = {
+				name = "option_list"
+				orientation = upper_left
+				size = { x = @scr_W y = @scr_Wd }
+				position = { x = 0 y = 0 }
+				alwaysTransparent = yes
+			}
+		}
+
+	} # window
+
+}

@@ -36,7 +36,7 @@ irm_get_resource_breakdown = {
 }
 
 # This = Any
-# SWitches scope flags
+# Switches scope flags
 irm_switch_flag = {
 	if = {
 		limit = { has_$scope$_flag = $flag$ }
@@ -45,4 +45,16 @@ irm_switch_flag = {
 	else = {
 		set_$scope$_flag = $flag$
 	}
+	[[status]
+		if = {
+			limit = { has_$scope$_flag = $flag$_enabled }
+			remove_$scope$_flag = $flag$_enabled
+			set_$scope$_flag = $flag$_disabled
+		}
+		else_if = {
+			limit = { has_$scope$_flag = $flag$_disabled }
+			remove_$scope$_flag = $flag$_disabled
+			set_$scope$_flag = $flag$_enabled
+		}
+	]
 }

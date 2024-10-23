@@ -20,6 +20,13 @@ spriteTypes = {
 		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
 	}
 
+	# settings
+	spriteType = {
+		name = "GFX_irm_orange_check"
+		textureFile = "gfx/interface/buttons/button_24_24_checkbox.dds"
+		noOfFrames = 3
+	}
+
 
 	# ICONS # -------------------------------------------------------------------------------------
 

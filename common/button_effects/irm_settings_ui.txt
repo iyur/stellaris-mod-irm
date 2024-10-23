@@ -1,0 +1,58 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Settings ui buttons
+
+# core
+irm_mod = {
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.settings.mod.basic.tt"
+			custom_tooltip = "irm.ui.settings.mod.basic.tt.mod"
+		}
+	}
+}
+irm_mod_on = {
+	potential = { no_scope = { has_global_flag = irm_mod_disabled } }
+	# allow = { always = no }
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.settings.mod.basic.tt"
+			custom_tooltip = "irm.ui.settings.mod.basic.tt.mod"
+			custom_tooltip = "irm.ui.settings.mod.tt.off"
+			irm_switch_flag = { scope = global flag = irm_mod status = yes }
+			irm_reg_mod_change = { mod = irm_mod }
+		}
+	}
+}
+irm_mod_off = {
+	potential = { no_scope = { has_global_flag = irm_mod_enabled } }
+	# allow = { always = no }
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.settings.mod.basic.tt"
+			custom_tooltip = "irm.ui.settings.mod.basic.tt.mod"
+			custom_tooltip = "irm.ui.settings.mod.tt.on"
+			irm_switch_flag = { scope = global flag = irm_mod status = yes }
+			irm_reg_mod_change = { mod = irm_mod }
+		}
+	}
+}
+
+# extensions temp
+irm_mod_ext = {
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.settings.mod.ext.tt"
+		}
+	}
+}
+irm_mod_ext_off = {
+	potential = { always = yes }
+	allow = { always = no }
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.settings.mod.ext.tt"
+			custom_tooltip = "irm.ui.settings.mod.tt.on"
+		}
+	}
+}
