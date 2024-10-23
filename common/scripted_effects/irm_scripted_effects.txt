@@ -2,6 +2,19 @@
 # Author: Iyur
 # Mod custom scripted effects & routines
 
+# Mod settings
+
+# This = No scope
+irm_reg_mod_change = {
+	random_playable_country = {
+		limit = { is_ai = no }
+		set_saved_date = {
+			key = $mod$_$type|upd$
+			days_from_present = 0
+		}
+	}
+}
+
 # This = System / Sector
 # Get key stats for the chosen scope
 irm_get_stats = {

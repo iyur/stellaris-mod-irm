@@ -1,23 +1,23 @@
-# # Triggers when the game starts
-# on_game_start = {
-# 	events = {
-# 		irm.1
-# 	}
-# }
+# Triggers when the game starts
+on_game_start = {
+	events = {
+		irm.1
+	}
+}
 
-# # No scope, like on_game_start
-# on_single_player_save_game_load = {
-# 	events = {
-# 		irm.1
-# 	}
-# }
+# No scope, like on_game_start
+on_single_player_save_game_load = {
+	events = {
+		irm.1
+	}
+}
 
-# # Triggers when pressing begin in the intro window
-# on_press_begin = {
-# 	events = {
-# 		irm.1
-# 	}
-# }
+# Triggers when pressing begin in the intro window
+on_press_begin = {
+	events = {
+		irm.1
+	}
+}
 
 # No scope, like on_game_start
 on_bi_yearly_pulse = {
