@@ -106,25 +106,31 @@ guiTypes = {
 						effect = irm_mod
 					}
 					effectButtonType = {
-						name = "off"
+						name = "on"
 						quadTextureSprite = "GFX_irm_orange_check"
 						position = { x = @xItemOffset y = @yItemOffset }
 						frame = 3
 						scale = 0.83
-						effect = irm_mod_off
+						effect = irm_mod_on
 					}
 					effectButtonType = {
-						name = "on"
+						name = "off"
 						quadTextureSprite = "GFX_button_20_20_reject"
 						position = { x = 2 y = 1 }
 						frame = 3
-						effect = irm_mod_on
+						effect = irm_mod_off
 					}
-
+					effectButtonType = {
+						name = "na"
+						quadTextureSprite = "GFX_button_20_20_reject"
+						position = { x = 2 y = 1 }
+						frame = 1
+						effect = irm_mod_na
+					}
 				}
 
 
-			} # right
+			}
 
 			containerWindowType = {
 				name = "irm_mod_ext_list"
@@ -176,6 +182,33 @@ guiTypes = {
 
 			}
 
+			containerWindowType = {
+				name = "irm_mod_reset"
+				position = { x = -8 y = 375 }
+				size = { width = @wItem height = 300 }
+
+				instantTextBoxType = {
+					name = "reset_text"
+					font = "cg_16b"
+					position = { x = 40 y = 38 }
+					maxWidth = 300
+					text_color_code = "P"
+					text = "irm.ui.settings.mod.reset"
+				}
+
+				containerWindowType = {
+					name = "reset"
+					position = { x = 0 y = 30 }
+					size = { width = @wItem height = @hItem }
+					effectButtonType = {
+						name = "reset"
+						quadTextureSprite = "GFX_button_20_20_reject"
+						position = { x = 2 y = 1 }
+						effect = irm_mod_reset
+					}
+				}
+
+			}
 
 		} # settings
 

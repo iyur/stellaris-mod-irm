@@ -24,6 +24,11 @@ decision_sector = {
 	allow = {
 		# prevent ui duplicating
 		custom_tooltip = {
+			fail_text = "irm.ui.settings.mod.disabled"
+			no_scope = { has_global_flag = irm_mod_enabled } # mod
+		}
+		# prevent ui duplicating
+		custom_tooltip = {
 			fail_text = "decision_sector_req"
 			not = { exists = event_target:irm_ui_sector }
 		}
