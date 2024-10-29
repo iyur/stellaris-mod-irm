@@ -2,6 +2,16 @@
 # Author: Iyur
 # Settings ui buttons
 
+# reset
+irm_mod_reset = {
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.settings.mod.reset.tt"
+			irm_mod_reset = yes
+		}
+	}
+}
+
 # core
 irm_mod = {
 	effect = {
@@ -12,19 +22,6 @@ irm_mod = {
 	}
 }
 irm_mod_on = {
-	potential = { no_scope = { has_global_flag = irm_mod_disabled } }
-	# allow = { always = no }
-	effect = {
-		hidden_effect = {
-			custom_tooltip = "irm.ui.settings.mod.basic.tt"
-			custom_tooltip = "irm.ui.settings.mod.basic.tt.mod"
-			custom_tooltip = "irm.ui.settings.mod.tt.off"
-			irm_switch_flag = { scope = global flag = irm_mod status = yes }
-			irm_reg_mod_change = { mod = irm_mod }
-		}
-	}
-}
-irm_mod_off = {
 	potential = { no_scope = { has_global_flag = irm_mod_enabled } }
 	# allow = { always = no }
 	effect = {
@@ -37,6 +34,40 @@ irm_mod_off = {
 		}
 	}
 }
+irm_mod_off = {
+	potential = { no_scope = { has_global_flag = irm_mod_disabled } }
+	# allow = { always = no }
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.settings.mod.basic.tt"
+			custom_tooltip = "irm.ui.settings.mod.basic.tt.mod"
+			custom_tooltip = "irm.ui.settings.mod.tt.off"
+			irm_switch_flag = { scope = global flag = irm_mod status = yes }
+			irm_reg_mod_change = { mod = irm_mod }
+		}
+	}
+}
+irm_mod_na = {
+	potential = {
+		no_scope = {
+			nor = {
+				has_global_flag = irm_mod_enabled
+				has_global_flag = irm_mod_disabled
+			}
+		}
+	}
+	# allow = { always = no }
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.settings.mod.basic.tt"
+			custom_tooltip = "irm.ui.settings.mod.basic.tt.mod"
+			custom_tooltip = "irm.ui.settings.mod.tt.off"
+			no_scope = { set_global_flag = irm_mod_enabled }
+			irm_reg_mod_change = { mod = irm_mod }
+		}
+	}
+}
+
 
 # extensions temp
 irm_mod_ext = {
@@ -52,7 +83,7 @@ irm_mod_ext_off = {
 	effect = {
 		hidden_effect = {
 			custom_tooltip = "irm.ui.settings.mod.ext.tt"
-			custom_tooltip = "irm.ui.settings.mod.tt.on"
+			custom_tooltip = "irm.ui.settings.mod.tt.off"
 		}
 	}
 }
