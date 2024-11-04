@@ -90,21 +90,13 @@ event = {
 						has_sector_flag = irm_ui_sector_reform
 					}
 				}
+				# pick the system from where we could expand
 				random_system_within_border = {
+					limit = {
+						any_neighbor_system = { irm_system_can_expand = yes }
+					}
 					random_neighbor_system = {
-						limit = {
-							has_owner = no
-							has_hyperlane_to = prev
-							distance = {
-								source = prev
-								type = hyperlane
-								max_jumps = 1
-							}
-							# todo: check against sector size
-							# todo: check hostiles
-							# todo: check constructors on the orbit
-							# todo: check marks
-						}
+						limit = { irm_system_can_expand = yes }
 						prev = { save_event_target_as = irm_system_expanding }
 						system_event = { id = irm_sector.31 days = 1 random = 5 scopes = { from = prev } }
 					}

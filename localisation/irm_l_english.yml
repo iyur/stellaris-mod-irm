@@ -32,7 +32,12 @@ l_english:
   irm_normal_sector_15: "$irm.ui.sector$"
 
 
-# SYSTEMS # ------------------------------------------------------------------------------------
+# MESSAGES # --------------------------------------------------------------------------------------
+
+  irm_message_sector_expanded: "Sector expanded"
+  irm_message_sector_expanded_desc: "$SECTOR|Y$ sector has built a new outpost in $SYSTEM|Y$ system."
+
+# SYSTEMS # ---------------------------------------------------------------------------------------
 
   irm_sys_sector: "Sector Capital"
   irm_sys_market: "Galactic Market"

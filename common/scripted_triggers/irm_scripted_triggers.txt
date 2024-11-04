@@ -55,3 +55,30 @@ irm_init_custom_sector = {
 		has_planet_flag = irm_normal_sector_15
 	}
 }
+
+# This = System
+# Checks whether the sector could expand from given system
+irm_system_can_expand = {
+	has_owner = no
+	has_hyperlane_to = prev
+	is_surveyed = {
+		who = prev.space_owner
+		status = yes
+	}
+	distance = {
+		source = prev
+		type = hyperlane
+		max_jumps = 1
+	}
+	not = {
+		any_ship_in_system = {
+			exists = owner
+			owner = {
+				or = {
+					is_hostile = prevprevprev.owner
+					is_hostile_to = prevprevprev.owner
+				}
+			}
+		}
+	}
+}
