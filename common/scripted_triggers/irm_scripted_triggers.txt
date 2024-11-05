@@ -82,3 +82,53 @@ irm_system_can_expand = {
 		}
 	}
 }
+
+# This = System
+# Checks whether the system is within the sector max range
+irm_system_is_sector_max_extent = {
+	if = {
+		limit = {
+			sector = {
+				or = {
+					has_sector_type = core_sector
+					has_sector_type = normal_sector
+				}
+			}
+		}
+		distance = {
+			source = sector.sector_capital
+			type = hyperlane
+			min_jumps > 4
+		}
+	}
+	if = {
+		limit = {
+			sector = {
+				or = {
+					has_sector_type = irm_core_sector_10
+					has_sector_type = irm_normal_sector_10
+				}
+			}
+		}
+		distance = {
+			source = sector.sector_capital
+			type = hyperlane
+			min_jumps > 9
+		}
+	}
+	if = {
+		limit = {
+			sector = {
+				or = {
+					has_sector_type = irm_core_sector_15
+					has_sector_type = irm_normal_sector_15
+				}
+			}
+		}
+		distance = {
+			source = sector.sector_capital
+			type = hyperlane
+			min_jumps > 14
+		}
+	}
+}

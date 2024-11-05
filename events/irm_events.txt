@@ -93,8 +93,10 @@ event = {
 				# pick the system from where we could expand
 				random_system_within_border = {
 					limit = {
+						not = { irm_system_is_sector_max_extent = yes }
 						any_neighbor_system = { irm_system_can_expand = yes }
 					}
+					# log = "[This.GetName]"
 					random_neighbor_system = {
 						limit = { irm_system_can_expand = yes }
 						prev = { save_event_target_as = irm_system_expanding }

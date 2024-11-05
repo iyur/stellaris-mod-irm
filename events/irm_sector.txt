@@ -357,7 +357,6 @@ system_event = {
 		from.owner = {
 			create_message = {
 				type = STARBASE_CONSTRUCTION_MESSAGE_TYPE
-				name = "irm_message_sector_expanded"
 				localization = "irm_message_sector_expanded_desc"
 				days = 30
 				target = root
