@@ -1,0 +1,34 @@
+# Global Event Country - Do Not Remove
+irm_country_sector = {
+	playable = no
+	counts_for_victory = no
+	needs_survey = no
+	observable = no
+	share_communications = no
+	relations = no
+	hide_names_if_no_communication = yes
+	show_in_contacts_list = no
+	can_have_their_comms_shared = no
+	can_use_invalid_technology = yes
+	custom_diplomacy = yes
+	government = no
+	uses_origins = no
+	has_capital = no
+	default_ships = no
+	ai = {
+		enabled = no
+	}
+	faction = {
+		hostile = no
+		needs_border_access = no
+		generate_borders = no
+		needs_colony = no
+		auto_delete = no
+	}
+	modules = {
+		standard_event_module = {} # Needed for events
+		exclusive_diplomacy_module = {
+			contact_rule = on_action_only
+		}
+	}
+}

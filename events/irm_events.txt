@@ -64,14 +64,67 @@ event = {
 			irm_reg_mod_change = { mod = irm_mod type = ini }
 			irm_reg_mod_change = { mod = irm_mod type = upd }
 			log = "irm mod initialized"
+			every_playable_country = {
+				limit = {
+					is_ai = no
+					is_country_type = default
+				}
+				country_event = { id = irm.11 }
+			}
 		}
 	}
 
 }
 
+# Creates dummy sector country for each human player
+country_event = {
+	id = irm.11
+	hide_window = yes
+	mean_time_to_happen = { days = 1 }
+
+	trigger = {
+		is_ai = no
+		is_country_type = default
+		not = {
+			any_country = {
+				is_country_type = irm_country_sector
+				has_country_flag = irm_country_sector_@root
+			}
+		}
+	}
+	immediate = {
+		create_country = {
+			name = root
+			type = irm_country_sector
+			auto_delete = no
+			ignore_initial_colony_error = yes
+			day_zero_contact = no
+			contact_rule = on_action_only
+			species = root.owner_species
+			civics = root
+			ethos = root
+			flag = root
+		}
+		last_created_country = {
+			set_name = {
+				key = irm.ui.sector.country
+				variable_string = "[Root.GetName]"
+			}
+			set_country_flag = irm_country_sector_@root
+			copy_flags_and_variables_from = root
+			copy_ethos_and_authority = root
+			set_faction_hostility = { target = root set_hostile = no set_neutral = no set_friendly = yes }
+			log = "sector dummy created for [Prev.GetName]"
+		}
+	}
+
+}
+
+# GLOBAL
+# Bi-yearly pulse
 namespace = irm_2y
 
-# Global
+# Creates sector constructors
 event = {
 	id = irm_2y.1
 	hide_window = yes
@@ -80,7 +133,82 @@ event = {
 	immediate = {
 		# players only
 		every_playable_country = {
-			limit = { is_ai = no }
+			limit = {
+				is_ai = no
+				is_country_type = default
+			}
+			if = {
+				limit = {
+					not = {
+						any_country = {
+							is_country_type = irm_country_sector
+							has_country_flag = irm_country_sector_@prev
+						}
+					}
+				}
+				country_event = { id = irm.11 }
+			}
+			# create constructor, if not exists
+			else = {
+				every_owned_sector = {
+					limit = {
+						not = {
+							any_country = {
+								is_country_type = irm_country_sector
+								has_country_flag = irm_country_sector_@prev.owner
+								any_owned_fleet = {
+									has_fleet_flag = irm_sector_constructor_@prevprev
+								}
+							}
+						}
+					}
+					prev = {
+						create_fleet = {
+							effect = {
+								set_owner = prev
+								set_location = prevprev.sector_capital
+								set_fleet_flag = irm_sector_constructor_@prevprev
+								set_name = {
+									key = irm.ui.sector.constructor
+									variable_string = "[PrevPrev.GetName]"
+								}
+
+								create_ship = {
+									name = random
+									random_existing_design = constructor
+								}
+
+								random_country = {
+									limit = {
+										is_country_type = irm_country_sector
+										has_country_flag = irm_country_sector_@prevprev
+									}
+									prev = { set_owner = prev }
+								}
+
+							}
+						}
+					}
+				} # sector
+			}
+		}
+	}
+
+}
+
+# Expands sectors
+event = {
+	id = irm_2y.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# players only
+		every_playable_country = {
+			limit = {
+				is_ai = no
+				is_country_type = default
+			}
 			# sector expansion
 			every_owned_sector = {
 				limit = {
