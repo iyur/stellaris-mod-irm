@@ -93,29 +93,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		create_country = {
-			name = root
-			type = irm_country_sector
-			auto_delete = no
-			ignore_initial_colony_error = yes
-			day_zero_contact = no
-			contact_rule = on_action_only
-			species = root.owner_species
-			civics = root
-			ethos = root
-			flag = root
-		}
-		last_created_country = {
-			set_name = {
-				key = irm.ui.sector.country
-				variable_string = "[Root.GetName]"
-			}
-			set_country_flag = irm_country_sector_@root
-			copy_flags_and_variables_from = root
-			copy_ethos_and_authority = root
-			set_faction_hostility = { target = root set_hostile = no set_neutral = no set_friendly = yes }
-			log = "sector dummy created for [Prev.GetName]"
-		}
+		irm_sector_make_dummy = yes
 	}
 
 }
@@ -162,33 +140,7 @@ event = {
 							}
 						}
 					}
-					prev = {
-						create_fleet = {
-							effect = {
-								set_owner = prev
-								set_location = prevprev.sector_capital
-								set_fleet_flag = irm_sector_constructor_@prevprev
-								set_name = {
-									key = irm.ui.sector.constructor
-									variable_string = "[PrevPrev.GetName]"
-								}
-
-								create_ship = {
-									name = random
-									random_existing_design = constructor
-								}
-
-								random_country = {
-									limit = {
-										is_country_type = irm_country_sector
-										has_country_flag = irm_country_sector_@prevprev
-									}
-									prev = { set_owner = prev }
-								}
-
-							}
-						}
-					}
+					irm_sector_make_constructor = yes
 				} # sector
 			}
 		}
@@ -218,19 +170,7 @@ event = {
 						has_sector_flag = irm_ui_sector_reform
 					}
 				}
-				# pick the system from where we could expand
-				random_system_within_border = {
-					limit = {
-						not = { irm_system_is_sector_max_extent = yes }
-						any_neighbor_system = { irm_system_can_expand = yes }
-					}
-					# log = "[This.GetName]"
-					random_neighbor_system = {
-						limit = { irm_system_can_expand = yes }
-						prev = { save_event_target_as = irm_system_expanding }
-						system_event = { id = irm_sector.31 days = 1 random = 5 scopes = { from = prev } }
-					}
-				}
+				irm_sector_try_expand = yes
 			}
 		}
 	}

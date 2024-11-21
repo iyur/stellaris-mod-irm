@@ -1,0 +1,8 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Custom global variables
+
+@irm_sector_size_single = 1
+@irm_sector_size_normal = 4
+@irm_sector_size_large = 9
+@irm_sector_size_huge = 14

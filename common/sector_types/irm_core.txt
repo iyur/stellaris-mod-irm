@@ -33,7 +33,7 @@ irm_core_sector_1 = {
 		minerals = 1
 	}
 
-	max_jumps = 1
+	max_jumps = @irm_sector_size_single
 }
 
 #irm_core_sector_5 = {
@@ -61,7 +61,7 @@ irm_core_sector_1 = {
 #		category = sector
 #	}
 #
-#	max_jumps = 9
+#	max_jumps = @irm_sector_size_normal
 #}
 
 irm_core_sector_10 = {
@@ -89,7 +89,7 @@ irm_core_sector_10 = {
 		category = sector
 	}
 
-	max_jumps = 9
+	max_jumps = @irm_sector_size_large
 }
 
 irm_core_sector_15 = {
@@ -117,6 +117,6 @@ irm_core_sector_15 = {
 		category = sector
 	}
 
-	max_jumps = 14
+	max_jumps = @irm_sector_size_huge
 }
 

@@ -349,7 +349,7 @@ system_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		print_scope_effect = yes
+		# print_scope_effect = yes
 		create_starbase = {
 			size = starbase_outpost
 			owner = from.owner
@@ -374,4 +374,42 @@ system_event = {
 		}
 
 	}
+}
+
+# This = Country
+# From = Sector
+# Creates constructor for given sector
+country_event = {
+	id = irm_sector.41
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		create_fleet = {
+			effect = {
+				set_owner = root
+				set_location = from.sector_capital
+				set_fleet_flag = irm_sector_constructor_@from
+				set_name = {
+					key = irm.ui.sector.constructor
+					variable_string = "[From.GetName]"
+				}
+
+				create_ship = {
+					name = random
+					random_existing_design = constructor
+				}
+
+				random_country = {
+					limit = {
+						is_country_type = irm_country_sector
+						has_country_flag = irm_country_sector_@from
+					}
+					prev = { set_owner = prev }
+				}
+
+			}
+		}
+	}
+
 }

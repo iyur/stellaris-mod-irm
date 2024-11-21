@@ -1,7 +1,7 @@
 core_sector = {
 
 	system_scores = {
-		base = -10000
+		base = 2
 	}
 
 	local_capital_scores = {
@@ -30,6 +30,6 @@ core_sector = {
 		category = sector
 	}
 
-	max_jumps = 4
+	max_jumps = @irm_sector_size_normal
 }
 

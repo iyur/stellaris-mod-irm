@@ -62,3 +62,9 @@ irm_switch_flag = {
 		}
 	]
 }
+
+# This = Any
+# Controllable debug message
+irm_log = {
+	log = $message$
+}

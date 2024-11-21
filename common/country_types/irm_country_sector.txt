@@ -26,7 +26,7 @@ irm_country_sector = {
 		auto_delete = no
 	}
 	modules = {
-		standard_event_module = {} # Needed for events
+		standard_event_module = {}
 		exclusive_diplomacy_module = {
 			contact_rule = on_action_only
 		}

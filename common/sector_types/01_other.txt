@@ -27,5 +27,5 @@ normal_sector = {
 		category = sector
 	}
 
-	max_jumps = 4
+	max_jumps = @irm_sector_size_normal
 }
