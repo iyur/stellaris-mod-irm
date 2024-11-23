@@ -1,0 +1,52 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Sector fleet actions & effects
+
+# Simulate outpost construction in the given system
+irm_fleet_build_outpost = {
+	queue_actions = {
+		move_to = $target$
+		find_closest_planet = {
+			trigger = {
+				id = irm.fleet.build.outpost.1.t
+				is_star = yes
+			}
+			found_planet = {
+				orbit_planet = this
+				wait = { duration = 29 }
+				effect = {
+					id = irm.fleet.build.outpost.1.e
+					prev = { irm_fleet_create_outpost = yes }
+				}
+			}
+		}
+	}
+}
+
+# This = Fleet
+irm_fleet_create_outpost = {
+	solar_system = {
+		create_starbase = {
+			size = starbase_outpost
+			owner = event_target:irm_sector_expanding.owner
+		}
+	}
+	event_target:irm_sector_expanding.owner = {
+		create_message = {
+			type = STARBASE_CONSTRUCTION_MESSAGE_TYPE
+			localization = "irm_message_sector_expanded_desc"
+			days = 30
+			target = prev.solar_system
+			variable = {
+				type = name
+				localization = SECTOR
+				scope = event_target:irm_sector_expanding
+			}
+			variable = {
+				type = name
+				localization = SYSTEM
+				scope = prev.solar_system
+			}
+		}
+	}
+}

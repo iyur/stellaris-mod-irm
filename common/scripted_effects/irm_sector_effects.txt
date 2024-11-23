@@ -103,9 +103,21 @@ irm_sector_try_expand = {
 				limit = { irm_system_can_expand = yes }
 				if = {
 					limit = { exists = this }
-					prev = { save_event_target_as = irm_system_expanding }
-					system_event = { id = irm_sector.31 days = 1 random = 5 scopes = { from = prev } }
-					log = "\\[Prev.GetName] is suitable for expansion"
+					prevprev = { save_event_target_as = irm_sector_expanding }
+					# system_event = { id = irm_sector.31 days = 1 random = 5 scopes = { from = prev } }
+					random_country = {
+						limit = {
+							is_country_type = irm_country_sector
+							has_country_flag = irm_country_sector_@prevprev.owner
+						}
+						random_owned_fleet = {
+							limit = {
+								has_fleet_flag = irm_sector_constructor_@prevprevprev.sector
+							}
+							irm_fleet_build_outpost = { target = prevprev }
+						}
+					}
+					log = "constructor sent to \\[This.GetName] for expansion"
 				}
 			}
 		}
