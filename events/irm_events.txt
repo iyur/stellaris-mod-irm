@@ -130,7 +130,8 @@ event = {
 			else = {
 				every_owned_sector = {
 					limit = {
-						not = {
+						nor = {
+							irm_sector_has_size_1 = yes
 							any_country = {
 								is_country_type = irm_country_sector
 								has_country_flag = irm_country_sector_@prev.owner
@@ -165,10 +166,10 @@ event = {
 			every_owned_sector = {
 				limit = {
 					nor = {
-						has_sector_type = irm_core_sector_1
-						has_sector_type = irm_normal_sector_1
+						irm_sector_has_size_1 = yes
 						has_sector_flag = irm_ui_sector_reform
 					}
+					has_sector_flag = irm_sector_expansion_allowed
 				}
 				irm_sector_try_expand = yes
 			}

@@ -16,7 +16,19 @@ irm_fleet_build_outpost = {
 				wait = { duration = 29 }
 				effect = {
 					id = irm.fleet.build.outpost.1.e
-					prev = { irm_fleet_create_outpost = yes }
+					if = {
+						limit = {
+							any_fleet_in_orbit = {
+								not = { is_same_value = prevprev }
+								is_ship_class = shipclass_constructor
+								# has_fleet_order = build_orbital_station_order
+							}
+						}
+						log = "cannot build in \\[Prev.System.GetName]"
+					}
+					else = {
+						prev = { irm_fleet_create_outpost = yes }
+					}
 				}
 			}
 		}

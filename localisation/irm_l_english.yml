@@ -43,23 +43,6 @@ l_english:
   irm_sys_market: "Galactic Market"
 
 
-# SITUATIONS # ------------------------------------------------------------------------------------
-
-  irm_situation_sector_reform: "Reform [Target.Sector.GetName] Sector"
-  irm_situation_sector_reform_desc: "The central goverment with local authorities on §H[Target.GetName]§! is considering to carry out the administrative and territorial reform of §H[Target.Sector.GetName] Sector§!.\n\nIt's proposed to change sector effective range to §d10§! jumps.\nWe must take control over the process."
-  irm_situation_sector_reform_type: "type?"
-  irm_situation_sector_reform_monthly_change_tooltip: "No changes. Awaiting your orders."
-  irm_sector_reform_finish_effect: "Sector type and size will be changed after this reform."
-  irm_sector_reform_cancel: "Cancel Reform"
-  irm_sector_reform_cancel_effect: "Reform will be cancelled with no effects."
-  irm_sector_reform_start: "Submit Reform"
-  irm_sector_reform_start_effect: "Please choose carefuly, this will launch all the administrative processes to reform the sector."
-  irm_sector_reform_1: "Stage I - Considering Reform"
-  irm_sector_reform_2: "Stage II - Two"
-  irm_sector_reform_2_effects: "This stage assumes that the existing sector territorial unit is removed, and a new sector type and size are chosen."
-  irm_sector_reform_3: "Stage III - Tri"
-
-
 # UI # --------------------------------------------------------------------------------------------
 
 # Base
@@ -366,12 +349,14 @@ l_english:
   irm.ui.sector.gov.policies.expansion.prohibited.tt: "§H$irm.ui.sector.gov.policies.expansion.prohibited$§!\n\nIf allowed, sector will automatically build new outposts within available range."
   irm.ui.sector.gov.policies.expansion.allowed: "Allowed"
   irm.ui.sector.gov.policies.expansion.allowed.tt: "§H$irm.ui.sector.gov.policies.expansion.allowed$§!\n\nIf allowed, sector will automatically build new outposts within available range."
+  irm.ui.sector.gov.policies.expansion.allowed.tt.na.signle: "§RSignle star sector cannot expand.§R"
 
   irm.ui.sector.gov.policies.colonization: "Inner Colonization"
   irm.ui.sector.gov.policies.colonization.prohibited: "Prohibited"
   irm.ui.sector.gov.policies.colonization.prohibited.tt: "§H$irm.ui.sector.gov.policies.colonization.prohibited$§!\n\nIf allowed, sector will automatically colonize worlds within the borders."
   irm.ui.sector.gov.policies.colonization.allowed: "Allowed"
   irm.ui.sector.gov.policies.colonization.allowed.tt: "§H$irm.ui.sector.gov.policies.colonization.allowed$§!\n\nIf allowed, sector will automatically colonize worlds within the borders."
+  irm.ui.sector.gov.policies.colonization.allowed.tt.na.signle: "§RSignle star sector cannot colonize.§R"
 
   # fleet
   irm.ui.sector.gov.fleet: "Fleet Command"

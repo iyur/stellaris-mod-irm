@@ -1131,8 +1131,10 @@ irm_bt_sector_expansion_allowed_off = {
 	}
 	allow = {
 		custom_tooltip = {
-			fail_text = "irm.soon"
-			always = no
+			fail_text = "irm.ui.sector.gov.policies.expansion.allowed.tt.na.signle"
+			event_target:irm_ui_sector = {
+				not = { irm_sector_has_size_1 = yes }
+			}
 		}
 	}
 	effect = {
@@ -1202,8 +1204,10 @@ irm_bt_sector_colonization_allowed_off = {
 	}
 	allow = {
 		custom_tooltip = {
-			fail_text = "irm.soon"
-			always = no
+			fail_text = "irm.ui.sector.gov.policies.colonization.allowed.tt.na.signle"
+			event_target:irm_ui_sector = {
+				not = { irm_sector_has_size_1 = yes }
+			}
 		}
 	}
 	effect = {

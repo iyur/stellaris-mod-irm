@@ -71,6 +71,7 @@ irm_sector_make_constructor = {
 			}
 			log = "constructor built for \\[Prev.GetName]"
 		}
+		irm_unset = { which = irm_constructor_cost }
 	}
 }
 
@@ -78,6 +79,17 @@ irm_sector_make_constructor = {
 # Prev = Country (Player)
 # Check if sector can expand and send constructor here
 irm_sector_try_expand = {
+	owner = {
+		export_modifier_to_variable = {
+			modifier = starbase_outpost_cost_mult
+			variable = irm_outpost_cost
+		}
+		change_variable = { which = irm_outpost_cost value = 1 }
+		set_variable = { which = irm_outpost_cost_alloys value = irm_outpost_cost }
+		set_variable = { which = irm_outpost_cost_influence value = irm_outpost_cost }
+		multiply_variable = { which = irm_outpost_cost_alloys value = 100 }
+		multiply_variable = { which = irm_outpost_cost_influence value = 75 }
+	}
 	if = {
 		limit = {
 			not = {
@@ -92,6 +104,17 @@ irm_sector_try_expand = {
 		}
 		irm_sector_make_constructor = yes
 	}
+	else_if = {
+		limit = {
+			owner = {
+				or = {
+					has_resource = { type = alloys amount < irm_outpost_cost_alloys }
+					has_resource = { type = alloys amount < irm_outpost_cost_influence }
+				}
+			}
+		}
+		log = "\\[Prev.GetName] has no resources for outpost"
+	}
 	else = {
 		# pick the system from where we could expand
 		random_system_within_border = {
@@ -103,7 +126,13 @@ irm_sector_try_expand = {
 				limit = { irm_system_can_expand = yes }
 				if = {
 					limit = { exists = this }
-					prevprev = { save_event_target_as = irm_sector_expanding }
+					prevprev = {
+						save_event_target_as = irm_sector_expanding
+						owner = {
+							add_resource = { alloys = -1 mult = irm_outpost_cost_alloys }
+							add_resource = { influence = -1 mult = irm_outpost_cost_influence }
+						}
+					}
 					# system_event = { id = irm_sector.31 days = 1 random = 5 scopes = { from = prev } }
 					random_country = {
 						limit = {
@@ -113,6 +142,7 @@ irm_sector_try_expand = {
 						random_owned_fleet = {
 							limit = {
 								has_fleet_flag = irm_sector_constructor_@prevprevprev.sector
+								is_fleet_idle = yes
 							}
 							irm_fleet_build_outpost = { target = prevprev }
 						}
@@ -121,5 +151,10 @@ irm_sector_try_expand = {
 				}
 			}
 		}
+	}
+	owner = {
+		irm_unset = { which = irm_outpost_cost }
+		irm_unset = { which = irm_outpost_cost_alloys }
+		irm_unset = { which = irm_outpost_cost_influence }
 	}
 }
