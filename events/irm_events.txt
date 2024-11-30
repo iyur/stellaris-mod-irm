@@ -42,7 +42,7 @@ event = {
 
 }
 
-# PULSE
+# ON_ACTION / TRIGGERED
 
 namespace = irm
 
@@ -98,13 +98,13 @@ country_event = {
 
 }
 
-# GLOBAL
-# Bi-yearly pulse
-namespace = irm_2y
+# PULSE
 
-# Creates sector constructors
+# Bi-yearly pulse
+namespace = irm_y2
+
 event = {
-	id = irm_2y.1
+	id = irm_y2.1
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -124,34 +124,42 @@ event = {
 						}
 					}
 				}
-				country_event = { id = irm.11 }
+				country_event = { id = irm.11 days = 1 random = @irm_event_random_y }
 			}
 			# create constructor, if not exists
-			else = {
-				every_owned_sector = {
-					limit = {
-						nor = {
-							irm_sector_has_size_1 = yes
-							any_country = {
-								is_country_type = irm_country_sector
-								has_country_flag = irm_country_sector_@prev.owner
-								any_owned_fleet = {
-									has_fleet_flag = irm_sector_constructor_@prevprev
-								}
-							}
-						}
-					}
-					irm_sector_make_constructor = yes
-				} # sector
-			}
+			else = { country_event = { id = irm_y2.11 days = 1 random = @irm_event_random_y } }
 		}
 	}
 
 }
 
-# Expands sectors
+# - Creates sector constructors
+	country_event = {
+		id = irm_y2.11
+		hide_window = yes
+		is_triggered_only = yes
+
+		immediate = {
+			every_owned_sector = {
+				limit = {
+					nor = {
+						irm_sector_has_size_1 = yes
+						any_country = {
+							is_country_type = irm_country_sector
+							has_country_flag = irm_country_sector_@prev.owner
+							any_owned_fleet = {
+								has_fleet_flag = irm_sector_constructor_@prevprev
+							}
+						}
+					}
+				}
+				irm_sector_make_constructor = yes
+			}
+		}
+	}
+
 event = {
-	id = irm_2y.2
+	id = irm_y2.2
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -162,6 +170,19 @@ event = {
 				is_ai = no
 				is_country_type = default
 			}
+			country_event = { id = irm_y2.21 days = 1 random = @irm_event_random_y }
+		}
+	}
+
+}
+
+# - Expands sectors
+	country_event = {
+		id = irm_y2.21
+		hide_window = yes
+		is_triggered_only = yes
+
+		immediate = {
 			# sector expansion
 			every_owned_sector = {
 				limit = {
@@ -174,6 +195,5 @@ event = {
 				irm_sector_try_expand = yes
 			}
 		}
-	}
 
-}
+	}
