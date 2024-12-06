@@ -82,6 +82,7 @@ l_english:
   irm.ui.sector.title: "[Root.Sector.GetName] Sector"
   irm.ui.sector.country: "[Root.GetName] §L(Sector)§!"
   irm.ui.sector.constructor: "[PrevPrev.GetName] Engineer Fleet"
+  irm.ui.sector.colonizer: "[PrevPrev.GetName] Colonial Fleet"
 
   # type & icons
   irm.ui.sector.type: "[irm_ui_sector.irm_GetSectorType]"

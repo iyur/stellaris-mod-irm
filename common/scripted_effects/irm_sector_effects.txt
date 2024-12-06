@@ -133,7 +133,6 @@ irm_sector_try_expand = {
 							add_resource = { influence = -1 mult = irm_outpost_cost_influence }
 						}
 					}
-					# system_event = { id = irm_sector.31 days = 1 random = 5 scopes = { from = prev } }
 					random_country = {
 						limit = {
 							is_country_type = irm_country_sector
@@ -156,5 +155,101 @@ irm_sector_try_expand = {
 		irm_unset = { which = irm_outpost_cost }
 		irm_unset = { which = irm_outpost_cost_alloys }
 		irm_unset = { which = irm_outpost_cost_influence }
+	}
+}
+
+# This = Sector
+# Prev = Country
+# Creates colony ship for sector
+irm_sector_make_colonizer = {
+	prev = {
+		# get modifiers for construction cost
+		export_modifier_to_variable = {
+			modifier = shipclass_colonizer_build_cost_mult
+			variable = irm_colonizer_cost
+		}
+		change_variable = { which = irm_colonizer_cost value = 1 }
+		multiply_variable = { which = irm_colonizer_cost value = @colony_cost_base }
+		set_variable = { which = irm_colonizer_cost_energy value = irm_colonizer_cost }
+		set_variable = { which = irm_colonizer_cost_minerals value = irm_colonizer_cost }
+		set_variable = { which = irm_colonizer_cost_food value = irm_colonizer_cost }
+		if = {
+			limit = {
+				owner = {
+					or = {
+						has_resource = { type = alloys amount < irm_colonizer_cost_energy }
+						has_resource = { type = alloys amount < irm_colonizer_cost_minerals }
+						has_resource = { type = alloys amount < irm_colonizer_cost_food }
+					}
+				}
+			}
+			log = "\\[Prev.GetName] has no resources for colonizer"
+		}
+		else = {
+			add_resource = { energy = -1 mult = irm_colonizer_cost_energy }
+			add_resource = { minerals = -1 mult = irm_colonizer_cost_minerals }
+			add_resource = { food = -1 mult = irm_colonizer_cost_food }
+			create_fleet = {
+				effect = {
+					set_owner = prev
+					set_location = prevprev.sector_capital # REWRITE
+					set_fleet_flag = irm_sector_colonizer_@prevprev
+					set_name = {
+						key = irm.ui.sector.colonizer
+						variable_string = "\\[PrevPrev.GetName]"
+					}
+
+					create_ship = {
+						name = random
+						random_existing_design = colonizer
+					}
+
+					random_country = {
+						limit = {
+							is_country_type = irm_country_sector
+							has_country_flag = irm_country_sector_@prevprev
+						}
+						prev = { set_owner = prev }
+					}
+
+				}
+			}
+			log = "colonizer built for \\[Prev.GetName]"
+		}
+		irm_unset = { which = irm_colonizer_cost }
+		irm_unset = { which = irm_colonizer_cost_energy }
+		irm_unset = { which = irm_colonizer_cost_minerals }
+		irm_unset = { which = irm_colonizer_cost_food }
+	}
+}
+
+# This = Sector
+# Prev = Country (Player)
+# Check if sector can colonize and send ships
+irm_sector_try_colonize = {
+	if = {
+		limit = { not = { irm_sector_has_fleet = { type = colonizer } } }
+		irm_sector_make_colonizer = yes
+	}
+	# pick the planet we should colonize
+	random_system_within_border = {
+		limit = { any_system_planet = { irm_is_colonizable = yes } }
+		random_system_planet = {
+			limit = { irm_is_colonizable = yes }
+			random_country = {
+				limit = {
+					is_country_type = irm_country_sector
+					has_country_flag = irm_country_sector_@prevprev.owner
+				}
+				random_owned_fleet = {
+					limit = {
+						has_fleet_flag = irm_sector_colonizer_@prevprevprev.sector
+						is_fleet_idle = yes
+					}
+					irm_fleet_colonize = { target = prevprev }
+				}
+			}
+			log = "colonizer sent to \\[This.GetName]"
+		}
 	}
 }

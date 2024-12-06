@@ -27,7 +27,7 @@ irm_fleet_build_outpost = {
 						log = "cannot build in \\[Prev.System.GetName]"
 					}
 					else = {
-						prev = { irm_fleet_create_outpost = yes }
+						prev = { irm_create_outpost = yes }
 					}
 				}
 			}
@@ -36,7 +36,7 @@ irm_fleet_build_outpost = {
 }
 
 # This = Fleet
-irm_fleet_create_outpost = {
+irm_create_outpost = {
 	solar_system = {
 		create_starbase = {
 			size = starbase_outpost
@@ -58,6 +58,50 @@ irm_fleet_create_outpost = {
 				type = name
 				localization = SYSTEM
 				scope = prev.solar_system
+			}
+		}
+	}
+}
+
+# Move ahead to a new colony
+irm_fleet_colonize = {
+	queue_actions = {
+		move_to = $target$
+		orbit_planet = $target$
+		wait = 5
+		effect = {
+			id = irm.fleet.colonize.1.e
+			if = {
+				limit = {
+					orbit = {
+						or = {
+							has_owner = yes
+							is_colony = yes
+						}
+					}
+				}
+				log = "cannot colonize \\[PrevPrev.GetName]"
+				clear_fleet_actions = this
+				queue_actions = {
+					move_to = prevprevprevprev.sector_capital
+				}
+			}
+			else = {
+				orbit = {
+					prev = {
+						random_controlled_ship = {
+							species = {
+								prevprevprev = {
+									start_colony = {
+										species = prev
+									}
+								}
+							}
+						}
+					}
+					log = "colonization of \\[This.GetName] has been started"
+				}
+				delete_fleet = this
 			}
 		}
 	}

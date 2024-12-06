@@ -31,6 +31,13 @@ irm_sector_has_size_15 = {
 	has_sector_type = irm_normal_sector_15
 }
 
+# This = Planet
+irm_is_colonizable = {
+	has_owner = no
+	is_colony = no
+	is_colonizable = yes
+}
+
 # This = Sector
 irm_is_sector_core = {
 	or = {
@@ -129,6 +136,18 @@ irm_system_is_sector_max_extent = {
 			source = sector.sector_capital
 			type = hyperlane
 			min_jumps > 14
+		}
+	}
+}
+
+# This = Sector
+# Checkes whether sector has a special fleet
+irm_sector_has_fleet = {
+	any_country = {
+		is_country_type = irm_country_sector
+		has_country_flag = irm_country_sector_@prev.owner
+		any_owned_fleet = {
+			has_fleet_flag = irm_sector_$type$_@prevprev
 		}
 	}
 }

@@ -158,6 +158,7 @@ event = {
 		}
 	}
 
+# Sector events gateways
 event = {
 	id = irm_y2.2
 	hide_window = yes
@@ -183,7 +184,6 @@ event = {
 		is_triggered_only = yes
 
 		immediate = {
-			# sector expansion
 			every_owned_sector = {
 				limit = {
 					nor = {
@@ -193,6 +193,32 @@ event = {
 					has_sector_flag = irm_sector_expansion_allowed
 				}
 				irm_sector_try_expand = yes
+			}
+		}
+
+	}
+
+# - Colonize planets
+	country_event = {
+		id = irm_y2.22
+		hide_window = yes
+		is_triggered_only = yes
+
+		immediate = {
+			every_owned_sector = {
+				limit = {
+					nor = {
+						irm_sector_has_size_1 = yes
+						has_sector_flag = irm_ui_sector_reform
+					}
+					has_sector_flag = irm_sector_colonization_allowed
+					any_system_within_border = {
+						any_system_planet = {
+							irm_is_colonizable = yes
+						}
+					}
+				}
+				irm_sector_try_colonize = yes
 			}
 		}
 
