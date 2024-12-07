@@ -2,6 +2,36 @@
 # Author: Iyur
 # Sector fleet actions & effects
 
+# Send fleet back to home base
+irm_fleet_return = {
+	owner = { # dummy sector
+		random_playable_country = {
+			limit = {
+				is_ai = no
+				is_country_type = default
+				prev = { has_country_flag = irm_country_sector_@prev }
+			}
+			random_owned_sector = {
+				limit = {
+					prevprevprev = {
+						or = {
+							has_fleet_flag = irm_sector_constructor_@prev
+							has_fleet_flag = irm_sector_colonizer_@prev
+						}
+					}
+				}
+				sector_capital.starbase = {
+					prevprevprevprev = {
+						queue_actions = {
+							move_to = prev
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 # Simulate outpost construction in the given system
 irm_fleet_build_outpost = {
 	queue_actions = {
@@ -82,9 +112,7 @@ irm_fleet_colonize = {
 				}
 				log = "cannot colonize \\[PrevPrev.GetName]"
 				clear_fleet_actions = this
-				queue_actions = {
-					move_to = prevprevprevprev.sector_capital
-				}
+				irm_fleet_return = yes
 			}
 			else = {
 				orbit = {
