@@ -107,8 +107,27 @@ irm_fleet_colonize = {
 				limit = {
 					orbit = {
 						or = {
-							has_owner = yes
-							is_colony = yes
+							solar_system = { has_owner = no }
+							and = {
+								solar_system = {
+									exists = space_owner
+									space_owner = {
+										not = {
+											any_playable_country = {
+												is_ai = no
+												is_country_type = default
+												prevprevprevprev.owner = {
+													has_country_flag = irm_country_sector_@prev
+												}
+											}
+										}
+									}
+								}
+							}
+							and = {
+								has_owner = yes
+								is_colony = yes
+							}
 						}
 					}
 				}
