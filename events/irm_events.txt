@@ -100,6 +100,48 @@ country_event = {
 
 # PULSE
 
+# Monthly pulse
+namespace = irm_m
+
+event = {
+	id = irm_m.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# players only
+		every_playable_country = {
+			limit = {
+				is_ai = no
+				is_country_type = default
+			}
+			# return idle
+			country_event = { id = irm_m.11 days = 1 random = 5 }
+		}
+	}
+
+}
+
+# - Auto return idle sector fleets
+	country_event = {
+		id = irm_m.11
+		hide_window = yes
+		is_triggered_only = yes
+
+		immediate = {
+			random_country = {
+				limit = {
+					is_country_type = irm_country_sector
+					has_country_flag = irm_country_sector_@prev
+				}
+				every_owned_fleet = {
+					limit = { is_fleet_idle = yes }
+					irm_fleet_return = yes
+				}
+			}
+		}
+	}
+
 # Bi-yearly pulse
 namespace = irm_y2
 

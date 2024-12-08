@@ -20,6 +20,13 @@ on_press_begin = {
 }
 
 # No scope, like on_game_start
+on_monthly_pulse = {
+	events = {
+		irm_m.1
+	}
+}
+
+# No scope, like on_game_start
 on_bi_yearly_pulse = {
 	events = {
 		irm_y2.1
