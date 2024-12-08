@@ -1,0 +1,12 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Some specific tooltips to show
+
+irm_sector_capital_tooltip = {
+	custom_tooltip = {
+		success_text = irm_existing_sector_tt
+
+		exists = from
+		exists = sector
+	}
+}

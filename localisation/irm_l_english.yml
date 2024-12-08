@@ -42,6 +42,10 @@ l_english:
   irm_sys_sector: "Sector Capital"
   irm_sys_market: "Galactic Market"
 
+# TOOLTIPS # --------------------------------------------------------------------------------------
+
+  irm_existing_sector_tt: "\nManaged within §H[This.Sector.GetName]§! sector.\n"
+
 
 # UI # --------------------------------------------------------------------------------------------
 
