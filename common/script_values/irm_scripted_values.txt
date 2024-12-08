@@ -226,17 +226,3 @@ irm_distance_jumps_ = {
 		}
 	}
 }
-
-
-#effect = { set_variable = { which = irm_test value =  value:irm_distance_ } }
-
-effect = {
-	export_trigger_value_to_variable = {
-		trigger = distance
-		parameters = {
-   			source = root.sector.sector_capital
-   			type = hyperlane		
-		}
-		variable = irm_test2
-	}
-}

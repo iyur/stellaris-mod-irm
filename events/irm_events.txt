@@ -206,15 +206,22 @@ event = {
 
 		immediate = {
 			every_owned_sector = {
+				# criterias to laucnh a new colonization
 				limit = {
 					nor = {
 						irm_sector_has_size_1 = yes
 						has_sector_flag = irm_ui_sector_reform
+						any_system_within_border = {
+							any_system_planet = {
+								is_under_colonization = yes
+							}
+						}
 					}
 					has_sector_flag = irm_sector_colonization_allowed
 					any_system_within_border = {
 						any_system_planet = {
 							irm_is_colonizable = yes
+							can_colonize = { who = prevprev.owner status = yes }
 						}
 					}
 				}

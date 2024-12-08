@@ -93,6 +93,8 @@ irm_create_outpost = {
 	}
 }
 
+# This = Fleet
+# Prev = Country (dummy)
 # Move ahead to a new colony
 irm_fleet_colonize = {
 	queue_actions = {

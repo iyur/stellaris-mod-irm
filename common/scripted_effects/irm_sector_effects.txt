@@ -159,10 +159,10 @@ irm_sector_try_expand = {
 }
 
 # This = Sector
-# Prev = Country
+# Prev = Planet (target)
 # Creates colony ship for sector
 irm_sector_make_colonizer = {
-	prev = {
+	owner = {
 		# get modifiers for construction cost
 		export_modifier_to_variable = {
 			modifier = shipclass_colonizer_build_cost_mult
@@ -175,12 +175,10 @@ irm_sector_make_colonizer = {
 		set_variable = { which = irm_colonizer_cost_food value = irm_colonizer_cost }
 		if = {
 			limit = {
-				owner = {
-					or = {
-						has_resource = { type = alloys amount < irm_colonizer_cost_energy }
-						has_resource = { type = alloys amount < irm_colonizer_cost_minerals }
-						has_resource = { type = alloys amount < irm_colonizer_cost_food }
-					}
+				or = {
+					has_resource = { type = alloys amount < irm_colonizer_cost_energy }
+					has_resource = { type = alloys amount < irm_colonizer_cost_minerals }
+					has_resource = { type = alloys amount < irm_colonizer_cost_food }
 				}
 			}
 			log = "\\[Prev.GetName] has no resources for colonizer"
@@ -189,10 +187,11 @@ irm_sector_make_colonizer = {
 			add_resource = { energy = -1 mult = irm_colonizer_cost_energy }
 			add_resource = { minerals = -1 mult = irm_colonizer_cost_minerals }
 			add_resource = { food = -1 mult = irm_colonizer_cost_food }
+
 			create_fleet = {
 				effect = {
 					set_owner = prev
-					set_location = prevprev.sector_capital # REWRITE
+					set_location = prevprevprev.planet # REWRITE
 					set_fleet_flag = irm_sector_colonizer_@prevprev
 					set_name = {
 						key = irm.ui.sector.colonizer
@@ -202,6 +201,7 @@ irm_sector_make_colonizer = {
 					create_ship = {
 						name = random
 						random_existing_design = colonizer
+						colonizer_species = prevprevprev.species
 					}
 
 					random_country = {
@@ -214,7 +214,7 @@ irm_sector_make_colonizer = {
 
 				}
 			}
-			log = "colonizer built for \\[Prev.GetName]"
+			log = "colonizer (\\[PrevPrev.GetSpeciesName]) built by \\[Prev.GetName]"
 		}
 		irm_unset = { which = irm_colonizer_cost }
 		irm_unset = { which = irm_colonizer_cost_energy }
@@ -227,29 +227,98 @@ irm_sector_make_colonizer = {
 # Prev = Country (Player)
 # Check if sector can colonize and send ships
 irm_sector_try_colonize = {
-	if = {
-		limit = { not = { irm_sector_has_fleet = { type = colonizer } } }
-		irm_sector_make_colonizer = yes
-	}
-	# pick the planet we should colonize
+	# find the planet we should colonize
 	random_system_within_border = {
-		limit = { any_system_planet = { irm_is_colonizable = yes } }
-		random_system_planet = {
-			limit = { irm_is_colonizable = yes }
-			random_country = {
-				limit = {
-					is_country_type = irm_country_sector
-					has_country_flag = irm_country_sector_@prevprev.owner
-				}
-				random_owned_fleet = {
-					limit = {
-						has_fleet_flag = irm_sector_colonizer_@prevprevprev.sector
-						is_fleet_idle = yes
-					}
-					irm_fleet_colonize = { target = prevprev }
-				}
+		limit = {
+			any_system_planet = {
+				irm_is_colonizable = yes
+				can_colonize = { who = prevprev.owner status = yes }
 			}
-			log = "colonizer sent to \\[This.GetName]"
+		}
+		random_system_planet = {
+			limit = {
+				irm_is_colonizable = yes
+				can_colonize = { who = prevprev.owner status = yes }
+			}
+			if = {
+				limit = { exists = this }
+				# pick up a suitable species
+				space_owner = {
+					log = "test"
+					random_owned_pop = {
+						limit = {
+							exists = planet.sector
+							planet.sector = { is_same_value = prevprevprev.sector }
+						}
+						weights = {
+							# sad, but we can't use scripted value to check
+							base = 0.001
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.1 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.2 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.3 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.4 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.5 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.6 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.7 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.8 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.9 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value  = 1.0 } }
+							}
+						}
+						# and make a colonizer, if not exists
+						planet.sector = {
+							if = {
+								limit = { not = { irm_sector_has_fleet = { type = colonizer } } }
+								irm_sector_make_colonizer = yes
+							}
+						}
+					}
+				}
+				# proceed colonization
+				random_country = {
+					limit = {
+						is_country_type = irm_country_sector
+						has_country_flag = irm_country_sector_@prevprev.owner
+					}
+					random_owned_fleet = {
+						limit = {
+							has_fleet_flag = irm_sector_colonizer_@prevprevprev.sector
+							is_fleet_idle = yes
+						}
+						irm_fleet_colonize = { target = prevprev }
+					}
+				}
+				log = "colonizer sent to \\[This.GetName]"
+			}
 		}
 	}
 }
