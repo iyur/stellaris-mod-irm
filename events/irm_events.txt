@@ -115,19 +115,10 @@ event = {
 				is_ai = no
 				is_country_type = default
 			}
-			if = {
-				limit = {
-					not = {
-						any_country = {
-							is_country_type = irm_country_sector
-							has_country_flag = irm_country_sector_@prev
-						}
-					}
-				}
-				country_event = { id = irm.11 days = 1 random = @irm_event_random_y }
-			}
-			# create constructor, if not exists
-			else = { country_event = { id = irm_y2.11 days = 1 random = @irm_event_random_y } }
+			# constructors
+			country_event = { id = irm_y2.11 days = 1 random = @irm_event_random_y }
+			# sector expansion
+			country_event = { id = irm_y2.12 days = 1 random = @irm_event_random_y }
 		}
 	}
 
@@ -158,28 +149,9 @@ event = {
 		}
 	}
 
-# Sector events gateways
-event = {
-	id = irm_y2.2
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		# players only
-		every_playable_country = {
-			limit = {
-				is_ai = no
-				is_country_type = default
-			}
-			country_event = { id = irm_y2.21 days = 1 random = @irm_event_random_y }
-		}
-	}
-
-}
-
 # - Expands sectors
 	country_event = {
-		id = irm_y2.21
+		id = irm_y2.12
 		hide_window = yes
 		is_triggered_only = yes
 
@@ -198,9 +170,31 @@ event = {
 
 	}
 
+# Five-yearly pulse
+namespace = irm_y5
+
+event = {
+	id = irm_y5.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# players only
+		every_playable_country = {
+			limit = {
+				is_ai = no
+				is_country_type = default
+			}
+			# colonization
+			country_event = { id = irm_y5.11 days = 1 random = @irm_event_random_y }
+		}
+	}
+
+}
+
 # - Colonize planets
 	country_event = {
-		id = irm_y2.22
+		id = irm_y5.11
 		hide_window = yes
 		is_triggered_only = yes
 
