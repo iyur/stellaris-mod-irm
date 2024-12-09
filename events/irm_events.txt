@@ -83,6 +83,7 @@ country_event = {
 	mean_time_to_happen = { days = 1 }
 
 	trigger = {
+		has_global_flag = irm_mod_enabled
 		is_ai = no
 		is_country_type = default
 		not = {
@@ -109,14 +110,18 @@ event = {
 	is_triggered_only = yes
 
 	immediate = {
-		# players only
-		every_playable_country = {
-			limit = {
-				is_ai = no
-				is_country_type = default
+		if = {
+			# mod enabled
+			limit = { has_global_flag = irm_mod_enabled }
+			# players only
+			every_playable_country = {
+				limit = {
+					is_ai = no
+					is_country_type = default
+				}
+				# return idle
+				country_event = { id = irm_m.11 days = 1 random = 5 }
 			}
-			# return idle
-			country_event = { id = irm_m.11 days = 1 random = 5 }
 		}
 	}
 
@@ -151,16 +156,20 @@ event = {
 	is_triggered_only = yes
 
 	immediate = {
-		# players only
-		every_playable_country = {
-			limit = {
-				is_ai = no
-				is_country_type = default
+		if = {
+			# mod enabled
+			limit = { has_global_flag = irm_mod_enabled }
+			# players only
+			every_playable_country = {
+				limit = {
+					is_ai = no
+					is_country_type = default
+				}
+				# constructors
+				country_event = { id = irm_y2.11 days = 1 random = @irm_event_random_y }
+				# sector expansion
+				country_event = { id = irm_y2.12 days = 1 random = @irm_event_random_y }
 			}
-			# constructors
-			country_event = { id = irm_y2.11 days = 1 random = @irm_event_random_y }
-			# sector expansion
-			country_event = { id = irm_y2.12 days = 1 random = @irm_event_random_y }
 		}
 	}
 
@@ -221,14 +230,18 @@ event = {
 	is_triggered_only = yes
 
 	immediate = {
-		# players only
-		every_playable_country = {
-			limit = {
-				is_ai = no
-				is_country_type = default
+		if = {
+			# mod enabled
+			limit = { has_global_flag = irm_mod_enabled }
+			# players only
+			every_playable_country = {
+				limit = {
+					is_ai = no
+					is_country_type = default
+				}
+				# colonization
+				country_event = { id = irm_y5.11 days = 1 random = @irm_event_random_y }
 			}
-			# colonization
-			country_event = { id = irm_y5.11 days = 1 random = @irm_event_random_y }
 		}
 	}
 
