@@ -1,0 +1,27 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Special deposits
+
+# Core District
+# An effect provider mechanics for planets
+irm_d_core_district = {
+	is_for_colonizable = yes
+	icon = d_city
+	category = deposit_cat_rare_resource
+
+	custom_tooltip = irm_d_core_district_tt
+	custom_tooltip_short = irm_d_core_district_tts
+
+	potential = { has_global_flag = irm_mod_enabled }
+	drop_weight = {	weight = 0 }
+	should_swap_deposit_on_terraforming = no
+
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		district_mining_max = 1
+		mult = value:natural_desposit_district_amount_multiplier
+	}
+
+}

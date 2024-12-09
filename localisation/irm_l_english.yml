@@ -14,6 +14,13 @@ l_english:
   decision_sector_reform: "§RSector is under reform now, all management operations postponed for a day.§!"
 
 
+# DEPOSITS # --------------------------------------------------------------------------------------
+
+  irm_d_core_district: "Core District"
+  irm_d_core_district_desc: "This is the heart of the emerged colony, driving its entire life and momentum. It serves as the administrative hub, where local bureaucrats enforce the central government’s policies and directives for the planet, system, or region, shaping the colony’s growth and governance."
+  irm_d_core_district_tt: "\tActive effects:"
+  irm_d_core_district_tts: "§gx§!"
+
 # DESIGNATIONS # ----------------------------------------------------------------------------------
 
   irm_col_sector_capital: "Sector Capital"
