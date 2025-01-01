@@ -39,3 +39,54 @@ on_five_year_pulse = {
 		irm_y5.1
 	}
 }
+
+# A planet has been colonized.
+# Scope = Planet
+on_colonized = {
+	events = {
+		irm_a.11
+	}
+}
+
+# A colony has been destroyed. Called just before owner and controller is cleared
+# Scope = Planet
+on_colony_destroyed = {
+	events = {
+		irm_a.12
+	}
+}
+
+# A colony has been destroyed by bombardment. Called after the planet's colony status has been cleared
+# This = Planet
+# From = Bombarder
+on_colony_destroyed_by_bombardment = {
+	events = {
+		irm_a.12
+	}
+}
+
+# Planet has reached 0 pops from orbital bombardment
+# This = Planet
+# From = Bombarder
+on_planet_zero_pops = {
+	events = {
+		irm_a.12
+	}
+}
+
+#FromFrom = Former Owner
+#From = Country scope (new owner, so invalid)
+#This = Planet scope
+on_planet_ownerless = {
+	events = {
+		irm_a.12
+	}
+}
+
+# Fires for each planet every year (counting up from colonisation date, includes home planet)
+on_colony_yearly_pulse = {
+	events = {
+		irm_a.11
+		irm_a.12
+	}
+}

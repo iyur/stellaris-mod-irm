@@ -70,6 +70,11 @@ event = {
 					is_country_type = default
 				}
 				country_event = { id = irm.11 }
+				every_owned_planet = {
+					# effect provider module
+					limit = { not = { has_deposit = irm_d_core_district } }
+					planet_event = { id = irm_a.11 }
+				}
 			}
 		}
 	}
@@ -97,6 +102,53 @@ country_event = {
 		irm_sector_make_dummy = yes
 	}
 
+}
+
+namespace = irm_a # (gameplay)
+
+# Creates a core district as effect provider
+planet_event = {
+	id = irm_a.11
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				exists = owner
+				owner = {
+					is_ai = no
+					is_country_type = default
+				}
+				not = { has_deposit = irm_d_core_district }
+			}
+			add_deposit = irm_d_core_district
+		}
+	}
+}
+
+# Removes core district
+planet_event = {
+	id = irm_a.12
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_deposit = irm_d_core_district
+				or = {
+					# mod disabled
+					has_owner = no
+					and = {
+						exists = owner
+						owner = { is_ai = yes }
+					}
+				}
+			}
+			remove_deposit = irm_d_core_district
+		}
+	}
 }
 
 # PULSE
