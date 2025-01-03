@@ -107,14 +107,14 @@ l_english:
 
   irm.ui.sector.type.core: "$core_sector$"
   irm.ui.sector.type.core.icon: "£irm_ui_sector_type_core£"
-  irm.ui.sector.type.core.tt: "§H$irm.ui.sector.type.core$§!$irm.ui.1$§LThe inner space where your empire once emerged and made the very first steps to the stars. For now this is the mostly explored, developed and stable region."
+  irm.ui.sector.type.core.tt: "§H$irm.ui.sector.type.core$§!\nStability: §G+5§!\nGoverning Ethics Attraction: §G+25%§!$irm.ui.1$§LThe inner space where your empire once emerged and made the very first steps to the stars. For now this is the mostly explored, developed and stable region."
   irm.ui.sector.type.capital: "$irm_core_sector_1$"
-  irm.ui.sector.type.capital.tt: "§H$irm.ui.sector.type.capital$§!$irm.ui.1$§LThe capital system, the hart of your empire has been distinguished a special administrative sector."
+  irm.ui.sector.type.capital.tt: "§H$irm.ui.sector.type.capital$§!\nStability: §G+10§!\nGoverning Ethics Attraction: §G+50%§!\nEmpire Size from Pops: §R+15%§!$irm.ui.1$§LThe capital system, the hart of your empire has been distinguished a special administrative sector."
   irm.ui.sector.type.normal: "Base Sector"
   irm.ui.sector.type.normal.icon: "£irm_ui_sector_type_normal£"
-  irm.ui.sector.type.normal.tt: "§H$irm.ui.sector.type.normal$§!$irm.ui.1$§LThe newly explored region once had been colonized and now organized as administrative unit of your empire. Farther from the heavy foot of central bureaucracy, now it's looking for a new opportunities and prosperiry."
+  irm.ui.sector.type.normal.tt: "§H$irm.ui.sector.type.normal$§!\nResource from Jobs: §G+5§!\nCitizen Pop Happiness: §G+10%§!$irm.ui.1$§LThe newly explored region once had been colonized and now organized as administrative unit of your empire. Farther from the heavy foot of central bureaucracy, now it's looking for a new opportunities and prosperiry."
   irm.ui.sector.type.star: "Star Sector"
-  irm.ui.sector.type.star.tt: "§H$irm.ui.sector.type.star$§!$irm.ui.1$§LThis system has a special important value, therefore it was designated as a separate sector."
+  irm.ui.sector.type.star.tt: "§H$irm.ui.sector.type.star$§!\nResource from Jobs: §G+5§!\nCitizen Pop Happiness: §G+10%§!\nEmpire Size from Pops: §R+15%§!$irm.ui.1$§LThis system has a special important value, therefore it was designated as a separate sector."
   irm.ui.sector.type.none: "No Sector"
 
   # demography
