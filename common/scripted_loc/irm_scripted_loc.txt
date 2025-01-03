@@ -346,3 +346,72 @@ defined_text = {
  		}
  	}
 }
+
+# Effect provider cases
+
+# sector types
+defined_text = {
+	name = irm_d_is_effect_sector_frontier
+ 	random = no
+ 	text = {
+ 		localization_key = "irm_d_effect_sector_frontier"
+ 		trigger = {
+ 			not = { exists = sector }
+ 		}
+ 	}
+ 	default = " "
+}
+defined_text = {
+	name = irm_d_is_effect_sector_core
+ 	random = no
+ 	text = {
+ 		localization_key = "irm_d_effect_sector_core"
+ 		trigger = {
+ 			exists = sector
+ 			sector = {
+ 				irm_is_sector_core = yes
+ 				irm_is_sector_single = no
+ 			}
+ 		}
+ 	}
+ 	default = " "
+}
+defined_text = {
+	name = irm_d_is_effect_sector_capital
+ 	random = no
+ 	text = {
+ 		localization_key = "irm_d_effect_sector_capital"
+ 		trigger = {
+ 			exists = sector
+ 			sector = { has_sector_type = irm_core_sector_1 }
+ 		}
+ 	}
+ 	default = " "
+}
+defined_text = {
+	name = irm_d_is_effect_sector_normal
+ 	random = no
+ 	text = {
+ 		localization_key = "irm_d_effect_sector_normal"
+ 		trigger = {
+ 			exists = sector
+ 			sector = {
+ 				irm_is_sector_core = no
+ 				irm_is_sector_single = no
+ 			}
+ 		}
+ 	}
+ 	default = " "
+}
+defined_text = {
+	name = irm_d_is_effect_sector_star
+ 	random = no
+ 	text = {
+ 		localization_key = "irm_d_effect_sector_star"
+ 		trigger = {
+ 			exists = sector
+ 			sector = { has_sector_type = irm_normal_sector_1 }
+ 		}
+ 	}
+ 	default = " "
+}

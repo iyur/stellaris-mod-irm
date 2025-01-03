@@ -49,6 +49,13 @@ irm_is_sector_core = {
 	}	
 }
 
+irm_is_sector_single = {
+	or = {
+		has_sector_type = irm_core_sector_1
+		has_sector_type = irm_normal_sector_1
+	}
+}
+
 # This = Planet
 irm_init_custom_sector = {
 	or = {

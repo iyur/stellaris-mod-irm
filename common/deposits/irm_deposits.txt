@@ -7,21 +7,73 @@
 irm_d_core_district = {
 	is_for_colonizable = yes
 	icon = d_city
-	category = deposit_cat_rare_resource
+	category = deposit_cat_food
 
 	custom_tooltip = irm_d_core_district_tt
-	custom_tooltip_short = irm_d_core_district_tts
 
 	potential = { has_global_flag = irm_mod_enabled }
 	drop_weight = {	weight = 0 }
 	should_swap_deposit_on_terraforming = no
 
+	# SECTOR TYPES
+
+	# frontier
 	triggered_planet_modifier = {
+		key = qwerty
 		potential = {
-			always = yes
+			not = { exists = sector }
 		}
-		district_mining_max = 1
-		mult = value:natural_desposit_district_amount_multiplier
+		planet_crime_add = 5
+		planet_stability_add = -5
+		pop_government_ethic_attraction = -0.25
+	}
+	# core
+	triggered_planet_modifier = {
+		key = qwerty
+		potential = {
+			exists = sector
+			sector = {
+				irm_is_sector_core = yes
+				irm_is_sector_single = no
+			}
+		}
+		planet_stability_add = 5
+		pop_government_ethic_attraction = 0.25
+	}
+	# capital
+	triggered_planet_modifier = {
+		key = qwerty
+		potential = {
+			exists = sector
+			sector = { has_sector_type = irm_core_sector_1 }
+		}
+		planet_stability_add = 10
+		pop_government_ethic_attraction = 0.50
+		species_empire_size_mult = 0.10
+	}
+	# normal
+	triggered_planet_modifier = {
+		key = qwerty
+		potential = {
+			exists = sector
+			sector = {
+				irm_is_sector_core = no
+				irm_is_sector_single = no
+			}
+		}
+		planet_jobs_produces_mult = 0.05
+		pop_citizen_happiness = 0.1
+	}
+	# star
+	triggered_planet_modifier = {
+		key = qwerty
+		potential = {
+			exists = sector
+			sector = { has_sector_type = irm_normal_sector_1 }
+		}
+		planet_jobs_produces_mult = 0.10
+		pop_citizen_happiness = 0.2
+		species_empire_size_mult = 0.10
 	}
 
 }
