@@ -604,18 +604,7 @@ irm_bt_sector_buildings = {
 		}
 	}
 }
-# sector focuses
-#irm_bt_sector_focus_none = {
-#	potential = {
-#		exists = event_target:irm_ui_sector
-#		event_target:irm_ui_sector = {
-#			not = { has_any_sector_focus = yes }
-#		}
-#	}
-#	effect = {
-#		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.none.tt" } }
-#	}	
-#}
+# sector agenda
 irm_bt_sector_focus_balanced = {
 	potential = {
 		exists = event_target:irm_ui_sector
@@ -624,53 +613,43 @@ irm_bt_sector_focus_balanced = {
 		}
 	}
 	effect = {
-		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.balanced.tt" } }
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.dev.agenda.balanced.tt"
+				set_sector_flag = irm_ui_sector_sidebar_agenda
+			}
+		}
 	}	
 }
-#irm_bt_sector_focus_production = {
-#	potential = {
-#		exists = event_target:irm_ui_sector
-#		event_target:irm_ui_sector = {
-#			has_sector_focus = production
-#		}
-#	}
-#	effect = {
-#		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.production.tt" } }
-#	}	
-#}
-#irm_bt_sector_focus_manufacturing = {
-#	potential = {
-#		exists = event_target:irm_ui_sector
-#		event_target:irm_ui_sector = {
-#			has_sector_focus = manufacturing
-#		}
-#	}
-#	effect = {
-#		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.manufacturing.tt" } }
-#	}	
-#}
-#irm_bt_sector_focus_research = {
-#	potential = {
-#		exists = event_target:irm_ui_sector
-#		event_target:irm_ui_sector = {
-#			has_sector_focus = research
-#		}
-#	}
-#	effect = {
-#		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.research.tt" } }
-#	}	
-#}
-#irm_bt_sector_focus_unity = {
-#	potential = {
-#		exists = event_target:irm_ui_sector
-#		event_target:irm_ui_sector = {
-#			has_sector_focus = unity
-#		}
-#	}
-#	effect = {
-#		hidden_effect = { event_target:irm_ui_sector = { custom_tooltip = "irm.ui.sector.dev.focus.unity.tt" } }
-#	}	
-#}
+
+irm_bg_sector_agenda = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_agenda
+		}
+	}
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+			}
+		}
+	}
+}
+irm_bt_sector_agenda_basic = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_agenda
+		}
+	}
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+			}
+		}
+	}
+}
 
 # society
 irm_bt_sector_migration = {
@@ -884,6 +863,14 @@ irm_bg_sector_sidebar_fleet = {
 		exists = event_target:irm_ui_sector
 		event_target:irm_ui_sector = {
 			has_sector_flag = irm_ui_sector_sidebar_fleet
+		}
+	}
+}
+irm_bg_sector_sidebar_agenda = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_agenda
 		}
 	}
 }

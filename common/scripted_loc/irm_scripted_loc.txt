@@ -300,13 +300,13 @@ defined_text = {
 }
 # Sector designation focuses
 defined_text = {
-	name = irm_CheckFocus
+	name = irm_CheckAgenda
  	random = no
- 	default = "irm.ui.sector.dev.focus.none"
+ 	default = "irm.ui.sector.dev.agenda.none"
  	text = {
- 		localization_key = "irm.ui.sector.dev.focus.active"
+ 		localization_key = "irm.ui.sector.dev.agenda.active"
  		trigger = {
- 			always = yes
+ 			always = no
  		}
  	}
 }
@@ -328,6 +328,12 @@ defined_text = {
  			has_sector_flag = irm_ui_sector_sidebar_fleet
  		}
  	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.gov.agenda.h"
+ 		trigger = {
+ 			has_sector_flag = irm_ui_sector_sidebar_agenda
+ 		}
+ 	}
 }
 defined_text = {
 	name = irm_SidebarDesc
@@ -343,6 +349,12 @@ defined_text = {
  		localization_key = "irm.ui.sector.gov.fleet.desc"
  		trigger = {
  			has_sector_flag = irm_ui_sector_sidebar_fleet
+ 		}
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.gov.agenda.desc"
+ 		trigger = {
+ 			has_sector_flag = irm_ui_sector_sidebar_agenda
  		}
  	}
 }

@@ -52,8 +52,25 @@ system_event = {
 				remove_sector_flag = irm_ui_sector_reload
 				remove_sector_flag = irm_ui_sector_sidebar_policies
 				remove_sector_flag = irm_ui_sector_sidebar_fleet
+				remove_sector_flag = irm_ui_sector_sidebar_agenda
 			}
 		}
+	}
+
+	# agenda
+	option = {
+		name = "irm.ui.0"
+		custom_gui = "irm_ui_opt_sector_agenda"
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.gov.agenda.tt"
+			sector = {
+				set_timed_sector_flag = { flag = irm_ui_sector_reload days = 1 }
+				set_sector_flag = irm_ui_sector_sidebar_agenda
+				remove_sector_flag = irm_ui_sector_sidebar_policies
+				remove_sector_flag = irm_ui_sector_sidebar_fleet
+			}
+		}
+
 	}
 
 	# policies
@@ -66,6 +83,7 @@ system_event = {
 				set_timed_sector_flag = { flag = irm_ui_sector_reload days = 1 }
 				set_sector_flag = irm_ui_sector_sidebar_policies
 				remove_sector_flag = irm_ui_sector_sidebar_fleet
+				remove_sector_flag = irm_ui_sector_sidebar_agenda
 			}
 		}
 
@@ -81,6 +99,7 @@ system_event = {
 				set_timed_sector_flag = { flag = irm_ui_sector_reload days = 1 }
 				set_sector_flag = irm_ui_sector_sidebar_fleet
 				remove_sector_flag = irm_ui_sector_sidebar_policies
+				remove_sector_flag = irm_ui_sector_sidebar_agenda
 			}
 		}
 
@@ -96,6 +115,7 @@ system_event = {
 				set_timed_sector_flag = { flag = irm_ui_sector_reload days = 1 }
 				remove_sector_flag = irm_ui_sector_sidebar_policies
 				remove_sector_flag = irm_ui_sector_sidebar_fleet
+				remove_sector_flag = irm_ui_sector_sidebar_agenda
 			}
 		}
 	}
