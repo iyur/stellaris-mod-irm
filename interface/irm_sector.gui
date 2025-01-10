@@ -26,47 +26,159 @@ guiTypes = {
 		size = { width = 0 height = 0 }
 		moveable = no
 
-		iconType = {
-			name = "council_agenda_frame" 
-			position = { x = 57 y = 464 }
+		# iconType = {
+		# 	name = "council_agenda_frame" 
+		# 	position = { x = 57 y = 464 }
+		# 	spriteType = "GFX_button_launch_agenda"
+		# 	centerPosition = yes
+		# 	alwaysTransparent = yes
+		# 	scale = 0.50
+		# }
+
+		@a_xy = 50
+		@a_scale = 0.50
+
+		buttonType = {
+			name = "option_button"
 			spriteType = "GFX_button_launch_agenda"
-			centerPosition = yes
+			orientation = upper_left
+			format = left
+			position = { x = 30 y = 435 }
+			size = { x = @a_xy y = 32 }
+			text = "OPTION_TEXT"
+			buttonFont = "cg_16b"
+			pdx_tooltip = "irm.ui.sector.gov.fleet.tt"
+			scale = @a_scale
+		}
+
+		# 1
+		# effectButtonType = {
+		# 	name = "sector_agenda_resources"
+		# 	quadTextureSprite = "GFX_council_agenda_icon_agenda_astute_observation"
+		# 	size = { x = @a_xy y = @a_xy }
+		# 	position = { x = 29 y = 437 }
+		# 	format = left
+		# 	font = "cg_16b"
+		# 	alwaysTransparent = yes
+		# 	scale = @a_scale
+		# 	effect = irm_bt_sector_focus_balanced
+		# }
+		# 2
+		# effectButtonType = {
+		# 	name = "sector_agenda_industry"
+		# 	quadTextureSprite = "GFX_council_agenda_icon_agenda_modularity_reshape_form"
+		# 	size = { x = @a_xy y = @a_xy }
+		# 	position = { x = 29 y = 437 }
+		# 	format = left
+		# 	font = "cg_16b"
+		# 	alwaysTransparent = yes
+		# 	scale = @a_scale
+		# 	effect = irm_bt_sector_focus_balanced
+		# }
+		# 3
+		# effectButtonType = {
+		# 	name = "sector_agenda_research"
+		# 	quadTextureSprite = "GFX_council_agenda_icon_agenda_infinite_opportunities"
+		# 	size = { x = @a_xy y = @a_xy }
+		# 	position = { x = 29 y = 437 }
+		# 	format = left
+		# 	font = "cg_16b"
+		# 	alwaysTransparent = yes
+		# 	scale = @a_scale
+		# 	effect = irm_bt_sector_focus_balanced
+		# }
+		# 4
+		# effectButtonType = {
+		# 	name = "sector_agenda_trade"
+		# 	quadTextureSprite = "GFX_council_agenda_icon_agenda_chart_the_unknown"
+		# 	size = { x = @a_xy y = @a_xy }
+		# 	position = { x = 29 y = 437 }
+		# 	format = left
+		# 	font = "cg_16b"
+		# 	alwaysTransparent = yes
+		# 	scale = @a_scale
+		# 	effect = irm_bt_sector_focus_balanced
+		# }
+		# 5
+		# effectButtonType = {
+		# 	name = "sector_agenda_unity"
+		# 	quadTextureSprite = "GFX_council_agenda_icon_agenda_a_higher_purpose"
+		# 	size = { x = @a_xy y = @a_xy }
+		# 	position = { x = 29 y = 437 }
+		# 	format = left
+		# 	font = "cg_16b"
+		# 	alwaysTransparent = yes
+		# 	scale = @a_scale
+		# 	effect = irm_bt_sector_focus_balanced
+		# }
+		# 6
+		# effectButtonType = {
+		# 	name = "sector_agenda_pioneering"
+		# 	quadTextureSprite = "GFX_council_agenda_icon_agenda_pioneer_politics"
+		# 	size = { x = @a_xy y = @a_xy }
+		# 	position = { x = 29 y = 436 }
+		# 	format = left
+		# 	font = "cg_16b"
+		# 	alwaysTransparent = yes
+		# 	scale = @a_scale
+		# 	effect = irm_bt_sector_focus_balanced
+		# }
+		# 7
+		# effectButtonType = {
+		# 	name = "sector_agenda_info"
+		# 	quadTextureSprite = "GFX_council_agenda_icon_agenda_galactic_trawling"
+		# 	size = { x = @a_xy y = @a_xy }
+		# 	position = { x = 30 y = 437 }
+		# 	format = left
+		# 	font = "cg_16b"
+		# 	alwaysTransparent = yes
+		# 	scale = @a_scale
+		# 	effect = irm_bt_sector_focus_balanced
+		# }
+		# 8
+		# effectButtonType = {
+		# 	name = "sector_agenda_test"
+		# 	quadTextureSprite = "GFX_council_agenda_icon_agenda_open_arms"
+		# 	size = { x = @a_xy y = @a_xy }
+		# 	position = { x = 30 y = 437 }
+		# 	format = left
+		# 	font = "cg_16b"
+		# 	alwaysTransparent = yes
+		# 	scale = @a_scale
+		# 	effect = irm_bt_sector_focus_balanced
+		# }
+		# 9
+		# effectButtonType = {
+		# 	name = "sector_agenda_train"
+		# 	quadTextureSprite = "GFX_council_agenda_icon_agenda_military_buildup"
+		# 	size = { x = @a_xy y = @a_xy }
+		# 	position = { x = 31 y = 437 }
+		# 	format = left
+		# 	font = "cg_16b"
+		# 	alwaysTransparent = yes
+		# 	scale = @a_scale
+		# 	effect = irm_bt_sector_focus_balanced
+		# }
+		# 10
+		effectButtonType = {
+			name = "sector_agenda_logistics"
+			quadTextureSprite = "GFX_council_agenda_icon_agenda_second_strike"
+			size = { x = @a_xy y = @a_xy }
+			position = { x = 31 y = 435 }
+			format = left
+			font = "cg_16b"
 			alwaysTransparent = yes
-			scale = 0.50
+			scale = @a_scale
+			effect = irm_bt_sector_focus_balanced
 		}
 
 		iconType = {
 			name = "agenda_attention_glow"
-			position = { x = 58 y = 464 }
+			position = { x = 60 y = 465 }
 			spriteType = "GFX_glow_launchable_agenda"
 			centerPosition = yes
 			alwaysTransparent = yes
-			scale = 0.50
-		}
-
-		buttonType = {
-			name = "option_button"
-			spriteType = "GFX_button_select_agenda"
-			orientation = upper_left
-			format = left
-			position = { x = 33 y = 439 }
-			size = { x = 50 y = 32 }
-			text = "OPTION_TEXT"
-			buttonFont = "cg_16b"
-			pdx_tooltip = "irm.ui.sector.gov.fleet.tt"
-			scale = 0.50
-		}
-
-		effectButtonType = {
-			name = "sector_focus_balanced"
-			quadTextureSprite = "GFX_council_agenda_icon_agenda_conquer_nature"
-			size = { x = 50 y = 50 }
-			position = { x = 30 y = 438 }
-			format = left
-			font = "cg_16b"
-			effect = irm_bt_sector_focus_balanced
-			alwaysTransparent = yes
-			scale = 0.45
+			scale = @a_scale
 		}
 
 	}
@@ -1033,25 +1145,27 @@ guiTypes = {
 						# desc
 						containerWindowType = {
 							name = "sector_focus"
-							position = { x = 70 y = 7 }
+							position = { x = 0 y = 7 }
 
-							effectButtonType = {
-								name = "sector_agenda_name"
-								quadTextureSprite = "GFX_invisible"
-								position = { x = 1 y = 0 }
-								size = { x = 200 y = 32 }
-								format = left
-								font = "cg_16b"
-								text = "irm.ui.sector.dev.agenda.check"
-								effect = irm_bt_sector_focus_balanced
-							}
 							instantTextBoxType = {
 								name = "sector_agenda_desc"
 								font = "cg_16b"
-								position = { x = 0 y = 30 }
+								position = { x = 0 y = 32 }
 								format = left
-								text = "Launched Agenda"
+								text = " $tttt$ $irm.ui.sector.dev.agenda.active$"
 								alwaysTransparent = yes
+							}
+							effectButtonType = {
+								name = "sector_agenda_name"
+								quadTextureSprite = @nobg
+								position = { x = 0 y = 0 }
+								size = { x = 300 y = 64 }
+								vertical_alignment = top
+								borderSize = { x = 0 y = 5 }
+								format = left
+								font = "cg_16b"
+								text = " $tttt$ $irm.ui.e$$irm.ui.sector.dev.agenda.check$"
+								effect = irm_bg_sector_agenda_desc
 							}
 						}
 

@@ -298,18 +298,6 @@ defined_text = {
  		trigger = { check_variable = { which = irm_strategic value < 0 } }
  	}
 }
-# Sector designation focuses
-defined_text = {
-	name = irm_CheckAgenda
- 	random = no
- 	default = "irm.ui.sector.dev.agenda.none"
- 	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.active"
- 		trigger = {
- 			always = no
- 		}
- 	}
-}
 
 # Sidebar title & desc
 defined_text = {
@@ -426,4 +414,96 @@ defined_text = {
  		}
  	}
  	default = " "
+}
+
+defined_text = {
+	name = irm_SectorAgenda
+ 	random = no
+ 	default = "irm.ui.sector.dev.agenda.na"
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.resources"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_resources }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.industry"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_industry }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.research"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_research }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.trade"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_trade }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.unity"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_unity }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.pioneering"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_pioneering }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.info"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_info }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.test"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_test }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.train"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_train }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.logistics"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_logistics }
+ 	}
+}
+
+defined_text = {
+	name = irm_SectorAgendaDesc
+ 	random = no
+ 	default = "irm.ui.sector.dev.agenda.na.tt"
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.resources.tt"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_resources }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.industry.tt"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_industry }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.research.tt"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_research }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.trade.tt"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_trade }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.unity.tt"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_unity }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.pioneering.tt"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_pioneering }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.info.tt"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_info }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.test.tt"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_test }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.train.tt"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_train }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.logistics.tt"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_logistics }
+ 	}
 }

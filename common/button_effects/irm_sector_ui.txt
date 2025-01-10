@@ -636,6 +636,18 @@ irm_bg_sector_agenda = {
 		}
 	}
 }
+irm_bg_sector_agenda_desc = {
+	potential = {
+		exists = event_target:irm_ui_sector
+	}
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.dev.agenda.check.tt"
+			}
+		}
+	}	
+}
 irm_bt_sector_agenda_basic = {
 	potential = {
 		exists = event_target:irm_ui_sector
