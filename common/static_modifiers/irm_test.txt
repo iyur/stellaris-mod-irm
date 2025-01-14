@@ -1,0 +1,3 @@
+irm_test = {
+	starbase_trade_protection_add = 3
+}
