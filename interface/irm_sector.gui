@@ -137,7 +137,7 @@ guiTypes = {
 		# }
 		# 8
 		# effectButtonType = {
-		# 	name = "sector_agenda_test"
+		# 	name = "sector_agenda_stabilization"
 		# 	quadTextureSprite = "GFX_council_agenda_icon_agenda_open_arms"
 		# 	size = { x = @a_xy y = @a_xy }
 		# 	position = { x = 30 y = 437 }
@@ -1993,18 +1993,18 @@ guiTypes = {
 
 			# 8
 			effectButtonType = {
-				name = "agenda_test"
+				name = "agenda_stabilization"
 				position = { x = 10 y = 316 }
 				size = { x = 280 y = 44 }
 				quadTextureSprite = "GFX_subjugation_btn_selection_off"
 				vertical_alignment = center
 				format = left
 				font = "cg_16b"
-				text = "$ttt$ $irm.ui.sector.dev.agenda.test$"
+				text = "$ttt$ $irm.ui.sector.dev.agenda.stabilization$"
 				effect = irm_bt_sector_agenda_basic
 			}
 			effectButtonType = {
-				name = "agenda_test_frame"
+				name = "agenda_stabilization_frame"
 				quadTextureSprite = "GFX_button_select_agenda"
 				position = { x = 14 y = 318 }
 				size = { x = 50 y = 50 }
@@ -2014,7 +2014,7 @@ guiTypes = {
 				effect = irm_bt_sector_agenda_basic
 			}
 			effectButtonType = {
-				name = "agenda_test_icon"
+				name = "agenda_stabilization_icon"
 				quadTextureSprite = "GFX_council_agenda_icon_agenda_open_arms"
 				position = { x = 9 y = 317 }
 				size = { x = 50 y = 50 }
