@@ -449,8 +449,8 @@ defined_text = {
  		trigger = { has_sector_flag = irm_ui_sector_agenda_info }
  	}
  	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.test"
- 		trigger = { has_sector_flag = irm_ui_sector_agenda_test }
+ 		localization_key = "irm.ui.sector.dev.agenda.stabilization"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_stabilization }
  	}
  	text = {
  		localization_key = "irm.ui.sector.dev.agenda.train"

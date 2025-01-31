@@ -681,3 +681,17 @@ irm_sector_prepare_size = {
 		planet_event = { id = irm_sector.21 }
 	}
 }
+
+# This = Sector
+irm_reset_agenda_flags = {
+	remove_sector_flag = irm_ui_sector_agenda_resources
+	remove_sector_flag = irm_ui_sector_agenda_industry
+	remove_sector_flag = irm_ui_sector_agenda_research
+	remove_sector_flag = irm_ui_sector_agenda_trade
+	remove_sector_flag = irm_ui_sector_agenda_unity
+	remove_sector_flag = irm_ui_sector_agenda_pioneering
+	remove_sector_flag = irm_ui_sector_agenda_info
+	remove_sector_flag = irm_ui_sector_agenda_stabilization
+	remove_sector_flag = irm_ui_sector_agenda_train
+	remove_sector_flag = irm_ui_sector_agenda_logistics
+}

@@ -663,6 +663,67 @@ irm_bt_sector_agenda_basic = {
 	}
 }
 
+irm_bt_sector_agenda_resources = {
+	inline_script = {
+		script = button_effects/sector_agendas
+		AGENDA = resources
+	}
+}
+irm_bt_sector_agenda_industry = {
+	inline_script = {
+		script = button_effects/sector_agendas
+		AGENDA = industry
+	}
+}
+irm_bt_sector_agenda_research = {
+	inline_script = {
+		script = button_effects/sector_agendas
+		AGENDA = research
+	}
+}
+irm_bt_sector_agenda_trade = {
+	inline_script = {
+		script = button_effects/sector_agendas
+		AGENDA = trade
+	}
+}
+irm_bt_sector_agenda_unity = {
+	inline_script = {
+		script = button_effects/sector_agendas
+		AGENDA = unity
+	}
+}
+irm_bt_sector_agenda_pioneering = {
+	inline_script = {
+		script = button_effects/sector_agendas
+		AGENDA = pioneering
+	}
+}
+irm_bt_sector_agenda_info = {
+	inline_script = {
+		script = button_effects/sector_agendas
+		AGENDA = info
+	}
+}
+irm_bt_sector_agenda_stabilization = {
+	inline_script = {
+		script = button_effects/sector_agendas
+		AGENDA = stabilization
+	}
+}
+irm_bt_sector_agenda_train = {
+	inline_script = {
+		script = button_effects/sector_agendas
+		AGENDA = train
+	}
+}
+irm_bt_sector_agenda_logistics = {
+	inline_script = {
+		script = button_effects/sector_agendas
+		AGENDA = logistics
+	}
+}
+
 # society
 irm_bt_sector_migration = {
 	potential = { exists = event_target:irm_ui_sector }
