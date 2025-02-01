@@ -1,0 +1,14 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Some special modifiers
+
+# This = Country
+irm_sector_agenda_logistics = {
+	hide_from_country_list = yes
+	country_naval_cap_add = 1
+}
+
+# This = Starbase
+irm_sector_agenda_trade = {
+	starbase_trade_protection_range_add = 1
+}

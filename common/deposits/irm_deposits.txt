@@ -19,7 +19,6 @@ irm_d_core_district = {
 
 	# frontier
 	triggered_planet_modifier = {
-		key = qwerty
 		potential = {
 			not = { exists = sector }
 		}
@@ -42,7 +41,6 @@ irm_d_core_district = {
 	}
 	# capital
 	triggered_planet_modifier = {
-		key = qwerty
 		potential = {
 			exists = sector
 			sector = { has_sector_type = irm_core_sector_1 }
@@ -53,7 +51,6 @@ irm_d_core_district = {
 	}
 	# normal
 	triggered_planet_modifier = {
-		key = qwerty
 		potential = {
 			exists = sector
 			sector = {
@@ -66,7 +63,6 @@ irm_d_core_district = {
 	}
 	# star
 	triggered_planet_modifier = {
-		key = qwerty
 		potential = {
 			exists = sector
 			sector = { has_sector_type = irm_normal_sector_1 }
@@ -74,6 +70,98 @@ irm_d_core_district = {
 		planet_jobs_produces_mult = 0.10
 		pop_citizen_happiness = 0.2
 		species_empire_size_mult = 0.15
+	}
+
+	# SECTOR AGENDAS
+
+	# resources
+	triggered_planet_modifier = {
+		potential = {
+			exists = sector
+			sector = { has_sector_flag = irm_ui_sector_agenda_resources }
+		}
+		planet_jobs_energy_produces_mult = 0.10
+		planet_jobs_minerals_produces_mult = 0.10
+		planet_jobs_food_produces_mult = 0.10
+	}
+	# industry
+	triggered_planet_modifier = {
+		potential = {
+			exists = sector
+			sector = { has_sector_flag = irm_ui_sector_agenda_industry }
+		}
+		planet_jobs_alloys_produces_mult = 0.10
+		planet_jobs_consumer_goods_produces_mult = 0.10
+	}
+	# research
+	triggered_planet_modifier = {
+		potential = {
+			exists = sector
+			sector = { has_sector_flag = irm_ui_sector_agenda_research }
+		}
+		planet_jobs_physics_research_produces_mult = 0.10
+		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_engineering_research_produces_mult = 0.10
+	}
+	# trade
+	triggered_planet_modifier = {
+		potential = {
+			exists = sector
+			sector = { has_sector_flag = irm_ui_sector_agenda_trade }
+		}
+		trade_value_mult = 0.15
+		# trade protection by base
+	}
+	# unity
+	triggered_planet_modifier = {
+		potential = {
+			exists = sector
+			sector = { has_sector_flag = irm_ui_sector_agenda_unity }
+		}
+		planet_jobs_unity_produces_mult = 0.15
+	}
+	# pioneering
+	triggered_planet_modifier = {
+		potential = {
+			exists = sector
+			sector = { has_sector_flag = irm_ui_sector_agenda_pioneering }
+		}
+		pop_growth_speed = 0.10
+		planet_immigration_pull_mult = 0.20
+	}
+	# info
+	triggered_planet_modifier = {
+		potential = {
+			exists = sector
+			sector = { has_sector_flag = irm_ui_sector_agenda_info }
+		}
+		pop_government_ethic_attraction = 0.25
+	}
+	# stabilization
+	triggered_planet_modifier = {
+		potential = {
+			exists = sector
+			sector = { has_sector_flag = irm_ui_sector_agenda_stabilization }
+		}
+		planet_stability_add = 5
+		# regionalism -10%
+	}
+	# train
+	triggered_planet_modifier = {
+		potential = {
+			exists = sector
+			sector = { has_sector_flag = irm_ui_sector_agenda_train }
+		}
+		planet_army_build_speed_mult = 0.15
+		army_starting_experience_add = 50
+	}
+	# logistics
+	triggered_planet_modifier = {
+		potential = {
+			exists = sector
+			sector = { has_sector_flag = irm_ui_sector_agenda_logistics }
+		}
+		# anchorage naval cap
 	}
 
 }

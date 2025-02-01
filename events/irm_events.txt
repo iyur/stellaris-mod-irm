@@ -173,6 +173,8 @@ event = {
 				}
 				# return idle
 				country_event = { id = irm_m.11 days = 1 random = 5 }
+				# sector agenda
+				every_owned_sector = { irm_sector_update_agenda = yes }
 			}
 		}
 	}

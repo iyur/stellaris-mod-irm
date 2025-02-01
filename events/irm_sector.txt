@@ -361,75 +361,75 @@ planet_event = {
 	}
 }
 
-# Border expansion
-# Bi-yearly (~) event
-system_event = {
-	id = irm_sector.31
-	hide_window = yes
-	is_triggered_only = yes
+# # Border expansion
+# # Bi-yearly (~) event
+# system_event = {
+# 	id = irm_sector.31
+# 	hide_window = yes
+# 	is_triggered_only = yes
 
-	immediate = {
-		# print_scope_effect = yes
-		create_starbase = {
-			size = starbase_outpost
-			owner = from.owner
-		}
-		from.owner = {
-			create_message = {
-				type = STARBASE_CONSTRUCTION_MESSAGE_TYPE
-				localization = "irm_message_sector_expanded_desc"
-				days = 30
-				target = root
-				variable = {
-					type = name
-					localization = SECTOR
-					scope = from.sector
-				}
-				variable = {
-					type = name
-					localization = SYSTEM
-					scope = root
-				}
-			}
-		}
+# 	immediate = {
+# 		# print_scope_effect = yes
+# 		create_starbase = {
+# 			size = starbase_outpost
+# 			owner = from.owner
+# 		}
+# 		from.owner = {
+# 			create_message = {
+# 				type = STARBASE_CONSTRUCTION_MESSAGE_TYPE
+# 				localization = "irm_message_sector_expanded_desc"
+# 				days = 30
+# 				target = root
+# 				variable = {
+# 					type = name
+# 					localization = SECTOR
+# 					scope = from.sector
+# 				}
+# 				variable = {
+# 					type = name
+# 					localization = SYSTEM
+# 					scope = root
+# 				}
+# 			}
+# 		}
 
-	}
-}
+# 	}
+# }
 
-# This = Country
-# From = Sector
-# Creates constructor for given sector
-country_event = {
-	id = irm_sector.41
-	hide_window = yes
-	is_triggered_only = yes
+# # This = Country
+# # From = Sector
+# # Creates constructor for given sector
+# country_event = {
+# 	id = irm_sector.41
+# 	hide_window = yes
+# 	is_triggered_only = yes
 	
-	immediate = {
-		create_fleet = {
-			effect = {
-				set_owner = root
-				set_location = from.sector_capital
-				set_fleet_flag = irm_sector_constructor_@from
-				set_name = {
-					key = irm.ui.sector.constructor
-					variable_string = "[From.GetName]"
-				}
+# 	immediate = {
+# 		create_fleet = {
+# 			effect = {
+# 				set_owner = root
+# 				set_location = from.sector_capital
+# 				set_fleet_flag = irm_sector_constructor_@from
+# 				set_name = {
+# 					key = irm.ui.sector.constructor
+# 					variable_string = "[From.GetName]"
+# 				}
 
-				create_ship = {
-					name = random
-					random_existing_design = constructor
-				}
+# 				create_ship = {
+# 					name = random
+# 					random_existing_design = constructor
+# 				}
 
-				random_country = {
-					limit = {
-						is_country_type = irm_country_sector
-						has_country_flag = irm_country_sector_@from
-					}
-					prev = { set_owner = prev }
-				}
+# 				random_country = {
+# 					limit = {
+# 						is_country_type = irm_country_sector
+# 						has_country_flag = irm_country_sector_@from
+# 					}
+# 					prev = { set_owner = prev }
+# 				}
 
-			}
-		}
-	}
+# 			}
+# 		}
+# 	}
 
-}
+# }

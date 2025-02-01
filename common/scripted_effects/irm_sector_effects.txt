@@ -322,3 +322,36 @@ irm_sector_try_colonize = {
 		}
 	}
 }
+
+# This = Sector
+# Prev = Country (Player)
+# Simulate sector agenda
+irm_sector_update_agenda = {
+	switch = {
+		trigger = has_sector_flag
+		irm_ui_sector_agenda_trade = {
+			every_system_within_border = {
+				starbase = {
+					if = {
+						limit = { has_starbase_size > starbase_outpost }
+						add_modifier = {
+							modifier = irm_sector_agenda_trade
+							clear_on_owner_change = yes
+							days = 30
+						}
+					}
+				}
+			}
+		}
+		irm_ui_sector_agenda_logistics = {
+			owner = {
+				add_modifier = {
+					modifier = irm_sector_agenda_logistics
+					multiplier = value:irm_count_logistic_bases_
+					days = 30
+				}
+			}
+		}
+		default = {}
+	}
+}

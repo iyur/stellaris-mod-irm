@@ -226,3 +226,22 @@ irm_distance_jumps_ = {
 		}
 	}
 }
+
+# This = Sector
+# Evaluates the agenda's logistic effect from planets
+irm_count_logistic_bases_ = {
+	base = 0
+	complex_trigger_modifier = {
+   		trigger_scope = owner
+   		trigger = count_owned_planet
+   		parameters = {
+   		   	limit = {
+				is_colony = yes
+				exists = sector
+				sector = { has_sector_flag = irm_ui_sector_agenda_logistics }
+   		   	}
+   		}
+   		mode = add
+   		mult = 1
+	}
+}
