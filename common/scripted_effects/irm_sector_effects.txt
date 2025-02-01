@@ -335,7 +335,15 @@ irm_sector_update_agenda = {
 					if = {
 						limit = { has_starbase_size > starbase_outpost }
 						add_modifier = {
-							modifier = irm_sector_agenda_trade
+							modifier = irm_sector_agenda_trade_collection
+							clear_on_owner_change = yes
+							days = 30
+						}
+					}
+					if = {
+						limit = { prev = { has_trade_route = yes } }
+						add_modifier = {
+							modifier = irm_sector_agenda_trade_protection
 							clear_on_owner_change = yes
 							days = 30
 						}

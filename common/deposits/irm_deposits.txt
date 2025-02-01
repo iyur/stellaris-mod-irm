@@ -109,7 +109,7 @@ irm_d_core_district = {
 			exists = sector
 			sector = { has_sector_flag = irm_ui_sector_agenda_trade }
 		}
-		trade_value_mult = 0.15
+		trade_value_mult = 0.10
 		# trade protection by base
 	}
 	# unity

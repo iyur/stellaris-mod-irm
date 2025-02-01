@@ -9,6 +9,9 @@ irm_sector_agenda_logistics = {
 }
 
 # This = Starbase
-irm_sector_agenda_trade = {
-	starbase_trade_protection_range_add = 1
+irm_sector_agenda_trade_collection = {
+	starbase_trade_collection_range_add = 1
+}
+irm_sector_agenda_trade_protection = {
+	starbase_trade_protection_add = 1
 }
