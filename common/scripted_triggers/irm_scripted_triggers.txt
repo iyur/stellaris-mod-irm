@@ -159,3 +159,19 @@ irm_sector_has_fleet = {
 		}
 	}
 }
+
+# This = Sector
+# Checks whether sector has active agenda
+irm_sector_has_agenda = {
+	or = {
+		has_sector_flag = irm_ui_sector_agenda_resources
+		has_sector_flag = irm_ui_sector_agenda_industry
+		has_sector_flag = irm_ui_sector_agenda_research
+		has_sector_flag = irm_ui_sector_agenda_trade
+		has_sector_flag = irm_ui_sector_agenda_unity
+		has_sector_flag = irm_ui_sector_agenda_pioneering
+		has_sector_flag = irm_ui_sector_agenda_info
+		has_sector_flag = irm_ui_sector_agenda_stabilization
+		has_sector_flag = irm_ui_sector_agenda_train
+		has_sector_flag = irm_ui_sector_agenda_logistics
+}

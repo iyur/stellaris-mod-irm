@@ -1,0 +1,15 @@
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_agenda
+		}
+	}
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				irm_reset_agenda_flags = yes
+				set_sector_flag = irm_ui_sector_agenda_$AGENDA$
+				custom_tooltip = "irm.ui.sector.dev.agenda.$AGENDA$.tt"
+			}
+		}
+	}

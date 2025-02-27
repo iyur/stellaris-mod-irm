@@ -51,9 +51,21 @@ guiTypes = {
 			scale = @a_scale
 		}
 
+		# 0 irm_sector_has_agenda
+		effectButtonType = {
+			name = "sector_agenda_none"
+			quadTextureSprite = "GFX_button_select_agenda"
+			size = { x = @a_xy y = @a_xy }
+			position = { x = 25 y = 430 }
+			format = left
+			font = "cg_16b"
+			alwaysTransparent = yes
+			scale = 0.7
+			effect = irm_bt_sector_agenda_none
+		}
 		# 1
 		effectButtonType = {
-			name = "sector_agenda_resources"
+			name = "sector_agenda_noe"
 			quadTextureSprite = "GFX_council_agenda_icon_agenda_astute_observation"
 			size = { x = @a_xy y = @a_xy }
 			position = { x = 29 y = 437 }
@@ -61,7 +73,7 @@ guiTypes = {
 			font = "cg_16b"
 			alwaysTransparent = yes
 			scale = @a_scale
-			effect = irm_bt_sector_focus_resources
+			effect = irm_bt_sector_agenda_resources
 		}
 		# 2
 		effectButtonType = {
@@ -73,7 +85,7 @@ guiTypes = {
 			font = "cg_16b"
 			alwaysTransparent = yes
 			scale = @a_scale
-			effect = irm_bt_sector_focus_industry
+			effect = irm_bt_sector_agenda_industry
 		}
 		# 3
 		effectButtonType = {
@@ -85,19 +97,19 @@ guiTypes = {
 			font = "cg_16b"
 			alwaysTransparent = yes
 			scale = @a_scale
-			effect = irm_bt_sector_focus_research
+			effect = irm_bt_sector_agenda_research
 		}
 		# 4
 		effectButtonType = {
 			name = "sector_agenda_trade"
 			quadTextureSprite = "GFX_council_agenda_icon_agenda_chart_the_unknown"
 			size = { x = @a_xy y = @a_xy }
-			position = { x = 29 y = 437 }
+			position = { x = 29 y = 435 }
 			format = left
 			font = "cg_16b"
 			alwaysTransparent = yes
 			scale = @a_scale
-			effect = irm_bt_sector_focus_trade
+			effect = irm_bt_sector_agenda_trade
 		}
 		# 5
 		effectButtonType = {
@@ -109,7 +121,7 @@ guiTypes = {
 			font = "cg_16b"
 			alwaysTransparent = yes
 			scale = @a_scale
-			effect = irm_bt_sector_focus_unity
+			effect = irm_bt_sector_agenda_unity
 		}
 		# 6
 		effectButtonType = {
@@ -121,7 +133,7 @@ guiTypes = {
 			font = "cg_16b"
 			alwaysTransparent = yes
 			scale = @a_scale
-			effect = irm_bt_sector_focus_pioneering
+			effect = irm_bt_sector_agenda_pioneering
 		}
 		# 7
 		effectButtonType = {
@@ -133,7 +145,7 @@ guiTypes = {
 			font = "cg_16b"
 			alwaysTransparent = yes
 			scale = @a_scale
-			effect = irm_bt_sector_focus_info
+			effect = irm_bt_sector_agenda_info
 		}
 		# 8
 		effectButtonType = {
@@ -145,7 +157,7 @@ guiTypes = {
 			font = "cg_16b"
 			alwaysTransparent = yes
 			scale = @a_scale
-			effect = irm_bt_sector_focus_stabilization
+			effect = irm_bt_sector_agenda_stabilization
 		}
 		# 9
 		effectButtonType = {
@@ -157,7 +169,7 @@ guiTypes = {
 			font = "cg_16b"
 			alwaysTransparent = yes
 			scale = @a_scale
-			effect = irm_bt_sector_focus_train
+			effect = irm_bt_sector_agenda_train
 		}
 		# 10
 		effectButtonType = {
@@ -1776,7 +1788,7 @@ guiTypes = {
 				format = left
 				font = "cg_16b"
 				text = "$ttt$ $irm.ui.sector.dev.agenda.resources$"
-				effect = irm_bt_sector_agenda_resources
+				effect = irm_bt_sector_agenda_resources_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_resources_frame"
@@ -1786,7 +1798,7 @@ guiTypes = {
 				scale = 0.4
 				frame = 1
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_resources
+				effect = irm_bt_sector_agenda_resources_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_resources_icon"
@@ -1795,7 +1807,7 @@ guiTypes = {
 				size = { x = 50 y = 50 }
 				scale = 0.39
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_resources
+				effect = irm_bt_sector_agenda_resources_sidebar
 			}
 
 			# 2
@@ -1808,7 +1820,7 @@ guiTypes = {
 				format = left
 				font = "cg_16b"
 				text = "$ttt$ $irm.ui.sector.dev.agenda.industry$"
-				effect = irm_bt_sector_agenda_industry
+				effect = irm_bt_sector_agenda_industry_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_industry_frame"
@@ -1818,7 +1830,7 @@ guiTypes = {
 				scale = 0.4
 				frame = 1
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_industry
+				effect = irm_bt_sector_agenda_industry_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_industry_icon"
@@ -1827,7 +1839,7 @@ guiTypes = {
 				size = { x = 50 y = 50 }
 				scale = 0.38
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_industry
+				effect = irm_bt_sector_agenda_industry_sidebar
 			}
 
 			# 3
@@ -1840,7 +1852,7 @@ guiTypes = {
 				format = left
 				font = "cg_16b"
 				text = "$ttt$ $irm.ui.sector.dev.agenda.research$"
-				effect = irm_bt_sector_agenda_research
+				effect = irm_bt_sector_agenda_research_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_research_frame"
@@ -1850,7 +1862,7 @@ guiTypes = {
 				scale = 0.4
 				frame = 1
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_research
+				effect = irm_bt_sector_agenda_research_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_research_icon"
@@ -1859,7 +1871,7 @@ guiTypes = {
 				size = { x = 50 y = 50 }
 				scale = 0.38
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_research
+				effect = irm_bt_sector_agenda_research_sidebar
 			}
 
 			# 4
@@ -1872,7 +1884,7 @@ guiTypes = {
 				format = left
 				font = "cg_16b"
 				text = "$ttt$ $irm.ui.sector.dev.agenda.trade$"
-				effect = irm_bt_sector_agenda_trade
+				effect = irm_bt_sector_agenda_trade_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_trade_frame"
@@ -1882,7 +1894,7 @@ guiTypes = {
 				scale = 0.4
 				frame = 1
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_trade
+				effect = irm_bt_sector_agenda_trade_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_trade_icon"
@@ -1891,7 +1903,7 @@ guiTypes = {
 				size = { x = 50 y = 50 }
 				scale = 0.38
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_trade
+				effect = irm_bt_sector_agenda_trade_sidebar
 				rotation = 0.1
 			}
 
@@ -1905,7 +1917,7 @@ guiTypes = {
 				format = left
 				font = "cg_16b"
 				text = "$ttt$ $irm.ui.sector.dev.agenda.unity$"
-				effect = irm_bt_sector_agenda_unity
+				effect = irm_bt_sector_agenda_unity_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_unity_frame"
@@ -1915,7 +1927,7 @@ guiTypes = {
 				scale = 0.4
 				frame = 1
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_unity
+				effect = irm_bt_sector_agenda_unity_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_unity_icon"
@@ -1924,7 +1936,7 @@ guiTypes = {
 				size = { x = 50 y = 50 }
 				scale = 0.38
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_unity
+				effect = irm_bt_sector_agenda_unity_sidebar
 			}
 
 			# 6
@@ -1937,7 +1949,7 @@ guiTypes = {
 				format = left
 				font = "cg_16b"
 				text = "$ttt$ $irm.ui.sector.dev.agenda.pioneering$"
-				effect = irm_bt_sector_agenda_pioneering
+				effect = irm_bt_sector_agenda_pioneering_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_pioneering_frame"
@@ -1947,7 +1959,7 @@ guiTypes = {
 				scale = 0.4
 				frame = 1
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_pioneering
+				effect = irm_bt_sector_agenda_pioneering_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_pioneering_icon"
@@ -1956,7 +1968,7 @@ guiTypes = {
 				size = { x = 50 y = 50 }
 				scale = 0.37
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_pioneering
+				effect = irm_bt_sector_agenda_pioneering_sidebar
 			}
 
 			# 7
@@ -1969,7 +1981,7 @@ guiTypes = {
 				format = left
 				font = "cg_16b"
 				text = "$ttt$ $irm.ui.sector.dev.agenda.info$"
-				effect = irm_bt_sector_agenda_info
+				effect = irm_bt_sector_agenda_info_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_info_frame"
@@ -1979,7 +1991,7 @@ guiTypes = {
 				scale = 0.4
 				frame = 1
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_info
+				effect = irm_bt_sector_agenda_info_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_info_icon"
@@ -1988,7 +2000,7 @@ guiTypes = {
 				size = { x = 50 y = 50 }
 				scale = 0.38
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_info
+				effect = irm_bt_sector_agenda_info_sidebar
 			}
 
 			# 8
@@ -2001,7 +2013,7 @@ guiTypes = {
 				format = left
 				font = "cg_16b"
 				text = "$ttt$ $irm.ui.sector.dev.agenda.stabilization$"
-				effect = irm_bt_sector_agenda_stabilization
+				effect = irm_bt_sector_agenda_stabilization_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_stabilization_frame"
@@ -2011,7 +2023,7 @@ guiTypes = {
 				scale = 0.4
 				frame = 1
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_stabilization
+				effect = irm_bt_sector_agenda_stabilization_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_stabilization_icon"
@@ -2020,7 +2032,7 @@ guiTypes = {
 				size = { x = 50 y = 50 }
 				scale = 0.38
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_stabilization
+				effect = irm_bt_sector_agenda_stabilization_sidebar
 			}
 
 			# 9
@@ -2033,7 +2045,7 @@ guiTypes = {
 				format = left
 				font = "cg_16b"
 				text = "$ttt$ $irm.ui.sector.dev.agenda.train$"
-				effect = irm_bt_sector_agenda_train
+				effect = irm_bt_sector_agenda_train_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_train_frame"
@@ -2043,7 +2055,7 @@ guiTypes = {
 				scale = 0.4
 				frame = 1
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_train
+				effect = irm_bt_sector_agenda_train_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_train_icon"
@@ -2052,7 +2064,7 @@ guiTypes = {
 				size = { x = 50 y = 50 }
 				scale = 0.38
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_train
+				effect = irm_bt_sector_agenda_train_sidebar
 			}
 
 			# 10
@@ -2065,7 +2077,7 @@ guiTypes = {
 				format = left
 				font = "cg_16b"
 				text = "$ttt$ $irm.ui.sector.dev.agenda.logistics$"
-				effect = irm_bt_sector_agenda_logistics
+				effect = irm_bt_sector_agenda_logistics_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_logistics_frame"
@@ -2075,7 +2087,7 @@ guiTypes = {
 				scale = 0.4
 				frame = 1
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_logistics
+				effect = irm_bt_sector_agenda_logistics_sidebar
 			}
 			effectButtonType = {
 				name = "agenda_logistics_icon"
@@ -2084,7 +2096,7 @@ guiTypes = {
 				size = { x = 50 y = 50 }
 				scale = 0.38
 				alwaysTransparent = yes
-				effect = irm_bt_sector_agenda_logistics
+				effect = irm_bt_sector_agenda_logistics_sidebar
 			}
 
 		}

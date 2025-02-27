@@ -663,6 +663,14 @@ irm_bt_sector_agenda_basic = {
 	}
 }
 
+irm_bt_sector_agenda_none = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			irm_sector_has_agenda = no
+		}
+	}
+}
 irm_bt_sector_agenda_resources = {
 	inline_script = {
 		script = button_effects/sector_agendas
@@ -720,6 +728,67 @@ irm_bt_sector_agenda_train = {
 irm_bt_sector_agenda_logistics = {
 	inline_script = {
 		script = button_effects/sector_agendas
+		AGENDA = logistics
+	}
+}
+
+irm_bt_sector_agenda_resources_sidebar = {
+	inline_script = {
+		script = button_effects/sector_agendas_sidebar
+		AGENDA = resources
+	}
+}
+irm_bt_sector_agenda_industry_sidebar = {
+	inline_script = {
+		script = button_effects/sector_agendas_sidebar
+		AGENDA = industry
+	}
+}
+irm_bt_sector_agenda_research_sidebar = {
+	inline_script = {
+		script = button_effects/sector_agendas_sidebar
+		AGENDA = research
+	}
+}
+irm_bt_sector_agenda_trade_sidebar = {
+	inline_script = {
+		script = button_effects/sector_agendas_sidebar
+		AGENDA = trade
+	}
+}
+irm_bt_sector_agenda_unity_sidebar = {
+	inline_script = {
+		script = button_effects/sector_agendas_sidebar
+		AGENDA = unity
+	}
+}
+irm_bt_sector_agenda_pioneering_sidebar = {
+	inline_script = {
+		script = button_effects/sector_agendas_sidebar
+		AGENDA = pioneering
+	}
+}
+irm_bt_sector_agenda_info_sidebar = {
+	inline_script = {
+		script = button_effects/sector_agendas_sidebar
+		AGENDA = info
+	}
+}
+irm_bt_sector_agenda_stabilization_sidebar = {
+	inline_script = {
+		script = button_effects/sector_agendas_sidebar
+		AGENDA = stabilization
+	}
+}
+irm_bt_sector_agenda_train_sidebar = {
+	inline_script = {
+		script = button_effects/sector_agendas_sidebar
+		AGENDA = train
+	}
+}
+irm_bt_sector_agenda_logistics_sidebar = {
+	inline_script = {
+		script = button_effects/sector_agendas_sidebar
 		AGENDA = logistics
 	}
 }
