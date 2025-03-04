@@ -245,3 +245,15 @@ irm_count_logistic_bases_ = {
    		mult = 1
 	}
 }
+
+# This = Any
+# Evaluates how many days left for a flag
+irm_flag_left_days_ = {
+	complex_trigger_modifier = {
+		trigger = timed_flag_days_left
+		parameters = {
+			flag = $flag$
+		}
+		mode = add
+	}
+}

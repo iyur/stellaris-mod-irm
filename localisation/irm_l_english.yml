@@ -340,7 +340,7 @@ l_english:
   irm.ui.sector.gov.agenda.tt: "§H$irm.ui.sector.gov.agenda$§!\n\nOpens agendas sidebar.\nYou can set development priorities for the sector."
   irm.ui.sector.gov.agenda.h: "Sector Agenda"
   irm.ui.sector.gov.agenda.desc: " §WAgenda Progress:§!"
-  irm.ui.sector.dev.agenda.progress.time: "§H3.5§! §E/ 10§! £time£"
+  irm.ui.sector.dev.agenda.progress.time: "§H[irm_ui_sector.irm_sector_agenda_pass]§! §E/ 10§! £time£"
   irm.ui.sector.dev.agenda.na: "No Agenda"
   irm.ui.sector.dev.agenda.na.tt: "Sector has no launched agenda for this moment."
   # irm.ui.sector.dev.agenda.farming: "Agricultural Focus"

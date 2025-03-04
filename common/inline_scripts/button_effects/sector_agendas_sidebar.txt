@@ -8,7 +8,8 @@
 		hidden_effect = {
 			event_target:irm_ui_sector = {
 				irm_reset_agenda_flags = yes
-				set_sector_flag = irm_ui_sector_agenda_$AGENDA$
+				set_timed_sector_flag = { flag = irm_ui_sector_agenda_$AGENDA$ years = 10 }
+				remove_sector_flag = irm_ui_sector_sidebar_agenda
 				custom_tooltip = "irm.ui.sector.dev.agenda.$AGENDA$.tt"
 			}
 		}

@@ -191,16 +191,6 @@ irm_get_stats = {
 
 	change_variable = { which = irm_claims value = 0 }
 
-
-
-#- empire_size_districts_mult, Category: Countries, Planets
-#- empire_size_systems_mult, Category: Countries
-#- empire_size_colonies_mult, Category: Countries
-#- empire_size_pops_mult, Category: Countries
-#- empire_size_mult, Category: Countries
-#- empire_size_add, Category: Countries
-#- species_empire_size_mult, Category: Pops (for leaders)
-
 	# roundings
 	round_variable = irm_stability
 	round_variable = irm_crime
@@ -448,6 +438,42 @@ irm_get_stats_military = {
 	}	
 }
 
+# This = Sector
+irm_get_agendas = {
+	if = {
+		limit = {
+			has_sector_flag = irm_ui_sector_sidebar_agenda
+			irm_sector_has_agenda = yes
+		}
+		switch = {
+			trigger = has_sector_flag
+				irm_ui_sector_agenda_resources = { set_variable = { which = irm_sector_agenda_left value = value:irm_flag_left_days_|flag|irm_ui_sector_agenda_resources| } }
+				irm_ui_sector_agenda_industry = { set_variable = { which = irm_sector_agenda_left value = value:irm_flag_left_days_|flag|irm_ui_sector_agenda_industry| } }
+				irm_ui_sector_agenda_research = { set_variable = { which = irm_sector_agenda_left value = value:irm_flag_left_days_|flag|irm_ui_sector_agenda_research| } }
+				irm_ui_sector_agenda_trade = { set_variable = { which = irm_sector_agenda_left value = value:irm_flag_left_days_|flag|irm_ui_sector_agenda_trade| } }
+				irm_ui_sector_agenda_unity = { set_variable = { which = irm_sector_agenda_left value = value:irm_flag_left_days_|flag|irm_ui_sector_agenda_unity| } }
+				irm_ui_sector_agenda_pioneering = { set_variable = { which = irm_sector_agenda_left value = value:irm_flag_left_days_|flag|irm_ui_sector_agenda_pioneering| } }
+				irm_ui_sector_agenda_info = { set_variable = { which = irm_sector_agenda_left value = value:irm_flag_left_days_|flag|irm_ui_sector_agenda_info| } }
+				irm_ui_sector_agenda_stabilization = { set_variable = { which = irm_sector_agenda_left value = value:irm_flag_left_days_|flag|irm_ui_sector_agenda_stabilization| } }
+				irm_ui_sector_agenda_train = { set_variable = { which = irm_sector_agenda_left value = value:irm_flag_left_days_|flag|irm_ui_sector_agenda_train| } }
+				irm_ui_sector_agenda_logistics = { set_variable = { which = irm_sector_agenda_left value = value:irm_flag_left_days_|flag|irm_ui_sector_agenda_logistics| } }
+
+		}
+		divide_variable = { which = irm_sector_agenda_left value = 360 }
+		round_variable_to_closest = { which = irm_sector_agenda_left value = 0.1 }
+		set_variable = { which = irm_sector_agenda_pass value = 10 }
+		subtract_variable = { which = irm_sector_agenda_pass value = irm_sector_agenda_left }
+		# set_saved_date = {
+		# 	key = irm_test_date
+		# 	days_from_present = 3600
+		# 	expires = 3600
+		# }
+	}
+	else = {
+		set_variable = { which = irm_sector_agenda_pass value = 0 }
+	}
+}
+
 # This = System / Sector
 # Clears all variables
 irm_del_stats = {
@@ -585,6 +611,9 @@ irm_del_stats = {
 	irm_unset = { which = irm_piracy }
 	irm_unset = { which = irm_piracy_lost }
 	irm_unset = { which = irm_piracy_protection }
+	# agendas
+	irm_unset = { which = irm_sector_agenda_left }
+	irm_unset = { which = irm_sector_agenda_pass }
 }
 
 # This = Sector

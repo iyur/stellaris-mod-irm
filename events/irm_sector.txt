@@ -37,6 +37,9 @@ system_event = {
 			# collect statistics
 			irm_get_stats = yes
 
+			# agendas
+			irm_get_agendas = yes
+
 		}
 
 	}
