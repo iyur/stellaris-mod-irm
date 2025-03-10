@@ -463,14 +463,21 @@ irm_get_agendas = {
 		round_variable_to_closest = { which = irm_sector_agenda_left value = 0.1 }
 		set_variable = { which = irm_sector_agenda_pass value = 10 }
 		subtract_variable = { which = irm_sector_agenda_pass value = irm_sector_agenda_left }
-		# set_saved_date = {
-		# 	key = irm_test_date
-		# 	days_from_present = 3600
-		# 	expires = 3600
-		# }
 	}
 	else = {
 		set_variable = { which = irm_sector_agenda_pass value = 0 }
+	}
+	# calculate cost effects:
+	if = {
+		limit = { check_variable = { which = irm_sector_agenda_left value > 0} }
+		set_variable = { which = irm_agenda_energy value = 1000 }
+		set_variable = { which = irm_agenda_minerals value = 2000 }
+		multiply_variable = { which = irm_agenda_energy value = irm_sector_agenda_left }
+		multiply_variable = { which = irm_agenda_minerals value = irm_sector_agenda_left }
+	}
+	else = {
+		set_variable = { which = irm_agenda_energy value = 0 }
+		set_variable = { which = irm_agenda_minerals value = 0 }
 	}
 }
 
@@ -614,6 +621,8 @@ irm_del_stats = {
 	# agendas
 	irm_unset = { which = irm_sector_agenda_left }
 	irm_unset = { which = irm_sector_agenda_pass }
+	irm_unset = { which = irm_agenda_minerals }
+	irm_unset = { which = irm_agenda_energy }
 }
 
 # This = Sector

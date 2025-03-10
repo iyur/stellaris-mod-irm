@@ -1015,6 +1015,15 @@ irm_bg_sector_sidebar_agenda = {
 			has_sector_flag = irm_ui_sector_sidebar_agenda
 		}
 	}
+	effect = {
+		custom_tooltip = "irm.ui.sector.gov.agenda.desc.tt"
+		event_target:irm_ui_sector = {
+			if = {
+				limit = { irm_sector_has_agenda = yes }
+				custom_tooltip = "irm.ui.sector.gov.agenda.desc.tt.date"
+			}
+		}
+	}
 }
 
 # sector ranges

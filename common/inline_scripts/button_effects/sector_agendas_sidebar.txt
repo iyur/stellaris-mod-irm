@@ -7,10 +7,16 @@
 	effect = {
 		hidden_effect = {
 			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.dev.agenda.$AGENDA$.tt"
+				irm_get_agendas = yes
 				irm_reset_agenda_flags = yes
 				set_timed_sector_flag = { flag = irm_ui_sector_agenda_$AGENDA$ years = 10 }
 				remove_sector_flag = irm_ui_sector_sidebar_agenda
-				custom_tooltip = "irm.ui.sector.dev.agenda.$AGENDA$.tt"
+				set_saved_date = {
+					key = irm_sector_agenda_date
+					days_from_present = 3600
+					expires = 3600
+				}
 			}
 		}
 	}
