@@ -605,23 +605,6 @@ irm_bt_sector_buildings = {
 	}
 }
 # sector agenda
-irm_bt_sector_focus_balanced = {
-	potential = {
-		exists = event_target:irm_ui_sector
-		event_target:irm_ui_sector = {
-			always = yes
-		}
-	}
-	effect = {
-		hidden_effect = {
-			event_target:irm_ui_sector = {
-				custom_tooltip = "irm.ui.sector.dev.agenda.balanced.tt"
-				set_sector_flag = irm_ui_sector_sidebar_agenda
-			}
-		}
-	}	
-}
-
 irm_bg_sector_agenda = {
 	potential = {
 		exists = event_target:irm_ui_sector

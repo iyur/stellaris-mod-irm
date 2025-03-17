@@ -467,43 +467,43 @@ defined_text = {
  	random = no
  	default = "irm.ui.sector.dev.agenda.na.tt"
  	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.resources.tt"
+ 		localization_key = "irm.ui.sector.dev.agenda.resources.tt.active"
  		trigger = { has_sector_flag = irm_ui_sector_agenda_resources }
  	}
  	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.industry.tt"
+ 		localization_key = "irm.ui.sector.dev.agenda.industry.tt.active"
  		trigger = { has_sector_flag = irm_ui_sector_agenda_industry }
  	}
  	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.research.tt"
+ 		localization_key = "irm.ui.sector.dev.agenda.research.tt.active"
  		trigger = { has_sector_flag = irm_ui_sector_agenda_research }
  	}
  	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.trade.tt"
+ 		localization_key = "irm.ui.sector.dev.agenda.trade.tt.active"
  		trigger = { has_sector_flag = irm_ui_sector_agenda_trade }
  	}
  	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.unity.tt"
+ 		localization_key = "irm.ui.sector.dev.agenda.unity.tt.active"
  		trigger = { has_sector_flag = irm_ui_sector_agenda_unity }
  	}
  	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.pioneering.tt"
+ 		localization_key = "irm.ui.sector.dev.agenda.pioneering.tt.active"
  		trigger = { has_sector_flag = irm_ui_sector_agenda_pioneering }
  	}
  	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.info.tt"
+ 		localization_key = "irm.ui.sector.dev.agenda.info.tt.active"
  		trigger = { has_sector_flag = irm_ui_sector_agenda_info }
  	}
  	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.stabilization.tt"
+ 		localization_key = "irm.ui.sector.dev.agenda.stabilization.tt.active"
  		trigger = { has_sector_flag = irm_ui_sector_agenda_stabilization }
  	}
  	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.train.tt"
+ 		localization_key = "irm.ui.sector.dev.agenda.train.tt.active"
  		trigger = { has_sector_flag = irm_ui_sector_agenda_train }
  	}
  	text = {
- 		localization_key = "irm.ui.sector.dev.agenda.logistics.tt"
+ 		localization_key = "irm.ui.sector.dev.agenda.logistics.tt.active"
  		trigger = { has_sector_flag = irm_ui_sector_agenda_logistics }
  	}
 }

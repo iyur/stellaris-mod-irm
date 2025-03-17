@@ -440,6 +440,8 @@ irm_get_stats_military = {
 
 # This = Sector
 irm_get_agendas = {
+	set_variable = { which = irm_agenda_energy value = 0 }
+	set_variable = { which = irm_agenda_minerals value = 0 }
 	if = {
 		limit = {
 			has_sector_flag = irm_ui_sector_sidebar_agenda
@@ -474,10 +476,6 @@ irm_get_agendas = {
 		set_variable = { which = irm_agenda_minerals value = 2000 }
 		multiply_variable = { which = irm_agenda_energy value = irm_sector_agenda_left }
 		multiply_variable = { which = irm_agenda_minerals value = irm_sector_agenda_left }
-	}
-	else = {
-		set_variable = { which = irm_agenda_energy value = 0 }
-		set_variable = { which = irm_agenda_minerals value = 0 }
 	}
 }
 

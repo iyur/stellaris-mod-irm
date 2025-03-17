@@ -4,10 +4,23 @@
 			has_sector_flag = irm_ui_sector_sidebar_agenda
 		}
 	}
+	allow = {
+		custom_tooltip = {
+			fail_text = "irm.ui.sector.dev.agenda.$AGENDA$.tt.failed"
+			event_target:irm_ui_sector = {
+				owner = {
+					has_resource = { type = energy amount >= prev.irm_agenda_energy }
+					has_resource = { type = minerals amount >= prev.irm_agenda_minerals }
+				}
+			}
+		}
+	}
 	effect = {
 		hidden_effect = {
 			event_target:irm_ui_sector = {
-				custom_tooltip = "irm.ui.sector.dev.agenda.$AGENDA$.tt"
+				custom_tooltip = "irm.ui.sector.dev.agenda.$AGENDA$.effect"
+				custom_tooltip = "irm.ui.sector.dev.agenda.switch.tt"
+				custom_tooltip = "irm.ui.sector.dev.agenda.$AGENDA$.delay"
 				irm_get_agendas = yes
 				irm_reset_agenda_flags = yes
 				set_timed_sector_flag = { flag = irm_ui_sector_agenda_$AGENDA$ years = 10 }
@@ -16,6 +29,11 @@
 					key = irm_sector_agenda_date
 					days_from_present = 3600
 					expires = 3600
+				}
+				# spend resources
+				owner = {
+					add_resource = { energy = -1 mult = prev.irm_agenda_energy }
+					add_resource = { minerals = -1 mult = prev.irm_agenda_minerals }
 				}
 			}
 		}

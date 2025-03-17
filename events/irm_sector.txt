@@ -39,7 +39,6 @@ system_event = {
 
 			# agendas
 			irm_get_agendas = yes
-
 		}
 
 	}
