@@ -129,6 +129,85 @@ guiTypes = {
 					}
 				}
 
+				containerWindowType = {
+					name = "irm_mod_core_2"
+					position = { x = 0 y = 70 }
+					size = { width = @wItem height = @hItem }
+
+					effectButtonType = {
+						name = "name"
+						quadTextureSprite = "GFX_plain_orange_frame_tile"
+						position = { x = 0 y = 0 }
+						size = { x = @wItem y = @hItem }
+						font = "cg_16b"
+						format = left
+						borderSize = { x = @xItemBorder y = 0 }
+						text = "irm.ui.settings.mod.sector"
+						effect = irm_mod_sector
+					}
+					effectButtonType = {
+						name = "on"
+						quadTextureSprite = "GFX_irm_orange_check"
+						position = { x = @xItemOffset y = @yItemOffset }
+						frame = 3
+						scale = 0.83
+						effect = irm_mod_sector_on
+					}
+					effectButtonType = {
+						name = "off"
+						quadTextureSprite = "GFX_button_20_20_reject"
+						position = { x = 2 y = 1 }
+						frame = 3
+						effect = irm_mod_sector_off
+					}
+					effectButtonType = {
+						name = "na"
+						quadTextureSprite = "GFX_button_20_20_reject"
+						position = { x = 2 y = 1 }
+						frame = 1
+						effect = irm_mod_sector_na
+					}
+				}
+
+				containerWindowType = {
+					name = "irm_mod_core_3"
+					position = { x = 0 y = 110 }
+					size = { width = @wItem height = @hItem }
+
+					effectButtonType = {
+						name = "name"
+						quadTextureSprite = "GFX_plain_orange_frame_tile"
+						position = { x = 0 y = 0 }
+						size = { x = @wItem y = @hItem }
+						font = "cg_16b"
+						format = left
+						borderSize = { x = @xItemBorder y = 0 }
+						text = "irm.ui.settings.mod.regionalism"
+						effect = irm_mod_regionalism
+					}
+					# effectButtonType = {
+					# 	name = "on"
+					# 	quadTextureSprite = "GFX_irm_orange_check"
+					# 	position = { x = @xItemOffset y = @yItemOffset }
+					# 	frame = 3
+					# 	scale = 0.83
+					# 	effect = irm_mod_regionalism_on
+					# }
+					effectButtonType = {
+						name = "off"
+						quadTextureSprite = "GFX_button_20_20_reject"
+						position = { x = 2 y = 1 }
+						frame = 3
+						effect = irm_mod_regionalism_off
+					}
+					# effectButtonType = {
+					# 	name = "na"
+					# 	quadTextureSprite = "GFX_button_20_20_reject"
+					# 	position = { x = 2 y = 1 }
+					# 	frame = 1
+					# 	effect = irm_mod_regionalism_na
+					# }
+				}
 
 			}
 

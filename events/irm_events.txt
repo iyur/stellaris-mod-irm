@@ -63,20 +63,37 @@ event = {
 			set_global_flag = irm_mod_enabled
 			irm_reg_mod_change = { mod = irm_mod type = ini }
 			irm_reg_mod_change = { mod = irm_mod type = upd }
-			log = "irm mod initialized"
-			every_playable_country = {
-				limit = {
-					is_ai = no
-					is_country_type = default
+		}
+		if = {
+			limit = {
+				nor = {
+					has_global_flag = irm_mod_sector_enabled
+					has_global_flag = irm_mod_sector_disabled
 				}
-				country_event = { id = irm.11 }
-				every_owned_planet = {
-					# effect provider module
-					limit = { not = { has_deposit = irm_d_core_district } }
-					planet_event = { id = irm_a.11 }
+			}
+			switch = {
+				trigger = has_global_flag
+					irm_mod_enabled = { set_global_flag = irm_mod_sector_enabled }
+					irm_mod_disabled = { set_global_flag = irm_mod_sector_disabled }
+			}
+			irm_reg_mod_change = { mod = irm_mod_sector type = upd }
+			if = {
+				limit = { has_global_flag = irm_mod_sector_enabled }
+				every_playable_country = {
+					limit = {
+						is_ai = no
+						is_country_type = default
+					}
+					country_event = { id = irm.11 }
+					every_owned_planet = {
+						# effect provider module
+						limit = { not = { has_deposit = irm_d_core_district } }
+						planet_event = { id = irm_a.11 }
+					}
 				}
 			}
 		}
+		log = "irm mod settings initialized"
 	}
 
 }

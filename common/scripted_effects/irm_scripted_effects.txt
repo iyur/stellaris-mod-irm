@@ -21,6 +21,10 @@ irm_mod_reset = {
 	no_scope = {
 		remove_global_flag = irm_mod_enabled
 		remove_global_flag = irm_mod_disabled
+		remove_global_flag = irm_mod_sector_enabled
+		remove_global_flag = irm_mod_sector_disabled
+		remove_global_flag = irm_mod_regionalism_enabled
+		remove_global_flag = irm_mod_regionalism_disabled
 	}
 }
 
