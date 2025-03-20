@@ -105,6 +105,18 @@ defined_text = {
 }
 
 # This = System / Sector
+# Retrieves sector foundation date if exists
+defined_text = {
+	name = irm_GetSectorDate
+ 	random = no
+ 	default = "irm.ui.0"
+ 	text = {
+ 		localization_key = "irm.ui.sector.demo.date"
+ 		trigger = { has_sector_flag = irm_sector_date }
+ 	}
+}
+
+# This = System / Sector
 # Indicates the state of system stats & parameters
 defined_text = {
 	name = irm_GetStabilityState

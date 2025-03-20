@@ -25,7 +25,14 @@ irm_bt_sector_type = {
 	}
 }
 
-# Stats demographic values
+# Stats & demographic values
+irm_bt_sector_established = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = { has_sector_flag = irm_sector_date }
+	}
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.demo.date.tt" } }	
+}
 irm_bt_sector_pops = {
 	potential = { exists = event_target:irm_ui_sector }
 	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.demo.pops.tt" } }	

@@ -84,9 +84,12 @@ event = {
 						is_ai = no
 						is_country_type = default
 					}
+					# dummy sector
 					country_event = { id = irm.11 }
+					# sector dates
+					country_event = { id = irm_a.21 }
+					# effect provider module
 					every_owned_planet = {
-						# effect provider module
 						limit = { not = { has_deposit = irm_d_core_district } }
 						planet_event = { id = irm_a.11 }
 					}
@@ -164,6 +167,40 @@ planet_event = {
 				}
 			}
 			remove_deposit = irm_d_core_district
+		}
+	}
+}
+
+# Writes the date of sector foundation
+country_event = {
+	id = irm_a.21
+	hide_window = yes
+	mean_time_to_happen = { days = 1 }
+
+	trigger = {
+		is_ai = no
+		is_country_type = default
+		any_owned_sector = {
+			not = { has_sector_flag = irm_sector_date }
+		}
+	}
+
+	immediate = {
+		every_owned_sector = {
+			limit = { not = { has_sector_flag = irm_sector_date } }
+			# if no data available, try to pick the date from the oldest colony
+			ordered_owned_planet = {
+				limit = { is_colony = yes }
+				position = 0
+				order_by = trigger:colony_age
+				prev = {
+					set_variable = { which = irm_temp_date value = prev.trigger:colony_age }
+					multiply_variable = { which = irm_temp_date value = -30 }
+					set_saved_date = { key = irm_sector_date days_from_present = irm_temp_date }
+					irm_unset = { which = irm_temp_date }
+				}
+			}
+
 		}
 	}
 }

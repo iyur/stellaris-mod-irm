@@ -522,9 +522,6 @@ guiTypes = {
 			iconType = { name = "city_frame" spriteType = @nobg }
 		}
 
-
-
-
 		### HIDE ###
 
 		containerWindowType = { name = "portrait_background" iconType = { name = "event_picture" spriteType = @nobg } iconType = { name = "portrait" spriteType = @nobg } }
@@ -657,6 +654,26 @@ guiTypes = {
 				}
 
 			}
+
+			# Establishing Date
+			containerWindowType = {
+				name = "established"
+				size = { width = 150 height = 34 }
+				position = { x = 173 y = 42 }
+				clipping = no
+				effectButtonType = {
+					name = "established_date"
+					quadTextureSprite = @nobg
+					size = { x = 150 y = 34 }
+					position = { x = 20 y = 4 }
+					format = left
+					font = "cg_16b"
+					text = "irm.ui.sector.demo.date"
+					effect = irm_bt_sector_established
+				}
+
+			}
+
 			# Bottom panel
 			containerWindowType = {
 				name = "bottom_bar"
@@ -825,6 +842,8 @@ guiTypes = {
 
 		@yPosBlock1 = 260
 		@hPosBlock1 = 400
+
+
 
 		containerWindowType = {
 			name = "irm_ui_stats"

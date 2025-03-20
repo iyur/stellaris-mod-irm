@@ -137,6 +137,8 @@ l_english:
   irm.ui.sector.type.none: "No Sector"
 
   # demography
+  irm.ui.sector.demo.date: "§v[irm_ui_sector.irm_sector_date]§!"
+  irm.ui.sector.demo.date.tt: "§HEstablishing Date§!\nThe date when this sector was created."
   irm.ui.sector.demo.pops: "[irm_ui_sector.irm_pops]"
   irm.ui.sector.demo.pops.tt: "§H$CURRENT_POPULATION_AMOUNT$§!$irm.ui.1$§EPopulation, also known as £pops£ §YPops§!, is the center of productivity and political action within an empire. They provide resources by working in £job£ §YJobs§! created by §Y£district£§! §YDistricts§! and £building£ §YBuildings§!, and also produce £unity£ §YUnity§! if they are part of a specific pop faction."
   irm.ui.sector.demo.stability: "[irm_ui_sector.irm_GetStabilityState][irm_ui_sector.irm_stability]%"

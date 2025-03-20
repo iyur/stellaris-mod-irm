@@ -36,6 +36,7 @@ system_event = {
 
 			# collect statistics
 			irm_get_stats = yes
+			owner = { country_event = { id = irm_a.21 } }
 
 			# agendas
 			irm_get_agendas = yes
