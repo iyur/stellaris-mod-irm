@@ -134,6 +134,7 @@ planet_event = {
 	immediate = {
 		if = {
 			limit = {
+				no_scope = { has_global_flag = irm_mod_sector_enabled }
 				exists = owner
 				owner = {
 					is_ai = no

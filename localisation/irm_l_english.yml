@@ -65,6 +65,7 @@ l_english:
 
 # TOOLTIPS # --------------------------------------------------------------------------------------
 
+  effect_every_galaxy_sector: "Every Galaxy Sector"
   irm_existing_sector_tt: "\nManaged within §H[This.Sector.GetName]§! sector.\n"
 
 

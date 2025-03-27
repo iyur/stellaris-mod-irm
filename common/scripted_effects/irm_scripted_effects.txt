@@ -25,6 +25,20 @@ irm_mod_reset = {
 		remove_global_flag = irm_mod_sector_disabled
 		remove_global_flag = irm_mod_regionalism_enabled
 		remove_global_flag = irm_mod_regionalism_disabled
+		# remove dummy sector coubtries
+		every_country = {
+			limit = { is_country_type = irm_country_sector }
+			destroy_country = yes
+		}
+		# delete sector variables
+		every_galaxy_sector = {
+			irm_del_stats = yes
+		}
+		# remove effect provider
+		every_galaxy_planet = {
+			limit = {  has_deposit = irm_d_core_district }
+			remove_deposit = irm_d_core_district
+		}
 	}
 }
 
