@@ -15,7 +15,6 @@ event = {
 	force_open = yes
 	auto_select = yes
 	auto_opens = yes
-	is_triggered_only = yes
 
 	diplomatic = yes
 	custom_gui = "irm_ui_settings"
@@ -218,7 +217,10 @@ event = {
 	immediate = {
 		if = {
 			# mod enabled
-			limit = { has_global_flag = irm_mod_enabled }
+			limit = {
+				has_global_flag = irm_mod_enabled
+				has_global_flag = irm_mod_sector_enabled
+			}
 			# players only
 			every_playable_country = {
 				limit = {
@@ -266,7 +268,10 @@ event = {
 	immediate = {
 		if = {
 			# mod enabled
-			limit = { has_global_flag = irm_mod_enabled }
+			limit = {
+				has_global_flag = irm_mod_enabled
+				has_global_flag = irm_mod_sector_enabled
+			}
 			# players only
 			every_playable_country = {
 				limit = {
@@ -340,7 +345,10 @@ event = {
 	immediate = {
 		if = {
 			# mod enabled
-			limit = { has_global_flag = irm_mod_enabled }
+			limit = {
+				has_global_flag = irm_mod_enabled
+				has_global_flag = irm_mod_sector_enabled
+			}
 			# players only
 			every_playable_country = {
 				limit = {

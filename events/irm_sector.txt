@@ -64,6 +64,12 @@ system_event = {
 	option = {
 		name = "irm.ui.0"
 		custom_gui = "irm_ui_opt_sector_agenda"
+		allow = {
+			custom_tooltip = {
+				fail_text = "irm.ui.settings.mod.disabled.sector"
+				no_scope = { has_global_flag = irm_mod_sector_enabled }
+			}
+		}
 		hidden_effect = {
 			custom_tooltip = "irm.ui.sector.gov.agenda.tt"
 			sector = {
@@ -80,6 +86,12 @@ system_event = {
 	option = {
 		name = "irm.ui.sector.gov.policies"
 		custom_gui = "irm_ui_opt_sector_policies"
+		allow = {
+			custom_tooltip = {
+				fail_text = "irm.ui.settings.mod.disabled.sector"
+				no_scope = { has_global_flag = irm_mod_sector_enabled }
+			}
+		}
 		hidden_effect = {
 			custom_tooltip = "irm.ui.sector.gov.policies.tt"
 			sector = {
@@ -96,6 +108,12 @@ system_event = {
 	option = {
 		name = "irm.ui.sector.gov.fleet"
 		custom_gui = "irm_ui_opt_sector_fleet"
+		allow = {
+			custom_tooltip = {
+				fail_text = "irm.ui.settings.mod.disabled.sector"
+				no_scope = { has_global_flag = irm_mod_sector_enabled }
+			}
+		}
 		hidden_effect = {
 			custom_tooltip = "irm.ui.sector.gov.fleet.tt"
 			sector = {
@@ -112,7 +130,14 @@ system_event = {
 	option = {
 		name = "irm.ui.0"
 		custom_gui = "irm_ui_opt_close_sidebar"
-		trigger = { sector = { irm_ui_has_sidebar = yes } }
+		trigger = {
+			sector = {
+				or = {
+					has_sector_flag = irm_ui_sector_sidebar_policies
+					has_sector_flag = irm_ui_sector_sidebar_fleet
+				}
+			}
+		}
 		hidden_effect = {
 			sector = {
 				set_timed_sector_flag = { flag = irm_ui_sector_reload days = 1 }

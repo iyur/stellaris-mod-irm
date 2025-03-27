@@ -35,12 +35,12 @@ l_english:
 
 # DESIGNATIONS # ----------------------------------------------------------------------------------
 
-  irm_core_sector_1:    "Capital $irm.ui.sector$"
-  irm_core_sector_5:    "Core $irm.ui.sector$"
-  irm_core_sector_10:   "Core $irm.ui.sector$"
-  irm_core_sector_15:   "Core $irm.ui.sector$"
-  irm_normal_sector_1:  "Star $irm.ui.sector$"
-  irm_normal_sector_5:  "$irm.ui.sector$"
+  irm_core_sector_1: "Capital $irm.ui.sector$"
+  irm_core_sector_5: "Core $irm.ui.sector$"
+  irm_core_sector_10: "Core $irm.ui.sector$"
+  irm_core_sector_15: "Core $irm.ui.sector$"
+  irm_normal_sector_1: "Star $irm.ui.sector$"
+  irm_normal_sector_5: "$irm.ui.sector$"
   irm_normal_sector_10: "$irm.ui.sector$"
   irm_normal_sector_15: "$irm.ui.sector$"
 
@@ -107,6 +107,7 @@ l_english:
   irm.ui.settings.mod.ext.tt: "$irm.ui.settings.mod.na$\nThere are no extensions for this moment."
   irm.ui.settings.mod.na: "§gNot available§!"
   irm.ui.settings.mod.disabled: "§RMod is not enabled§!"
+  irm.ui.settings.mod.disabled.sector: "§RMod is not enabled§! §P($irm.ui.settings.mod.sector$)§!"
   irm.ui.settings.mod.tt.on: "\n§RClick to disable§!"
   irm.ui.settings.mod.tt.off: "\n§GClick to enable§!"
 

@@ -652,6 +652,23 @@ irm_bt_sector_agenda_basic = {
 		}
 	}
 }
+irm_bt_sector_agenda_close = {
+	potential = {
+		exists = event_target:irm_ui_sector
+		event_target:irm_ui_sector = {
+			has_sector_flag = irm_ui_sector_sidebar_agenda
+		}
+	}
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				remove_sector_flag = irm_ui_sector_sidebar_agenda
+				remove_sector_flag = irm_ui_sector_sidebar_fleet
+				remove_sector_flag = irm_ui_sector_sidebar_policies
+			}
+		}
+	}
+}
 
 irm_bt_sector_agenda_none = {
 	potential = {

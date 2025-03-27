@@ -1772,6 +1772,16 @@ guiTypes = {
 			position = { x = 860 y = 150 }
 			size = { width = 300 height = 500 }
 
+			effectButtonType = {
+				name = "agenda_close"
+				quadTextureSprite = "GFX_close"
+				position = { x = 269 y = -138 }
+				shortcut = "ESCAPE"
+				clicksound = "back_click"
+				actionShortcut = "cancel"
+				effect = irm_bt_sector_agenda_close
+			}
+
 			# effectButtonType = {
 			# 	name = "agenda_progress"
 			# 	position = { x = 8 y = -34 }
