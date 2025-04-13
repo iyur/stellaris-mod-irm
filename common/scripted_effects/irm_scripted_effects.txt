@@ -28,17 +28,46 @@ irm_mod_reset = {
 		# remove dummy sector coubtries
 		every_country = {
 			limit = { is_country_type = irm_country_sector }
+			# transfer all the ships before this
+			every_owned_fleet = {
+				random_playable_country = {
+					limit = {
+						is_ai = no
+						prevprev = { has_country_flag = irm_country_sector_@prev }
+					}
+					prev = {
+						set_owner = prev
+					}
+				}
+			}
 			destroy_country = yes
 		}
-		# delete sector variables
+		# delete sector variables, destroy custom sector types
 		every_galaxy_sector = {
 			irm_del_stats = yes
+			if = {
+				limit = {
+					or = {
+						has_sector_type = irm_core_sector_1
+						# has_sector_type = irm_core_sector_5
+						has_sector_type = irm_core_sector_10
+						has_sector_type = irm_core_sector_15
+						has_sector_type = irm_normal_sector_1
+						# has_sector_type = irm_normal_sector_5
+						has_sector_type = irm_normal_sector_10
+						has_sector_type = irm_normal_sector_15
+					}
+				}
+				sector_capital = {
+					planet_event = { id = irm_sector.21 }
+				}
+			}
 		}
 		# remove effect provider
 		every_galaxy_planet = {
 			limit = {  has_deposit = irm_d_core_district }
 			remove_deposit = irm_d_core_district
-		}
+		}	
 	}
 }
 
