@@ -948,12 +948,12 @@ irm_bt_sector_size = {
 
 irm_bt_sector_tier = {
 	potential = { exists = event_target:irm_ui_sector }
-	allow = {
-		custom_tooltip = {
-			fail_text = "irm.soon"
-			always = no
-		}
-	}
+	# allow = {
+	# 	custom_tooltip = {
+	# 		fail_text = "irm.soon"
+	# 		always = no
+	# 	}
+	# }
 	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.space.tier.tt" } }	
 }
 

@@ -340,7 +340,7 @@ l_english:
   irm.ui.sector.space.size: "[irm_ui_sector.irm_sector_size]"
   irm.ui.sector.space.size.tt: "§HSector Size§!\nSize: §Y[irm_ui_sector.irm_sector_size]§!$irm.ui.1$Defines the actual size of the sector to which he could expand. Measured in hyperjumps around the sector capital."
   irm.ui.sector.space.tier: "[irm_ui_sector.irm_sector_tier]"
-  irm.ui.sector.space.tier.tt: "§HSector Tier§!\nTier Level: §Y[irm_ui_sector.irm_sector_tier]§!§!$irm.ui.1$Tier level represents how well sector is developed and enables additional policy options."
+  irm.ui.sector.space.tier.tt: "§HUpgrade Sector Tier§!\n§GClick to upgrade to next tier level§!\n\nCurrent Tier: §Y[irm_ui_sector.irm_sector_tier]§!\nUpgrade Cost:\n$t$£unity£ §Y[irm_ui_sector.irm_tier_unity] £influence£ [irm_ui_sector.irm_tier_influence]\n$t$£energy£ 10000 £minerals£ 5000§!\n$t$§EAffected by the number of sector systems and planets.§!\n§!$irm.ui.1$Tier level represents how well sector is developed and enables additional policy options."
   
   irm.ui.sector.gov: "Governance"
   irm.ui.sector.reform.block: "§RUnder Reform§!\n§PThe sector is currently undergoing reform, and no changes can be made at this time. Please wait a §dfew days§! before placing any new orders.§!"

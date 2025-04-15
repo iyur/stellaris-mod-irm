@@ -526,6 +526,25 @@ irm_get_agendas = {
 	}
 }
 
+# This = Sector
+irm_get_tier_costs = {
+	set_variable = { which = irm_tier_mod value = 0.95 }
+	set_variable = { which = irm_tier_unity value = @irm_sector_tier_unity }
+	multiply_variable = { which = irm_tier_unity value = irm_sector_tier }
+	while = {
+		count = irm_owned_colonies
+		multiply_variable = { which = irm_tier_unity value = irm_tier_mod }
+		change_variable = { which = irm_tier_mod value = -0.01 }
+	}
+	# final
+	set_variable = { which = irm_tier_influence value = irm_tier_unity }
+	divide_variable = { which = irm_tier_influence value = 10 }
+	round_variable_to_closest = { which = irm_tier_unity value = 1 }
+	round_variable_to_closest = { which = irm_tier_influence value = 1 }
+	# clear
+	irm_unset = { which = irm_tier_mod }
+}
+
 # This = System / Sector
 # Clears all variables
 irm_del_stats = {
@@ -668,6 +687,9 @@ irm_del_stats = {
 	irm_unset = { which = irm_sector_agenda_pass }
 	irm_unset = { which = irm_agenda_minerals }
 	irm_unset = { which = irm_agenda_energy }
+	# tiers
+	irm_unset = { which = irm_tier_unity }
+	irm_unset = { which = irm_tier_influence }
 }
 
 # This = Sector

@@ -8,3 +8,5 @@
 @irm_sector_size_normal = 4
 @irm_sector_size_large = 9
 @irm_sector_size_huge = 14
+
+@irm_sector_tier_unity = 5000
