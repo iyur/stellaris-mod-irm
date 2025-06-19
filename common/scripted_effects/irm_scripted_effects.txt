@@ -85,9 +85,9 @@ irm_get_stats = {
 			}
 			prevprev = {
 				change_variable = { which = irm_owned_systems value = 1 }
-				change_variable = { which = irm_trade_value value = prev.trigger:has_system_trade_value }
-				change_variable = { which = irm_trade_value value = prev.trigger:trade_intercepted_value }
-				change_variable = { which = irm_trade_value value = prev.trigger:trade_intercepted_value }
+				change_variable = { which = irm_trade_value value = 0 } #prev.trigger:has_system_trade_value }
+				change_variable = { which = irm_trade_value value = 0 } #prev.trigger:trade_intercepted_value }
+				change_variable = { which = irm_trade_value value = 0 } #prev.trigger:trade_intercepted_value }
 			}
 			# planet loop
 			every_system_planet = {
@@ -118,32 +118,33 @@ irm_get_stats = {
 
 		}
 		# factions
-		export_trigger_value_to_variable = {
-			trigger = count_pop_faction
-			parameters = {
-				limit = {
-					any_owned_pop = {
-						member_of_faction = prev
-						exists = planet
-						if = {
-							limit = { prevprevprev = { is_scope_type = galactic_object } }
-								planet.solar_system = { is_same_value = root }
-						}
-						else_if = {
-							limit = { prevprevprev = { is_scope_type = sector } }
-								if = {
-									limit = {
-										exists = planet
-										exists = planet.sector
-									}
-									planet.sector = { is_same_value = root.sector }
-								}
-						}
-					}
-				}
-			}
-			variable = irm_factions
-		}
+		# export_trigger_value_to_variable = {
+		# 	trigger = count_pop_faction
+		# 	parameters = {
+		# 		limit = {
+		# 			any_owned_pop = {
+		# 				member_of_faction = prev
+		# 				exists = planet
+		# 				if = {
+		# 					limit = { prevprevprev = { is_scope_type = galactic_object } }
+		# 						planet.solar_system = { is_same_value = root }
+		# 				}
+		# 				else_if = {
+		# 					limit = { prevprevprev = { is_scope_type = sector } }
+		# 						if = {
+		# 							limit = {
+		# 								exists = planet
+		# 								exists = planet.sector
+		# 							}
+		# 							planet.sector = { is_same_value = root.sector }
+		# 						}
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	variable = irm_factions
+		# }
+		set_variable = { which = irm_factions value = 0 }
 		prev = { set_variable = { which = irm_factions value = prev.irm_factions } }
 		irm_unset = { which = irm_factions }
 	}
@@ -212,12 +213,12 @@ irm_get_stats = {
 
 		# from pops
 		sector_capital = {
-			random_owned_pop = { root.sector = { change_variable = { which = irm_sprawl_species_mod value = prev.modifier:species_empire_size_mult } } }
+			#random_owned_pop = { root.sector = { change_variable = { which = irm_sprawl_species_mod value = prev.modifier:species_empire_size_mult } } }
 		}
 		set_variable = { which = irm_sprawl_pops value = irm_pops }
 		set_variable = { which = irm_sprawl_pops_mod value = 1 }
 		change_variable = { which = irm_sprawl_pops_mod value = owner.modifier:empire_size_pops_mult }
-		change_variable = { which = irm_sprawl_pops_mod value = irm_sprawl_species_mod }
+		# change_variable = { which = irm_sprawl_pops_mod value = irm_sprawl_species_mod }
 		multiply_variable = { which = irm_sprawl_pops value = irm_sprawl_pops_mod }
 		change_variable = { which = irm_sprawl_pops_mod value = -1 } # tooltip reason
 		multiply_variable = { which = irm_sprawl_pops_mod value = 100 } # tooltip reason
@@ -269,7 +270,7 @@ irm_get_stats_demography = {
 			is_under_colonization = no
 		}
 		prevprevprev = {
-			change_variable = { which = irm_pops value = prev.trigger:num_pops }
+			change_variable = { which = irm_pops value = 0 } #prev.trigger:num_pops }
 			change_variable = { which = irm_stability value = prev.trigger:planet_stability }
 			change_variable = { which = irm_crime value = prev.trigger:planet_crime }
 			change_variable = { which = irm_housing value = prev.trigger:free_housing }
@@ -455,13 +456,13 @@ irm_get_stats_society = {
 		}
 		prevprevprev = {
 			set_variable = { which = irm_immigration_mod value = 1 }
-			change_variable = { which = irm_immigration_mod value = prev.modifier:planet_immigration_pull_mult }
-			multiply_variable = { which = irm_immigration_mod value = prev.modifier:planet_immigration_pull_add }
+			change_variable = { which = irm_immigration_mod value = 0 } #prev.modifier:planet_immigration_pull_mult }
+			multiply_variable = { which = irm_immigration_mod value = 0 } #prev.modifier:planet_immigration_pull_add }
 			change_variable = { which = irm_immigration value = irm_immigration_mod }
 
 			set_variable = { which = irm_emigration_mod value = 1 }
-			change_variable = { which = irm_emigration_mod value = prev.modifier:planet_emigration_push_mult }
-			multiply_variable = { which = irm_emigration_mod value = prev.modifier:planet_emigration_push_add }
+			change_variable = { which = irm_emigration_mod value = 0 } #prev.modifier:planet_emigration_push_mult }
+			multiply_variable = { which = irm_emigration_mod value = 0 } #prev.modifier:planet_emigration_push_add }
 			change_variable = { which = irm_emigration value = irm_emigration_mod }
 		}
 	}

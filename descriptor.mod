@@ -4,4 +4,4 @@ tags={
 	"Graphics"
 }
 name="Imperial Routine"
-supported_version="v3.14.*"
+supported_version="v4.0.*"
