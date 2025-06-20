@@ -65,8 +65,9 @@ l_english:
 
 # TOOLTIPS # --------------------------------------------------------------------------------------
 
+  # fixing absent localisation
   effect_every_galaxy_sector: "Every Galaxy Sector"
-  irm_existing_sector_tt: "\nManaged within §H[This.Sector.GetName]§! sector.\n"
+  count_owned_pop_amount_all_trigger: "Count All Owned Pop Amount"
 
 
 # UI # --------------------------------------------------------------------------------------------
@@ -113,7 +114,6 @@ l_english:
   irm.ui.settings.mod.tt.off: "\n§GClick to enable§!"
 
 
-
 # Sector
 
   irm.ui.sector: "Sector"
@@ -121,6 +121,8 @@ l_english:
   irm.ui.sector.country: "[Root.GetName] §L(Sector)§!"
   irm.ui.sector.constructor: "[PrevPrev.GetName] Engineer Fleet"
   irm.ui.sector.colonizer: "[PrevPrev.GetName] Colonial Fleet"
+
+  irm_existing_sector_tt: "\nManaged within §H[This.Sector.GetName]§! sector.\n"
 
   # type & icons
   irm.ui.sector.type: "[irm_ui_sector.irm_GetSectorType]"

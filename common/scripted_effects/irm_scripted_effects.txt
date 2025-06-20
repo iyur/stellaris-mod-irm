@@ -270,7 +270,12 @@ irm_get_stats_demography = {
 			is_under_colonization = no
 		}
 		prevprevprev = {
-			change_variable = { which = irm_pops value = 0 } #prev.trigger:num_pops }
+			export_trigger_value_to_variable = {
+				trigger = count_owned_pop_amount
+				parameters = { count = all }
+				variable = irm_pops
+			}
+			# change_variable = { which = irm_pops value = 0 } #prev.trigger:num_pops }
 			change_variable = { which = irm_stability value = prev.trigger:planet_stability }
 			change_variable = { which = irm_crime value = prev.trigger:planet_crime }
 			change_variable = { which = irm_housing value = prev.trigger:free_housing }
