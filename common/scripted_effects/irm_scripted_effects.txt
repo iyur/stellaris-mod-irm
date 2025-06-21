@@ -115,34 +115,34 @@ irm_get_stats = {
 
 		}
 		# factions
-		# export_trigger_value_to_variable = {
-		# 	trigger = count_pop_faction
-		# 	parameters = {
-		# 		limit = {
-		# 			any_owned_pop = {
-		# 				member_of_faction = prev
-		# 				exists = planet
-		# 				if = {
-		# 					limit = { prevprevprev = { is_scope_type = galactic_object } }
-		# 						planet.solar_system = { is_same_value = root }
-		# 				}
-		# 				else_if = {
-		# 					limit = { prevprevprev = { is_scope_type = sector } }
-		# 						if = {
-		# 							limit = {
-		# 								exists = planet
-		# 								exists = planet.sector
-		# 							}
-		# 							planet.sector = { is_same_value = root.sector }
-		# 						}
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# 	variable = irm_factions
-		# }
-		set_variable = { which = irm_factions value = 0 }
+		export_trigger_value_to_variable = {
+			trigger = count_pop_faction
+			parameters = {
+				limit = {
+					any_owned_pop_group = {
+						member_of_faction = prev
+						exists = planet
+						if = {
+							limit = { prevprevprev = { is_scope_type = galactic_object } }
+								planet.solar_system = { is_same_value = root }
+						}
+						else_if = {
+							limit = { prevprevprev = { is_scope_type = sector } }
+								if = {
+									limit = {
+										exists = planet
+										exists = planet.sector
+									}
+									planet.sector = { is_same_value = root.sector }
+								}
+						}
+					}
+				}
+			}
+			variable = irm_factions
+		}
 		prev = { set_variable = { which = irm_factions value = prev.irm_factions } }
+		# set_variable = { which = irm_factions value = 0 }
 		irm_unset = { which = irm_factions }
 	}
 	# final calculations
@@ -257,8 +257,8 @@ irm_get_stats = {
 	round_variable = irm_influence
 
 	round_variable = irm_growth
-	# round_variable = irm_growth_organic
-	# round_variable = irm_growth_artificial
+	round_variable = irm_growth_organic
+	round_variable = irm_growth_artificial
 
 	round_variable = irm_sprawl
 }
