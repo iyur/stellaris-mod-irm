@@ -1280,23 +1280,23 @@ guiTypes = {
 
 					# migration			
 					containerWindowType = {
-						name = "migration"
+						name = "growth"
 						position = { x = @xPosBC1 y = @yPosBC1 }
 						size = { width = @cell_W height = @cell_Y }
 						background = { name = "bg" spriteType = @dark }
 						effectButtonType = {
-							name = "sector_migration"
+							name = "sector_growth"
 							quadTextureSprite = @nobg
-							size = { x = @cell_W y = @cell_Y }
+							size = { x = 290 y = @cell_Y }
 							position = { x = 0 y = 0 }
 							format = left
 							borderSize = { x = 42 y = 0 }
 							font = "cg_16b"
-							text = "irm.ui.sector.society.migration"
-							effect = irm_bt_sector_migration
+							text = "irm.ui.sector.society.growth"
+							effect = irm_bt_sector_growth
 						}
 						iconType = {
-							name = "sector_migration_icon"
+							name = "sector_growth_icon"
 							quadTextureSprite = "GFX_topbar_species_button"
 							position = { x = 2 y = 5 }
 							scale = 0.75

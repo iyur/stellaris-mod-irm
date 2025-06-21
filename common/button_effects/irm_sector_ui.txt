@@ -801,9 +801,9 @@ irm_bt_sector_agenda_logistics_sidebar = {
 }
 
 # society
-irm_bt_sector_migration = {
+irm_bt_sector_growth = {
 	potential = { exists = event_target:irm_ui_sector }
-	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.society.migration.tt" } }	
+	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.society.growth.tt" } }	
 }
 irm_bt_sector_factions = {
 	potential = { exists = event_target:irm_ui_sector }

@@ -311,6 +311,20 @@ defined_text = {
  	}
 }
 
+defined_text = {
+	name = irm_GetGrowthState
+ 	random = no
+ 	default = "irm.ui.0"
+ 	text = {
+ 		localization_key = "irm.ui.g"
+ 		trigger = { check_variable = { which = irm_growth value > 0 } }
+ 	}
+ 	text = {
+ 		localization_key = "irm.ui.r"
+ 		trigger = { check_variable = { which = irm_growth value < 0 } }
+ 	}
+}
+
 # Sidebar title & desc
 defined_text = {
 	name = irm_SidebarTitle
