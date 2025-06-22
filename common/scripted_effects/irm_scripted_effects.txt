@@ -214,15 +214,17 @@ irm_get_stats = {
 
 		# from pops
 		sector_capital = {
-			#random_owned_pop = { root.sector = { change_variable = { which = irm_sprawl_species_mod value = prev.modifier:species_empire_size_mult } } }
+			random_owned_pop_group = { root.sector = { change_variable = { which = irm_sprawl_species_mod value = prev.modifier:species_empire_size_mult } } }
 		}
 		set_variable = { which = irm_sprawl_pops value = irm_pops }
 		set_variable = { which = irm_sprawl_pops_mod value = 1 }
 		change_variable = { which = irm_sprawl_pops_mod value = owner.modifier:empire_size_pops_mult }
-		# change_variable = { which = irm_sprawl_pops_mod value = irm_sprawl_species_mod }
+		change_variable = { which = irm_sprawl_pops_mod value = irm_sprawl_species_mod }
 		multiply_variable = { which = irm_sprawl_pops value = irm_sprawl_pops_mod }
 		change_variable = { which = irm_sprawl_pops_mod value = -1 } # tooltip reason
 		multiply_variable = { which = irm_sprawl_pops_mod value = 100 } # tooltip reason
+
+		divide_variable = { which = irm_sprawl_pops value = 100 }
 
 		# other (empire-wide)
 		change_variable = { which = irm_sprawl_mod value = owner.modifier:empire_size_mult }
