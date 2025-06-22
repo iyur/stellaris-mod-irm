@@ -578,6 +578,8 @@ irm_del_stats = {
 	irm_unset = { which = irm_happiness }
 	# resources
 	irm_unset = { which = irm_trade }
+	irm_unset = { which = irm_trade_planet_inc }
+	irm_unset = { which = irm_trade_planet_exp }
 	irm_unset = { which = irm_energy }
 	irm_unset = { which = irm_energy_base_inc }
 	irm_unset = { which = irm_energy_planet_exp }

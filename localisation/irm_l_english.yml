@@ -162,7 +162,8 @@ l_english:
 
   # resources
   irm.ui.sector.res.trade: "§G[irm_ui_sector.irm_trade]§!"
-  irm.ui.sector.res.trade.tt: "§H$TRADE_VALUE$§!\nMonthly Gain: §Y[irm_ui_sector.irm_trade]§!$irm.ui.1$$TRADE_VALUE_DESC$"
+  irm.ui.sector.res.trade.tt: "§H$TRADE_VALUE$§!\nMonthly Gain: §Y[irm_ui_sector.irm_trade]§!"
+  irm.ui.sector.res.trade.tte: "$irm.ui.1$$TRADE_VALUE_DESC$"
   irm.ui.sector.res.energy: "[irm_ui_sector.irm_GetEnergyState][irm_ui_sector.irm_energy]"
   irm.ui.sector.res.energy.tt: "§H$energy$§!\nMonthly Gain: §Y[irm_ui_sector.irm_energy]§!"
   irm.ui.sector.res.tt.inc: "\nProduced:"

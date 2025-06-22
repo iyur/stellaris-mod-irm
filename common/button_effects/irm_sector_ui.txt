@@ -69,7 +69,14 @@ irm_bt_sector_happiness = {
 # Stats resources
 irm_bt_sector_trade = {
 	potential = { exists = event_target:irm_ui_sector }
-	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.res.trade.tt" } }	
+	effect = {
+		hidden_effect = {
+			event_target:irm_ui_sector = {
+				custom_tooltip = "irm.ui.sector.res.trade.tt"
+				custom_tooltip = "irm.ui.sector.res.trade.tte"
+			}
+		}
+	}
 }
 irm_bt_sector_energy = {
 	potential = { exists = event_target:irm_ui_sector }
