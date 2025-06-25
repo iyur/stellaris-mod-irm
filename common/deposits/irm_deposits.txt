@@ -109,8 +109,7 @@ irm_d_core_district = {
 			exists = sector
 			sector = { has_sector_flag = irm_ui_sector_agenda_trade }
 		}
-		# trade_value_mult = 0.10
-		# trade protection by base
+		planet_jobs_trade_produces_mult = 0.10
 	}
 	# unity
 	triggered_planet_modifier = {
@@ -126,8 +125,8 @@ irm_d_core_district = {
 			exists = sector
 			sector = { has_sector_flag = irm_ui_sector_agenda_pioneering }
 		}
-		# pop_growth_speed = 0.10
-		# planet_immigration_pull_mult = 0.20
+		bonus_pop_growth_mult = 0.10
+		planet_resettlement_unemployed_mult = 0.20
 	}
 	# info
 	triggered_planet_modifier = {
