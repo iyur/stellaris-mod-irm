@@ -311,14 +311,14 @@ irm_get_stats_resources = {
 			irm_get_resource_breakdown = { resource = engineering_research planet = yes }
 			irm_get_resource_breakdown = { resource = influence planet = yes }
 			# strategic
-			# irm_get_resource_breakdown = { resource = volatile_motes planet = yes }
-			# irm_get_resource_breakdown = { resource = exotic_gases planet = yes }
-			# irm_get_resource_breakdown = { resource = rare_crystals planet = yes }
-			# irm_get_resource_breakdown = { resource = sr_living_metal planet = yes }
-			# irm_get_resource_breakdown = { resource = sr_zro planet = yes }
-			# irm_get_resource_breakdown = { resource = sr_dark_matter planet = yes }
-			# irm_get_resource_breakdown = { resource = nanites planet = yes }
-			# irm_get_resource_breakdown = { resource = minor_artifacts planet = yes }
+			irm_get_resource_breakdown = { resource = volatile_motes planet = yes }
+			irm_get_resource_breakdown = { resource = exotic_gases planet = yes }
+			irm_get_resource_breakdown = { resource = rare_crystals planet = yes }
+			irm_get_resource_breakdown = { resource = sr_living_metal planet = yes }
+			irm_get_resource_breakdown = { resource = sr_zro planet = yes }
+			irm_get_resource_breakdown = { resource = sr_dark_matter planet = yes }
+			irm_get_resource_breakdown = { resource = nanites planet = yes }
+			irm_get_resource_breakdown = { resource = minor_artifacts planet = yes }
 		}
 		# capital case
 		if = {
@@ -385,13 +385,6 @@ irm_get_stats_resources = {
 				change_variable = { which = irm_energy_station_exp value = 1 }
 			}
 		}
-	}
-	# natural deposits
-	prevprevprev = {
-		# change_variable = { which = irm_deposit_volatile_motes value = prev.modifier:building_mote_harvesters_max } # removed?
-		# change_variable = { which = irm_deposit_exotic_gases value = prev.modifier:building_gas_extractors_max }
-		# change_variable = { which = irm_deposit_rare_crystals value = prev.modifier:building_crystal_mines_max }
-		# change_variable = { which = irm_deposit_betharian value = prev.modifier:building_betharian_power_plant_max }
 	}
 	if = {
 		limit = { has_deposit = d_alien_pets_deposit }
