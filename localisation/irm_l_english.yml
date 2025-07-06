@@ -422,8 +422,8 @@ l_english:
 
   irm.ui.sector.gov.policies.size: "Effective Size"
   irm.ui.sector.gov.policies.size_0.req.num: "§H$irm.ui.sector.gov.policies.size$§!\n\n§RSector has some systems out of this range. Please remove them first.§!"
-  irm.ui.sector.gov.policies.size_0.req.t2: "\n§RRequires §YSector Tier 2§! to unblock.§!"
-  irm.ui.sector.gov.policies.size_0.req.t3: "\n§RRequires §YSector Tier 3§! to unblock.§!"
+  irm.ui.sector.gov.policies.size_0.req.t2: "\n§RRequires §YColonial Centralization§! technology to unlock.§!"
+  irm.ui.sector.gov.policies.size_0.req.t3: "\n§RRequires §YGalactic Administration§! technology to unlock.§!"
   irm.ui.sector.gov.policies.size_1.off: "[irm_ui_sector.GetName]:\nSets the size to §H1§! for this sector."
   irm.ui.sector.gov.policies.size_1.on: "[irm_ui_sector.GetName]:\nThe size is §H1§! for this sector."
   irm.ui.sector.gov.policies.size_5.off: "[irm_ui_sector.GetName]:\nSets the size to §H5§! for this sector."

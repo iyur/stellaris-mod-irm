@@ -1076,7 +1076,7 @@ irm_bt_sector_size_10_lock = {
 		exists = event_target:irm_ui_sector
 		event_target:irm_ui_sector = {
 			has_sector_flag = irm_ui_sector_sidebar_policies
-			check_variable = { which = irm_sector_tier value < 2 }
+			owner = { not = { has_technology = tech_colonial_centralization } }
 		}
 	}
 	effect = { custom_tooltip = "irm.ui.sector.gov.policies.size_0.req.t2" }
@@ -1096,7 +1096,7 @@ irm_bt_sector_size_15_lock = {
 		exists = event_target:irm_ui_sector
 		event_target:irm_ui_sector = {
 			has_sector_flag = irm_ui_sector_sidebar_policies
-			check_variable = { which = irm_sector_tier value < 3 }
+			owner = { not = { has_technology = tech_galactic_administration } }
 		}
 	}
 	effect = { custom_tooltip = "irm.ui.sector.gov.policies.size_0.req.t3" }
