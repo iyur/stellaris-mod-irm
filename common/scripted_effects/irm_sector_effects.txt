@@ -245,63 +245,63 @@ irm_sector_try_colonize = {
 				# pick up a suitable species
 				space_owner = {
 					log = "test"
-					# random_owned_pop = {
-					# 	limit = {
-					# 		exists = planet.sector
-					# 		planet.sector = { is_same_value = prevprevprev.sector }
-					# 	}
-					# 	weights = {
-					# 		# sad, but we can't use scripted value to check
-					# 		base = 0.001
-					# 		modifier = {
-					# 			add = 10
-					# 			prevprev = { habitability = { who = prev.species value >= 0.1 } }
-					# 		}
-					# 		modifier = {
-					# 			add = 10
-					# 			prevprev = { habitability = { who = prev.species value >= 0.2 } }
-					# 		}
-					# 		modifier = {
-					# 			add = 10
-					# 			prevprev = { habitability = { who = prev.species value >= 0.3 } }
-					# 		}
-					# 		modifier = {
-					# 			add = 10
-					# 			prevprev = { habitability = { who = prev.species value >= 0.4 } }
-					# 		}
-					# 		modifier = {
-					# 			add = 10
-					# 			prevprev = { habitability = { who = prev.species value >= 0.5 } }
-					# 		}
-					# 		modifier = {
-					# 			add = 10
-					# 			prevprev = { habitability = { who = prev.species value >= 0.6 } }
-					# 		}
-					# 		modifier = {
-					# 			add = 10
-					# 			prevprev = { habitability = { who = prev.species value >= 0.7 } }
-					# 		}
-					# 		modifier = {
-					# 			add = 10
-					# 			prevprev = { habitability = { who = prev.species value >= 0.8 } }
-					# 		}
-					# 		modifier = {
-					# 			add = 10
-					# 			prevprev = { habitability = { who = prev.species value >= 0.9 } }
-					# 		}
-					# 		modifier = {
-					# 			add = 10
-					# 			prevprev = { habitability = { who = prev.species value  = 1.0 } }
-					# 		}
-					# 	}
-					# 	# and make a colonizer, if not exists
-					# 	planet.sector = {
-					# 		if = {
-					# 			limit = { not = { irm_sector_has_fleet = { type = colonizer } } }
-					# 			irm_sector_make_colonizer = yes
-					# 		}
-					# 	}
-					# }
+					random_owned_pop_group = {
+						limit = {
+							exists = planet.sector
+							planet.sector = { is_same_value = prevprevprev.sector }
+						}
+						weights = {
+							# sad, but we can't use scripted value to check
+							base = 0.001
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.1 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.2 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.3 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.4 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.5 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.6 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.7 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.8 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value >= 0.9 } }
+							}
+							modifier = {
+								add = 10
+								prevprev = { habitability = { who = prev.species value  = 1.0 } }
+							}
+						}
+						# and make a colonizer, if not exists
+						planet.sector = {
+							if = {
+								limit = { not = { irm_sector_has_fleet = { type = colonizer } } }
+								irm_sector_make_colonizer = yes
+							}
+						}
+					}
 				}
 				# proceed colonization
 				random_country = {
@@ -329,28 +329,6 @@ irm_sector_try_colonize = {
 irm_sector_update_agenda = {
 	switch = {
 		trigger = has_sector_flag
-		irm_ui_sector_agenda_trade = {
-			every_system_within_border = {
-				starbase = {
-					# if = {
-					# 	limit = { has_starbase_size > starbase_outpost }
-					# 	add_modifier = {
-					# 		modifier = irm_sector_agenda_trade_collection
-					# 		clear_on_owner_change = yes
-					# 		days = 30
-					# 	}
-					# }
-					# if = {
-					# 	limit = { prev = { has_trade_route = yes } }
-					# 	add_modifier = {
-					# 		modifier = irm_sector_agenda_trade_protection
-					# 		clear_on_owner_change = yes
-					# 		days = 30
-					# 	}
-					# }
-				}
-			}
-		}
 		irm_ui_sector_agenda_logistics = {
 			owner = {
 				add_modifier = {
