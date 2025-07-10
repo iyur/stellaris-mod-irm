@@ -298,6 +298,10 @@ event = {
 		immediate = {
 			every_owned_sector = {
 				limit = {
+					or = {
+						has_sector_flag = irm_sector_expansion_allowed
+						# has_sector_flag = irm_ 
+					}
 					nor = {
 						irm_sector_has_size_1 = yes
 						any_country = {
