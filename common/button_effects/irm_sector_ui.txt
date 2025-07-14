@@ -964,6 +964,77 @@ irm_bt_sector_tier = {
 	effect = { hidden_effect = { custom_tooltip = "irm.ui.sector.space.tier.tt" } }	
 }
 
+irm_bt_sector_plans = {
+	potential = { exists = event_target:irm_ui_sector }
+	effect = {
+		hidden_effect = {
+			custom_tooltip = "irm.ui.sector.plans.tt"
+			event_target:irm_ui_sector = {
+				if = {
+					limit = {
+						not = { has_sector_flag = irm_sector_expansion_allowed }
+						not = { has_sector_flag = irm_sector_colonization_allowed }
+						# not = { has_sector_flag = irm_sector_ }
+					}
+					custom_tooltip = "irm.ui.sector.plans.tt.no"
+				}
+				# constructor / expansion
+				if = {
+					limit = { has_sector_flag = irm_sector_expansion_allowed }
+					if = {
+						limit = {
+							not = {
+								any_country = {
+									is_country_type = irm_country_sector
+									has_country_flag = irm_country_sector_@prev.owner
+									any_owned_fleet = {
+										has_fleet_flag = irm_sector_constructor_@prevprev
+									}
+								}
+							}
+						}
+						custom_tooltip = "irm.ui.sector.plans.tt.constructor"
+					}
+					else = {
+						custom_tooltip = "irm.ui.sector.plans.tt.expand"
+					}
+				}
+				# colonizator / colonization
+				if = {
+					limit = { has_sector_flag = irm_sector_colonization_allowed }
+					if = {
+						limit = {
+							any_system_within_border = {
+								any_system_planet = {
+									is_under_colonization = yes
+								}
+							}
+						}
+						custom_tooltip = "irm.ui.sector.plans.tt.colonization"
+					}
+					else = {
+						if = {
+							limit = {
+								any_country = {
+									is_country_type = irm_country_sector
+									has_country_flag = irm_country_sector_@prev.owner
+									any_owned_fleet = {
+										has_fleet_flag = irm_sector_colonizer_@prevprev
+									}
+								}
+							}
+							custom_tooltip = "irm.ui.sector.plans.tt.colonizer_sent"
+						}
+						else = {
+							custom_tooltip = "irm.ui.sector.plans.tt.colonizer"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 # management
 irm_bt_sector_policies_on = {
 	potential = {

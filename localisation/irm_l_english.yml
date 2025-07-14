@@ -349,6 +349,14 @@ l_english:
   irm.ui.sector.reform.block: "§RUnder Reform§!\n§PThe sector is currently undergoing reform, and no changes can be made at this time. Please wait a §dfew days§! before placing any new orders.§!"
   irm.ui.sector.sidebar.title: "§E[irm_ui_sector.irm_SidebarTitle]§!"
   irm.ui.sector.sidebar.desc: "§E[irm_ui_sector.irm_SidebarDesc]§!"
+  irm.ui.sector.plans: "Sector planned actions"
+  irm.ui.sector.plans.tt: "§H$irm.ui.sector.plans$§!\n"
+  irm.ui.sector.plans.tt.no: "Sector has no special plans at this moment."
+  irm.ui.sector.plans.tt.constructor: "Build a constructor over the next §Y2§! years."
+  irm.ui.sector.plans.tt.expand: "Deploy an outpost over the next §Y2§! years."
+  irm.ui.sector.plans.tt.colonizer_sent: "Colony ship has been sent to the new world."
+  irm.ui.sector.plans.tt.colonizer: "Build a colony ship over the next §Y5§! years."
+  irm.ui.sector.plans.tt.colonization: "Colonizing a new planet within sector space."
 
   # agenda
   irm.ui.sector.gov.agenda: "Sector Agenda"
