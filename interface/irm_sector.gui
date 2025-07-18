@@ -1614,17 +1614,12 @@ guiTypes = {
 						position = { x = 135 y = 0 }
 						size = { width = @wRes height = @hRes }
 						effectButtonType = {
-							name = "range_tt"
+							name = "sector_size"
 							quadTextureSprite = @sResBackground
-							position = { x = 0 y = 0 }
 							size = { x = @wRes y = @hRes }
-							effect = irm_cb_sector_range
-						}
-						effectButtonType = {
-							name = "range_val"
-							quadTextureSprite = "GFX_invisible"
-							position = { x = 2 y = 22 }
-							size = { x = 35 y = 32 }
+							position = { x = 0 y = 0 }
+							borderSize = { x = 0 y = 4 }
+							vertical_alignment = bottom
 							format = center
 							font = "cg_16b"
 							text = "irm.ui.sector.space.size"

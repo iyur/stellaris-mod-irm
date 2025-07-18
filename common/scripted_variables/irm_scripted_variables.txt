@@ -9,4 +9,11 @@
 @irm_sector_size_large = 9
 @irm_sector_size_huge = 14
 
-@irm_sector_tier_unity = 5000
+# costs to upgrade sector tier
+@irm_sector_tier_systems = 0.01
+@irm_sector_tier_colonies = 0.02
+
+@irm_sector_tier_unity = 3500
+@irm_sector_tier_influence = 350
+@irm_sector_tier_energy = 10000
+@irm_sector_tier_minerals = 5000

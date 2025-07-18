@@ -343,7 +343,8 @@ l_english:
   irm.ui.sector.space.size: "[irm_ui_sector.irm_sector_size]"
   irm.ui.sector.space.size.tt: "§HSector Size§!\nSize: §Y[irm_ui_sector.irm_sector_size]§!$irm.ui.1$Defines the actual size of the sector to which he could expand. Measured in hyperjumps around the sector capital."
   irm.ui.sector.space.tier: "[irm_ui_sector.irm_sector_tier]"
-  irm.ui.sector.space.tier.tt: "§HUpgrade Sector Tier§!\n§GClick to upgrade to next tier level§!\n\nCurrent Tier: §Y[irm_ui_sector.irm_sector_tier]§!\nUpgrade Cost:\n$t$£unity£ §Y[irm_ui_sector.irm_tier_unity] £influence£ [irm_ui_sector.irm_tier_influence]\n$t$£energy£ 10000 £minerals£ 5000§!\n$t$§EAffected by the number of sector systems and planets.§!\n§!$irm.ui.1$Tier level represents how well sector is developed and enables additional policy options."
+  irm.ui.sector.space.tier.no.resource: "$irm.ui.sector.space.tier.tt$\n\n§RNot enought resources to upgrade the tier.§!"
+  irm.ui.sector.space.tier.tt: "§HUpgrade Sector Tier§!\n§GClick to upgrade to next tier level§!\n\nCurrent Tier: §Y[irm_ui_sector.irm_sector_tier]§!\nUpgrade Cost:\n$t$£unity£ §Y[irm_ui_sector.irm_tier_unity] £influence£ [irm_ui_sector.irm_tier_influence]\n$t$£energy£ [irm_ui_sector.irm_tier_energy] £minerals£ [irm_ui_sector.irm_tier_minerals]§!\n\n§EAffected by the number of sector systems, planets and the current tier level.§!"
   
   irm.ui.sector.gov: "Governance"
   irm.ui.sector.reform.block: "§RUnder Reform§!\n§PThe sector is currently undergoing reform, and no changes can be made at this time. Please wait a §dfew days§! before placing any new orders.§!"
@@ -430,8 +431,8 @@ l_english:
 
   irm.ui.sector.gov.policies.size: "Effective Size"
   irm.ui.sector.gov.policies.size_0.req.num: "§H$irm.ui.sector.gov.policies.size$§!\n\n§RSector has some systems out of this range. Please remove them first.§!"
-  irm.ui.sector.gov.policies.size_0.req.t2: "\n§RRequires §YColonial Centralization§! technology to unlock.§!"
-  irm.ui.sector.gov.policies.size_0.req.t3: "\n§RRequires §YGalactic Administration§! technology to unlock.§!"
+  irm.ui.sector.gov.policies.size_0.req.t2: "\n§RRequires at least §YTier 2§! sector to unlock.§!"
+  irm.ui.sector.gov.policies.size_0.req.t3: "\n§RRequires at least §YTier 3§! sector to unlock.§!"
   irm.ui.sector.gov.policies.size_1.off: "[irm_ui_sector.GetName]:\nSets the size to §H1§! for this sector."
   irm.ui.sector.gov.policies.size_1.on: "[irm_ui_sector.GetName]:\nThe size is §H1§! for this sector."
   irm.ui.sector.gov.policies.size_5.off: "[irm_ui_sector.GetName]:\nSets the size to §H5§! for this sector."

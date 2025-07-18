@@ -525,21 +525,35 @@ irm_get_agendas = {
 
 # This = Sector
 irm_get_tier_costs = {
-	set_variable = { which = irm_tier_mod value = 0.95 }
+	set_variable = { which = irm_tier_mod value = 1 }
+	set_variable = { which = irm_tier_mod_systems value = @irm_sector_tier_systems }
+	set_variable = { which = irm_tier_mod_colonies value = @irm_sector_tier_colonies }
 	set_variable = { which = irm_tier_unity value = @irm_sector_tier_unity }
-	multiply_variable = { which = irm_tier_unity value = irm_sector_tier }
-	while = {
-		count = irm_owned_colonies
-		multiply_variable = { which = irm_tier_unity value = irm_tier_mod }
-		change_variable = { which = irm_tier_mod value = -0.01 }
-	}
-	# final
-	set_variable = { which = irm_tier_influence value = irm_tier_unity }
-	divide_variable = { which = irm_tier_influence value = 10 }
+	set_variable = { which = irm_tier_influence value = @irm_sector_tier_influence }
+	set_variable = { which = irm_tier_energy value = @irm_sector_tier_energy }
+	set_variable = { which = irm_tier_minerals value = @irm_sector_tier_minerals }
+
+	# modificators
+	multiply_variable = { which = irm_tier_mod_systems value = irm_owned_systems }
+	multiply_variable = { which = irm_tier_mod_colonies value = irm_owned_colonies }
+	change_variable = { which = irm_tier_mod value = irm_tier_mod_systems }
+	change_variable = { which = irm_tier_mod value = irm_tier_mod_colonies }
+	multiply_variable = { which = irm_tier_mod value = irm_sector_tier }
+
+	# cost calcs
+	multiply_variable = { which = irm_tier_unity value = irm_tier_mod }
+	multiply_variable = { which = irm_tier_influence value = irm_tier_mod }
+	multiply_variable = { which = irm_tier_energy value = irm_tier_mod }
+	multiply_variable = { which = irm_tier_minerals value = irm_tier_mod }
 	round_variable_to_closest = { which = irm_tier_unity value = 1 }
 	round_variable_to_closest = { which = irm_tier_influence value = 1 }
+	round_variable_to_closest = { which = irm_tier_energy value = 1 }
+	round_variable_to_closest = { which = irm_tier_minerals value = 1 }
+
 	# clear
 	irm_unset = { which = irm_tier_mod }
+	irm_unset = { which = irm_tier_mod_systems }
+	irm_unset = { which = irm_tier_mod_colonies }
 }
 
 # This = System / Sector
@@ -689,6 +703,8 @@ irm_del_stats = {
 	# tiers
 	irm_unset = { which = irm_tier_unity }
 	irm_unset = { which = irm_tier_influence }
+	irm_unset = { which = irm_tier_energy }
+	irm_unset = { which = irm_tier_minerals }
 }
 
 # This = Sector

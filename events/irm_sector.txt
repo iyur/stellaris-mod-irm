@@ -190,7 +190,8 @@ system_event = {
 		trigger = { sector = { has_sector_flag = irm_ui_sector_sidebar_policies } }
 		allow = {
 			hidden_trigger = {
-				owner = { has_technology = tech_colonial_centralization }
+				# owner = { has_technology = tech_colonial_centralization }
+				check_variable = { which = irm_sector_tier value >= 1 }
 			}
 		}
 		hidden_effect = {
@@ -198,7 +199,8 @@ system_event = {
 				custom_tooltip = "irm.ui.sector.gov.policies.size_10.off"
 				if = {
 					limit = {
-						not = { owner = { has_technology = tech_colonial_centralization } }
+						# not = { owner = { has_technology = tech_colonial_centralization } }
+						check_variable = { which = irm_sector_tier value < 2 }
 					}
 					custom_tooltip = "irm.ui.sector.gov.policies.size_0.req.t2"
 				}
@@ -215,7 +217,8 @@ system_event = {
 		trigger = { sector = { has_sector_flag = irm_ui_sector_sidebar_policies } }
 		allow = {
 			hidden_trigger = {
-				owner = { has_technology = tech_galactic_administration }
+				# owner = { has_technology = tech_galactic_administration }
+				check_variable = { which = irm_sector_tier value >= 2 }
 			}
 		}
 		hidden_effect = {
@@ -223,7 +226,8 @@ system_event = {
 				custom_tooltip = "irm.ui.sector.gov.policies.size_15.off"
 				if = {
 					limit = {
-						not = { owner = { has_technology = tech_galactic_administration } }
+						# not = { owner = { has_technology = tech_galactic_administration } }
+						check_variable = { which = irm_sector_tier value < 3 }
 					}
 					custom_tooltip = "irm.ui.sector.gov.policies.size_0.req.t3"
 				}
