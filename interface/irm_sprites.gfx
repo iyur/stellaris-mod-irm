@@ -48,6 +48,11 @@ spriteTypes = {
 		textureFile = "gfx/interface/icons/jobs/job_evaluator.dds"
 	}
 
+	spriteType = {
+		name = "GFX_faction_icon_irm_regionalist"
+		textureFile = "gfx/interface/icons/faction_icons/faction_icons_colonialist_lobby.dds"
+	}
+
 
 	# TEXT ICONS # --------------------------------------------------------------------------------
 

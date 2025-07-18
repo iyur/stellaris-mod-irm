@@ -1,0 +1,188 @@
+# IRM: Imperial Routine Mod
+# Author: Iyur
+# Mod custom regionalist sector faction
+
+irm_regionalist = {
+	election_header = "GFX_faction_header_yellow"
+	use_guiding_ethic_as_pop_filter = no
+	can_rename = no
+
+	visual_ethic = "manifesti_visual_ethic"
+
+	unique = yes
+	support_multiplier = 0.5
+
+	resources = {
+	}
+
+	extortion_resource = {
+	}
+
+	is_potential = {
+		is_ai = no
+		years_passed > 5
+		num_sectors >= 1
+		num_owned_planets >= 2
+	}
+
+	parameters = {
+		empire = {
+			type = country
+			valid_objects = {
+				is_same_value = root
+			}
+		}
+	}
+
+	can_join_pre_triggers = {
+		is_enslaved = no
+		is_being_purged = no
+	}
+
+	can_join_faction = {
+		is_shackled_robot = no
+		can_think = yes
+	}
+
+	attraction = {
+		base = 160
+
+		modifier = {
+			factor = 1.25
+			exists = from
+			from = {
+				exists = leader
+				leader = { is_ruler = yes }
+			}
+		}
+	}
+
+	leader = {
+		base = 100
+		modifier = {
+			factor = 0
+			is_event_leader = yes
+		}
+	}
+
+	# demand = {
+	# 	title = ""
+	# 	unfulfilled_title = ""
+	# 	desc = ""
+
+	# 	fulfilled_effect = 10
+	# 	unfulfilled_effect = -10
+
+	# 	potential = {
+	# 		exists = owner
+	# 	}
+
+	# 	trigger = {
+	# 	}
+	# }
+
+	on_create = {
+		set_name = "pft_irm_regionalist"
+	}
+
+	on_destroy = {
+	}
+
+	actions = {
+		embrace_faction = {
+			title = "EMBRACE_FACTION"
+			description = "EMBRACE_FACTION_DESC"
+
+			cost = {
+				unity = 5000
+			}
+
+			potential = {
+				exists = owner
+				owner = {
+					OR = {
+						is_subject = no
+						NOT = { any_agreement = { agreement_preset = preset_dominion } }
+					}
+				}
+			}
+
+			valid = {
+				custom_tooltip = {
+					fail_text = EMBRACE_FACTION_COOLDOWN
+					parameter:empire = {
+						NOT = { has_modifier = embraced_faction_timer }
+					}
+				}
+				support > 0.20
+			}
+
+			effect = {
+			}
+
+			ai_weight = {
+				base = 0
+			}
+		}
+		promote_faction = {
+			title = "PROMOTE_FACTION"
+			description = "PROMOTE_FACTION_DESC"
+
+			potential = {
+				exists = owner
+			}
+
+			effect = {
+			}
+
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_promote_faction = {
+			title = "CANCEL_PROMOTE_FACTION"
+			description = "CANCEL_PROMOTE_FACTION_DESC"
+
+			potential = {
+				exists = owner
+			}
+
+			effect = {
+			}
+
+			ai_weight = {
+				base = 0
+			}
+		}
+		suppress_faction = {
+			title = "SUPPRESS_FACTION"
+			description = "SUPPRESS_FACTION_DESC"
+
+			potential = {
+				exists = owner
+			}
+
+			effect = {
+			}
+
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_suppress_faction = {
+			title = "CANCEL_SUPPRESS_FACTION"
+			description = "CANCEL_SUPPRESS_FACTION_DESC"
+
+			potential = {
+				exists = owner
+			}
+
+			effect = {
+			}
+
+			ai_weight = {
+				base = 0
+			}
+		}
+	}
+}

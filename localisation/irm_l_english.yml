@@ -45,6 +45,12 @@ l_english:
   irm_normal_sector_15: "$irm.ui.sector$"
 
 
+# FACTIONS # --------------------------------------------------------------------------------------
+
+  pft_irm_regionalist: "Regionalist Faction"
+  pft_irm_regionalist_desc: "This faction represents the most passionate population groups across different sectors, which believe that their native regions should be more independent. The lower support usually means no danger to the empire, but the higher levels could potentially lead to unrest or revolutions.\n\n§LAny Ethos§!"
+
+
 # MESSAGES # --------------------------------------------------------------------------------------
 
   irm_message_sector_expanded: "Sector expanded"
