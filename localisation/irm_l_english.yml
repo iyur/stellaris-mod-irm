@@ -50,6 +50,16 @@ l_english:
   pft_irm_regionalist: "Regionalist Faction"
   pft_irm_regionalist_desc: "This faction represents the most passionate population groups across different sectors, which believe that their native regions should be more independent. The lower support usually means no danger to the empire, but the higher levels could potentially lead to unrest or revolutions.\n\n§LAny Ethos§!"
 
+  irm_regionalist_dem_frontier: "Organized Space"
+  irm_regionalist_dem_frontier_no: "Frontier Space"
+  irm_regionalist_dem_frontier_desc: "In order to keep our worlds under control and safety, we should organize them into regional sectors."
+
+  irm_regionalist_dem_governance: "Governance"
+  irm_regionalist_dem_governance_no: "No Governance"
+  irm_regionalist_dem_governance_desc: "Every existing sector should have an assigned leader for more effecient management and development.[Owner.irm_regionalist_sectors_governance.GetName]"
+
+  irm_regionalist_dem_governance_dummy1: "§H[This.GetName]§!\n§T-§! §H[Prev.GetName]§! §T([Prev.irm_GetSectorType])§!"
+  irm_regionalist_dem_governance_dummy2: "\n\nRelated Sectors: (£sector£ §Y[Owner.irm_regionalist_sectors_governance.irm_counter_governance]§!)[This.GetName]§!\n\n§!§dSector Factional Approval by §R-5%§!"
 
 # MESSAGES # --------------------------------------------------------------------------------------
 
@@ -89,6 +99,8 @@ l_english:
   irm.ui.r: "§R"
   irm.ui.y: "§Y"
   irm.ui.x: "§!"
+
+  irm.ui.n: "\n"
 
   irm.i.1:  "1"
   irm.i.5:  "5"

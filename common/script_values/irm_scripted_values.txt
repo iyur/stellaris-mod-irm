@@ -2,6 +2,10 @@
 # Author: Iyur
 # Dynamic scripted values
 
+irm_test_ = {
+	base = 15
+}
+
 # This = Planet
 # Evaluates the production of resource
 irm_resource_amount_ = {

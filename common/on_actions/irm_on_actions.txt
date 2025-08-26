@@ -26,6 +26,12 @@ on_monthly_pulse = {
 	}
 }
 
+on_monthly_pulse_country = {
+	events = {
+		irm_m.21
+	}
+}
+
 # No scope, like on_game_start
 on_bi_yearly_pulse = {
 	events = {

@@ -317,6 +317,7 @@ planet_event = {
 					not = { is_same_value = root }
 					is_colony = no
 					is_colonizable = no
+					is_under_colonization = no
 				}
 				solar_system = {
 					# use the dummy, not the real ones

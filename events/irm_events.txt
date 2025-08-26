@@ -229,7 +229,7 @@ event = {
 					is_country_type = default
 				}
 				# return idle
-				country_event = { id = irm_m.11 days = 1 random = 5 }
+				country_event = { id = irm_m.21 days = 1 random = 5 }
 				# sector agenda
 				every_owned_sector = { irm_sector_update_agenda = yes }
 			}
@@ -240,7 +240,7 @@ event = {
 
 # - Auto return idle sector fleets
 	country_event = {
-		id = irm_m.11
+		id = irm_m.21
 		hide_window = yes
 		is_triggered_only = yes
 
@@ -334,6 +334,61 @@ event = {
 					has_sector_flag = irm_sector_expansion_allowed
 				}
 				irm_sector_try_expand = yes
+			}
+		}
+
+	}
+
+# - Pop faction demands fake tooltips
+	country_event = {
+		id = irm_y2.31
+		hide_window = yes
+		is_triggered_only = yes
+
+		immediate = {
+			if = {
+				limit = { not = { exists = event_target:irm_regionalist_sectors_governance@root } }
+				create_saved_leader = {
+					event_leader = yes
+					immortal = yes
+					hide_leader = yes
+					species = owner_main_species
+					key = irm_regionalist_sectors_governance
+					effect = {
+						save_global_event_target_as = irm_regionalist_sectors_governance@root	
+					}
+				}
+			}
+			event_target:irm_regionalist_sectors_governance@root = {
+				set_name = { key = "irm.ui.x" }
+				set_variable = { which = irm_counter_governance value = 0 }
+				prev = {
+					every_owned_sector = {
+						limit = {
+							not = { any_owned_planet = { is_in_frontier_space = yes } }
+							not = {
+								sector_capital = { exists = leader }
+							}
+						}
+						prevprev = {
+							change_variable = { which = irm_counter_governance value = 1 }
+							set_name = {
+								key = irm_regionalist_dem_governance_dummy1
+								variable_string = "[This.GetName]" # existing
+								variable_string = "[Prev.GetName]" # next sector
+								variable_string = "[Prev.irm_GetSectorType]" # type
+							}
+						}
+					}
+				}
+				if = {
+					limit = { check_variable = { which = irm_counter_governance value > 0 } }
+					set_name = {
+						key = irm_regionalist_dem_governance_dummy2
+						variable_string = "[Owner.irm_regionalist_sectors_governance.irm_counter_governance]"
+						variable_string = "[This.GetName]"
+					}
+				}
 			}
 		}
 

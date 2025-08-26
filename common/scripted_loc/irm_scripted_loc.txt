@@ -533,3 +533,13 @@ defined_text = {
  		trigger = { has_sector_flag = irm_ui_sector_agenda_logistics }
  	}
 }
+
+defined_text = {
+	name = irm_FactionTest
+ 	random = no
+ 	default = "irm.ui.sector.dev.agenda.na.tt"
+ 	text = {
+ 		localization_key = "irm.ui.sector.dev.agenda.resources.tt.active"
+ 		trigger = { has_sector_flag = irm_ui_sector_agenda_resources }
+ 	}
+}
