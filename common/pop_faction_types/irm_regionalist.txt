@@ -108,7 +108,7 @@ irm_regionalist = {
 		desc = "irm_regionalist_dem_frontier_desc"
 
 		fulfilled_effect = 0
-		unfulfilled_effect = -0.0001
+		unfulfilled_effect = -2.5
 
 		potential = {
 			exists = owner
@@ -131,7 +131,7 @@ irm_regionalist = {
 		desc = "irm_regionalist_dem_governance_desc"
 
 		fulfilled_effect = 0
-		unfulfilled_effect = -0.0001
+		unfulfilled_effect = -2.5
 
 		potential = {
 			exists = owner

@@ -52,12 +52,13 @@ l_english:
 
   irm_regionalist_dem_frontier: "Organized Space"
   irm_regionalist_dem_frontier_no: "Frontier Space"
-  irm_regionalist_dem_frontier_desc: "In order to keep our worlds under control and safety, we should organize them into regional sectors."
+  irm_regionalist_dem_frontier_desc: "In order to keep our worlds under control and safety, we should organize them into regional sectors.[Owner.irm_regionalist_sectors_frontier.GetName]"
+  irm_regionalist_dem_frontier_dummy1: "§H[This.GetName]§!\n§T-§! §H[Prev.GetName]§!"
+  irm_regionalist_dem_frontier_dummy2: "\n\nFrontier Planets: (£planet£ §Y[Owner.irm_regionalist_sectors_frontier.irm_counter_frontier]§!)[This.GetName]§!\n\n§!§dPlanet Factional Approval by §R-10%§!"
 
   irm_regionalist_dem_governance: "Governance"
   irm_regionalist_dem_governance_no: "No Governance"
   irm_regionalist_dem_governance_desc: "Every existing sector should have an assigned leader for more effecient management and development.[Owner.irm_regionalist_sectors_governance.GetName]"
-
   irm_regionalist_dem_governance_dummy1: "§H[This.GetName]§!\n§T-§! §H[Prev.GetName]§! §T([Prev.irm_GetSectorType])§!"
   irm_regionalist_dem_governance_dummy2: "\n\nRelated Sectors: (£sector£ §Y[Owner.irm_regionalist_sectors_governance.irm_counter_governance]§!)[This.GetName]§!\n\n§!§dSector Factional Approval by §R-5%§!"
 

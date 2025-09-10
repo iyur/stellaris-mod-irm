@@ -26,6 +26,100 @@ irm_sector_make_dummy = {
 	}
 }
 
+# This = Country
+# Generate faction demand tooltips (fake leaders)
+# frontier
+irm_country_make_demand_frontier_desc = {
+	if = {
+		limit = { not = { exists = event_target:irm_regionalist_sectors_frontier@root } }
+		create_saved_leader = {
+			event_leader = yes
+			immortal = yes
+			hide_leader = yes
+			species = owner_main_species
+			key = irm_regionalist_sectors_frontier
+			effect = {
+				save_global_event_target_as = irm_regionalist_sectors_frontier@root	
+			}
+		}
+	}
+	event_target:irm_regionalist_sectors_frontier@root = {
+		set_name = { key = "irm.ui.x" }
+		set_variable = { which = irm_counter_frontier value = 0 }
+		prev = {
+			every_owned_planet = {
+				limit = {
+					not = { exists = sector }
+					is_in_frontier_space = yes
+				}
+				prevprev = {
+					change_variable = { which = irm_counter_frontier value = 1 }
+					set_name = {
+						key = irm_regionalist_dem_frontier_dummy1
+						variable_string = "\\[This.GetName]" # existing
+						variable_string = "\\[Prev.GetName]" # next planet
+					}
+				}
+			}
+		}
+		if = {
+			limit = { check_variable = { which = irm_counter_frontier value > 0 } }
+			set_name = {
+				key = irm_regionalist_dem_frontier_dummy2
+				variable_string = "\\[Owner.irm_regionalist_sectors_frontier.irm_counter_frontier]"
+				variable_string = "\\[This.GetName]"
+			}
+		}
+	}
+}
+# governance
+irm_country_make_demand_governance_desc = {
+	if = {
+		limit = { not = { exists = event_target:irm_regionalist_sectors_governance@root } }
+		create_saved_leader = {
+			event_leader = yes
+			immortal = yes
+			hide_leader = yes
+			species = owner_main_species
+			key = irm_regionalist_sectors_governance
+			effect = {
+				save_global_event_target_as = irm_regionalist_sectors_governance@root	
+			}
+		}
+	}
+	event_target:irm_regionalist_sectors_governance@root = {
+		set_name = { key = "irm.ui.x" }
+		set_variable = { which = irm_counter_governance value = 0 }
+		prev = {
+			every_owned_sector = {
+				limit = {
+					not = { any_owned_planet = { is_in_frontier_space = yes } }
+					not = {
+						sector_capital = { exists = leader }
+					}
+				}
+				prevprev = {
+					change_variable = { which = irm_counter_governance value = 1 }
+					set_name = {
+						key = irm_regionalist_dem_governance_dummy1
+						variable_string = "\\[This.GetName]" # existing
+						variable_string = "\\[Prev.GetName]" # next sector
+						variable_string = "\\[Prev.irm_GetSectorType]" # type
+					}
+				}
+			}
+		}
+		if = {
+			limit = { check_variable = { which = irm_counter_governance value > 0 } }
+			set_name = {
+				key = irm_regionalist_dem_governance_dummy2
+				variable_string = "\\[Owner.irm_regionalist_sectors_governance.irm_counter_governance]"
+				variable_string = "\\[This.GetName]"
+			}
+		}
+	}
+}
+
 # This = Sector
 # Prev = Country
 # Creates constructor for the given sector
