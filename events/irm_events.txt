@@ -211,7 +211,7 @@ country_event = {
 
 namespace = irm_d
 
-# Generate pop faction demands fake tooltips
+# Generate pop faction demand fake tooltips
 country_event = {
 	id = irm_d.1
 	hide_window = yes
@@ -222,6 +222,7 @@ country_event = {
 			limit = { any_pop_faction = { is_pop_faction_type = irm_regionalist } }
 			irm_country_make_demand_frontier_desc = yes 	# frontier planets
 			irm_country_make_demand_governance_desc = yes	# assigned leaders
+			irm_country_make_demand_native_desc = yes		# local leaders
 		}
 	}
 

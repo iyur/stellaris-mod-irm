@@ -85,7 +85,7 @@ irm_regionalist = {
 			}
 		}
 		modifier = {
-			factor = 1.75
+			factor = 2.00
 			exists = planet
 			planet = {
 				is_in_frontier_space = yes
@@ -102,6 +102,7 @@ irm_regionalist = {
 		}
 	}
 
+	# frontier planets
 	demand = {
 		title = "irm_regionalist_dem_frontier"
 		unfulfilled_title = "irm_regionalist_dem_frontier_no"
@@ -125,6 +126,7 @@ irm_regionalist = {
 		}
 	}
 
+	# unassigned leaders
 	demand = {
 		title = "irm_regionalist_dem_governance"
 		unfulfilled_title = "irm_regionalist_dem_governance_no"
@@ -151,6 +153,45 @@ irm_regionalist = {
 		}
 	}
 
+	# non background leaders
+	demand = {
+		title = "irm_regionalist_dem_native"
+		unfulfilled_title = "irm_regionalist_dem_native_no"
+		desc = "irm_regionalist_dem_native_desc"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -2.5
+
+		potential = {
+			exists = owner
+		}
+
+		trigger = {
+			owner = {
+				num_sectors > 1
+				not = {
+					any_owned_sector = {
+						exists = sector_capital
+						sector_capital = {
+							exists = leader
+							leader = {
+								prevprev = {
+									not = {
+										any_owned_planet = {
+											prevprev = {
+												is_background_planet = prev
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	on_create = {
 		set_name = "pft_irm_regionalist"
 	}
@@ -159,100 +200,5 @@ irm_regionalist = {
 	}
 
 	actions = {
-		embrace_faction = {
-			title = "EMBRACE_FACTION"
-			description = "EMBRACE_FACTION_DESC"
-
-			cost = {
-				unity = 5000
-			}
-
-			potential = {
-				exists = owner
-				owner = {
-					OR = {
-						is_subject = no
-						NOT = { any_agreement = { agreement_preset = preset_dominion } }
-					}
-				}
-			}
-
-			valid = {
-				custom_tooltip = {
-					fail_text = EMBRACE_FACTION_COOLDOWN
-					parameter:empire = {
-						NOT = { has_modifier = embraced_faction_timer }
-					}
-				}
-				support > 0.20
-			}
-
-			effect = {
-			}
-
-			ai_weight = {
-				base = 0
-			}
-		}
-		promote_faction = {
-			title = "PROMOTE_FACTION"
-			description = "PROMOTE_FACTION_DESC"
-
-			potential = {
-				exists = owner
-			}
-
-			effect = {
-			}
-
-			ai_weight = {
-				base = 0
-			}
-		}
-		cancel_promote_faction = {
-			title = "CANCEL_PROMOTE_FACTION"
-			description = "CANCEL_PROMOTE_FACTION_DESC"
-
-			potential = {
-				exists = owner
-			}
-
-			effect = {
-			}
-
-			ai_weight = {
-				base = 0
-			}
-		}
-		suppress_faction = {
-			title = "SUPPRESS_FACTION"
-			description = "SUPPRESS_FACTION_DESC"
-
-			potential = {
-				exists = owner
-			}
-
-			effect = {
-			}
-
-			ai_weight = {
-				base = 0
-			}
-		}
-		cancel_suppress_faction = {
-			title = "CANCEL_SUPPRESS_FACTION"
-			description = "CANCEL_SUPPRESS_FACTION_DESC"
-
-			potential = {
-				exists = owner
-			}
-
-			effect = {
-			}
-
-			ai_weight = {
-				base = 0
-			}
-		}
 	}
 }

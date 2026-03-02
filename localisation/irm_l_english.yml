@@ -61,6 +61,13 @@ l_english:
   irm_regionalist_dem_governance_desc: "Every existing sector should have an assigned leader for more effecient management and development.[Owner.irm_regionalist_sectors_governance.GetName]"
   irm_regionalist_dem_governance_dummy1: "§H[This.GetName]§!\n§T-§! §H[Prev.GetName]§! §T([Prev.irm_GetSectorType])§!"
   irm_regionalist_dem_governance_dummy2: "\n\nRelated Sectors: (£sector£ §Y[Owner.irm_regionalist_sectors_governance.irm_counter_governance]§!)[This.GetName]§!\n\n§!§dSector Factional Approval by §R-5%§!"
+  
+  irm_regionalist_dem_native: "The One of Us"
+  irm_regionalist_dem_native_no: "Not a Native Leader"
+  irm_regionalist_dem_native_desc: "The sector population would not be happy to have a governor from outside their planets ruling over them.[Owner.irm_regionalist_sectors_native.GetName]"
+  irm_regionalist_dem_native_dummy1: "§H[This.GetName]§!\n§T-§! §H[Prev.GetName]§! §T([Prev.irm_GetSectorType])§!"
+  irm_regionalist_dem_native_dummy2: "\n\nRelated Sectors: (£sector£ §Y[Owner.irm_regionalist_sectors_native.irm_counter_native]§!)[This.GetName]§!\n\n§!§dSector Factional Approval by §R-5%§!"
+
 
 # MESSAGES # --------------------------------------------------------------------------------------
 
