@@ -192,6 +192,41 @@ irm_regionalist = {
 		}
 	}
 
+	# council leaders
+	demand = {
+		title = "irm_regionalist_dem_council"
+		unfulfilled_title = "irm_regionalist_dem_council_no"
+		desc = "irm_regionalist_dem_council_desc"
+
+		fulfilled_effect = 2.5
+		unfulfilled_effect = 0
+
+		potential = {
+			exists = owner
+		}
+
+		trigger = {
+			owner = {
+				any_owned_sector = {
+					exists = sector_capital
+					sector_capital = {
+						exists = leader
+						leader = {
+							is_councilor = yes
+							prevprev = {
+								any_owned_planet = {
+									prevprev = {
+										is_background_planet = prev
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	on_create = {
 		set_name = "pft_irm_regionalist"
 	}

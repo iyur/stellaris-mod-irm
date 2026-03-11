@@ -223,6 +223,7 @@ country_event = {
 			irm_country_make_demand_frontier_desc = yes 	# frontier planets
 			irm_country_make_demand_governance_desc = yes	# assigned leaders
 			irm_country_make_demand_native_desc = yes		# local leaders
+			irm_country_make_demand_council_desc = yes		# council leaders
 		}
 	}
 

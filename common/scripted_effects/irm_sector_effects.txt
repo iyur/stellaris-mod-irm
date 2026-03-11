@@ -119,7 +119,7 @@ irm_country_make_demand_governance_desc = {
 		}
 	}
 }
-# governance
+# native leaders
 irm_country_make_demand_native_desc = {
 	if = {
 		limit = { not = { exists = event_target:irm_regionalist_sectors_native@root } }
@@ -177,6 +177,65 @@ irm_country_make_demand_native_desc = {
 		}
 	}
 }
+
+# councilor
+irm_country_make_demand_council_desc = {
+	if = {
+		limit = { not = { exists = event_target:irm_regionalist_sectors_council@root } }
+		create_saved_leader = {
+			event_leader = yes
+			immortal = yes
+			hide_leader = yes
+			species = owner_main_species
+			key = irm_regionalist_sectors_council
+			effect = {
+				save_global_event_target_as = irm_regionalist_sectors_council@root	
+			}
+		}
+	}
+	event_target:irm_regionalist_sectors_council@root = {
+		set_name = { key = "irm.ui.x" }
+		set_variable = { which = irm_counter_council value = 0 }
+		prev = {
+			every_owned_sector = {
+				limit = {
+					exists = sector_capital
+					sector_capital = {
+						exists = leader
+						leader = {
+							is_councilor = yes
+							prevprev = {
+								any_owned_planet = {
+									prevprev = {
+										is_background_planet = prev
+									}
+								}
+							}
+						}
+					}
+				}
+				prevprev = {
+					change_variable = { which = irm_counter_council value = 1 }
+					set_name = {
+						key = irm_regionalist_dem_council_dummy1
+						variable_string = "\\[This.GetName]" # existing
+						variable_string = "\\[Prev.GetName]" # next sector
+						variable_string = "\\[Prev.irm_GetSectorType]" # type
+					}
+				}
+			}
+		}
+		if = {
+			limit = { check_variable = { which = irm_counter_council value > 0 } }
+			set_name = {
+				key = irm_regionalist_dem_council_dummy2
+				variable_string = "\\[Owner.irm_regionalist_sectors_council.irm_counter_council]"
+				variable_string = "\\[This.GetName]"
+			}
+		}
+	}
+}
+
 
 # This = Sector
 # Prev = Country
